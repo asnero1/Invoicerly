@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <title>Invocierly Frontend</title>
+  </head>
+  <body>
+    <h1>Welcome to Invocierly Frontend!</h1>
+    <p>API Response:</p>
+    <pre id="api-response">Loading...</pre>
+
+    <script>
+      fetch('http://localhost:5000/api/data')
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('api-response').textContent = JSON.stringify(data, null, 2);
+        })
+        .catch(error => {
+          console.error('Error fetching data:', error);
+          document.getElementById('api-response').textContent = 'Failed to load data.';
+        });
+    </script>
+  </body>
+</html>

@@ -2,3 +2,8 @@ node_modules/
 .next/
 .DS_Store
 .env
+$env:Path += ";C:\Users\AntonioNero\OneDrive - DBS\Documents\Documents\CVs\Nero\Invoicerly\Nodejs\node-v18.20.7-win-x64"
+node_modules/
+Nodejs/node-v22.14.0-win-x64/
+Nodejs/node-v18.20.7-win-x64/
+
