@@ -1,0 +1,22 @@
+# Dependencies and build output
+node_modules/
+.next/
+dist/
+build/
+
+# VSCode settings and logs
+.vscode/
+*.log
+
+# Compiled files and cache
+*.lock
+package-lock.json
+yarn.lock
+
+# Generated code or backups
+*.min.js
+coverage/
+public/
+
+# Environment and sensitive config
+.env
