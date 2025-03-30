@@ -1,10 +1,11 @@
-'use client'; // ✅ This tells Next.js to treat it as a Client Component
+'use client' // ✅ This tells Next.js to treat it as a Client Component
 
-import Link from 'next/link';
-import { useState } from 'react';
+import React from 'react'
+import Link from 'next/link'
+import { useState } from 'react'
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false); // State to toggle mobile menu
+  const [isOpen, setIsOpen] = useState(false) // State to toggle mobile menu
 
   return (
     <nav className="bg-blue-600 text-white p-4 shadow-md sticky top-0 w-full">
@@ -40,5 +41,5 @@ export default function Navbar() {
         </div>
       </div>
     </nav>
-  );
+  )
 }

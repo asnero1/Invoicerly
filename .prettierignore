@@ -1,22 +1,30 @@
-# Dependencies and build output
-node_modules/
-.next/
-dist/
-build/
+# Build output
+node_modules
+dist
+build
+.next
 
-# VSCode settings and logs
-.vscode/
-*.log
+# Configuration files (optional, to avoid formatting them)
+*.config.js
+*.config.cjs
+*.config.mjs
+*.config.ts
 
-# Compiled files and cache
+# Lock files
 *.lock
 package-lock.json
 yarn.lock
 
-# Generated code or backups
+# Coverage and generated files
+coverage
+public
 *.min.js
-coverage/
-public/
 
-# Environment and sensitive config
+# Logs
+*.log
+
+# Environment
 .env
+
+# VSCode
+.vscode

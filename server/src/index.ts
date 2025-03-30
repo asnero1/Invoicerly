@@ -1,16 +1,16 @@
-import express from 'express';
-import connectDB from './db'; // ✅ Keep this path correct
-import invoiceRoutes from './routes/invoiceRoutes'; // ✅ Corrected
+import express from 'express'
+import connectDB from './config/db' // ✅ Keep this path correct
+import invoiceRoutes from './routes/invoiceRoutes'
 
-const app = express();
+const app = express()
 
 // Connect to MongoDB
-connectDB();
+connectDB()
 
 // Middleware
-app.use(express.json());
+app.use(express.json())
 
 // Routes
-app.use('/api/invoices', invoiceRoutes); // ✅ Now your API route is registered
+app.use('/api/invoices', invoiceRoutes) // ✅ Now your API route is registered
 
-app.listen(3000, () => console.log('🚀 Server running on port 3000'));
+app.listen(3000, () => console.log('🚀 Server running on port 3000'))

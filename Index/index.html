@@ -9,11 +9,11 @@
 
     <script>
       fetch('http://localhost:5000/api/data')
-        .then(response => response.json())
-        .then(data => {
+        .then((response) => response.json())
+        .then((data) => {
           document.getElementById('api-response').textContent = JSON.stringify(data, null, 2);
         })
-        .catch(error => {
+        .catch((error) => {
           console.error('Error fetching data:', error);
           document.getElementById('api-response').textContent = 'Failed to load data.';
         });

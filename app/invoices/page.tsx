@@ -1,20 +1,20 @@
-'use client';
+'use client'
 
-import { useState } from 'react';
+import { useState } from 'react'
 
 export default function InvoicesPage() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedInvoice, setSelectedInvoice] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [selectedInvoice, setSelectedInvoice] = useState(null)
 
   const invoices = [
     { id: 1, client: 'John Doe', amount: '$250', status: 'Paid' },
     { id: 2, client: 'Acme Corp', amount: '$500', status: 'Pending' },
-  ];
+  ]
 
   const openModal = (invoice) => {
-    setSelectedInvoice(invoice);
-    setIsModalOpen(true);
-  };
+    setSelectedInvoice(invoice)
+    setIsModalOpen(true)
+  }
 
   return (
     <div className="container mx-auto p-6">
@@ -82,5 +82,5 @@ export default function InvoicesPage() {
         </div>
       )}
     </div>
-  );
+  )
 }

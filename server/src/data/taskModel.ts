@@ -1,13 +1,13 @@
-import mongoose, { Schema, Document } from 'mongoose';
+import mongoose, { Schema, Document } from 'mongoose'
 
 // Interface for better TypeScript support
 export interface ITask extends Document {
-  description: string;
-  createdAt: Date;
-  voiceLogUrl?: string;
-  attachments?: string[];
-  dueDate?: Date;
-  reminder?: Date;
+  description: string
+  createdAt: Date
+  voiceLogUrl?: string
+  attachments?: string[]
+  dueDate?: Date
+  reminder?: Date
 }
 
 const TaskSchema: Schema = new Schema<ITask>({
@@ -35,9 +35,9 @@ const TaskSchema: Schema = new Schema<ITask>({
     type: Date,
     required: false,
   },
-});
+})
 
 // Use existing model if already compiled to avoid overwrite errors
-const TaskModel = mongoose.models.Task || mongoose.model<ITask>('Task', TaskSchema);
+const TaskModel = mongoose.models.Task || mongoose.model<ITask>('Task', TaskSchema)
 
-export default TaskModel;
+export default TaskModel

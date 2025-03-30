@@ -1,0 +1,22 @@
+[
+  {
+    "id": "bbaf613f-d246-442d-bfd9-49c192adfb3a",
+    "description": "Weekly report summary",
+    "client": "BigCorp Inc",
+    "date": "2025-03-25",
+    "billable": true,
+    "voiceNote": "",
+    "dueDate": "2025-03-31",
+    "attachmentName": ""
+  },
+  {
+    "id": "65e5f3dd-bc5f-4f0c-aff9-4fe7d8252b12",
+    "description": "Weekly report summary",
+    "client": "BigCorp Inc",
+    "date": "2025-03-25",
+    "billable": true,
+    "voiceNote": "",
+    "dueDate": "2025-03-31",
+    "attachmentName": "invoice.pdf.pdf"
+  }
+]

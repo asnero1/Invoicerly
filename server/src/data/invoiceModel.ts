@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'
 
 const invoiceSchema = new mongoose.Schema(
   {
@@ -7,8 +7,8 @@ const invoiceSchema = new mongoose.Schema(
     status: { type: String, enum: ['pending', 'paid', 'overdue'], default: 'pending' },
     dueDate: Date,
   },
-  { timestamps: true },
-);
+  { timestamps: true }
+)
 
-const Invoice = mongoose.model('Invoice', invoiceSchema);
-export default Invoice;
+const Invoice = mongoose.model('Invoice', invoiceSchema)
+export default Invoice
