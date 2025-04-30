@@ -1,13 +1,13 @@
-import { NextRequest, NextResponse } from 'next/server'
-import OpenAI from 'openai'
+import { NextRequest, NextResponse } from 'next/server';
+import OpenAI from 'openai';
 
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 export async function POST(req: NextRequest) {
-  const { prompt } = await req.json()
+  const { prompt } = await req.json();
 
   if (!prompt) {
-    return NextResponse.json({ reply: 'No prompt provided.' }, { status: 400 })
+    return NextResponse.json({ reply: 'No prompt provided.' }, { status: 400 });
   }
 
   try {
@@ -18,12 +18,12 @@ export async function POST(req: NextRequest) {
         { role: 'user', content: prompt },
       ],
       temperature: 0.7,
-    })
+    });
 
-    const reply = completion.choices[0]?.message?.content || 'No reply.'
-    return NextResponse.json({ reply })
+    const reply = completion.choices[0]?.message?.content || 'No reply.';
+    return NextResponse.json({ reply });
   } catch (err: any) {
-    console.error('❌ GPT Error:', err)
-    return NextResponse.json({ error: 'GPT API error occurred.' }, { status: 500 })
+    console.error('❌ GPT Error:', err);
+    return NextResponse.json({ error: 'GPT API error occurred.' }, { status: 500 });
   }
 }

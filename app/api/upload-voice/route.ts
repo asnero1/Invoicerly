@@ -1,39 +1,28 @@
-import { NextRequest, NextResponse } from 'next/server'
-import fs from 'fs'
-import path from 'path'
+// ✅ FILE: app/api/upload-voice/route.ts
+import { NextResponse } from 'next/server';
+import { writeFile } from 'fs/promises';
+import path from 'path';
+import { v4 as uuidv4 } from 'uuid';
 
-export async function POST(req: NextRequest) {
+export async function POST(req: Request) {
   try {
-    const formData = await req.formData()
-    const file = formData.get('file') as File
+    const formData = await req.formData();
+    const file = formData.get('file') as File;
 
-    if (!file || !file.name) {
-      return NextResponse.json({ error: 'No file uploaded' }, { status: 400 })
+    if (!file) {
+      return NextResponse.json({ error: 'No file uploaded.' }, { status: 400 });
     }
 
-    const allowedTypes = ['audio/mpeg', 'audio/wav']
-    if (!allowedTypes.includes(file.type)) {
-      return NextResponse.json({ error: 'Unsupported file type' }, { status: 400 })
-    }
+    const buffer = Buffer.from(await file.arrayBuffer());
+    const fileName = `${uuidv4()}.webm`;
+    const filePath = path.join(process.cwd(), 'public', 'voice', fileName);
 
-    const bytes = await file.arrayBuffer()
-    const buffer = Buffer.from(bytes)
-    const fileName = `${Date.now()}-${file.name}`
-    const voiceDir = path.join(process.cwd(), 'public', 'voice')
+    await writeFile(filePath, buffer);
 
-    // Create directory if it doesn't exist
-    if (!fs.existsSync(voiceDir)) {
-      fs.mkdirSync(voiceDir, { recursive: true })
-    }
-
-    const filePath = path.join(voiceDir, fileName)
-    fs.writeFileSync(filePath, buffer)
-
-    const url = `/voice/${fileName}`
-
-    return NextResponse.json({ success: true, fileName, url }, { status: 200 })
-  } catch (error: any) {
-    console.error('❌ Voice upload failed:', error)
-    return NextResponse.json({ error: 'Server error during upload' }, { status: 500 })
+    const publicUrl = `/voice/${fileName}`;
+    return NextResponse.json({ url: publicUrl });
+  } catch (err) {
+    console.error('❌ Upload error:', err);
+    return NextResponse.json({ error: 'Upload failed.' }, { status: 500 });
   }
 }

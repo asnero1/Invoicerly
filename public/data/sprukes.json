@@ -1,0 +1,29 @@
+[
+  {
+    "id": "s1",
+    "userId": "antonio",
+    "userName": "Antonio",
+    "caption": "My garden work",
+    "fileUrl": "/uploads/1743739416221.mp4",
+    "timestamp": "2025-04-05T03:50:00.000Z",
+    "likes": 3
+  },
+  {
+    "id": "s2",
+    "userId": "marnie",
+    "userName": "Marnie",
+    "caption": "G'day world",
+    "fileUrl": "/uploads/1743739698810-marnie.mp3",
+    "timestamp": "2025-04-05T04:10:00.000Z",
+    "likes": 0
+  },
+  {
+    "id": "s3",
+    "userId": "allegra",
+    "userName": "Allegra Sunshine",
+    "caption": "Allegra Sunshine",
+    "fileUrl": "/uploads/1743646870518-sample-5s.mp4",
+    "timestamp": "2025-04-05T05:00:00.000Z",
+    "likes": 1
+  }
+]

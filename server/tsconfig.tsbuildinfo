@@ -1,1 +1,0 @@
-{"root":["./src/db.ts","./src/index.ts","./src/send-invoice.ts","./src/task-processor.ts","./src/data/invoicemodel.ts","./src/routes/invoiceroutes.ts"],"version":"5.8.2"}

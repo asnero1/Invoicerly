@@ -1,22 +1,34 @@
-import fs from 'fs'
-import path from 'path'
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server';
+import fs from 'fs';
+import path from 'path';
 
-const filePath = path.join(process.cwd(), 'data', 'tasks.json')
-
-export async function PUT(req: Request) {
-  const updatedTask = await req.json()
-
+export async function PATCH(req: NextRequest) {
   try {
-    const data = fs.readFileSync(filePath, 'utf-8')
-    const tasks = JSON.parse(data)
+    const { id, field, value } = await req.json();
 
-    const newTasks = tasks.map((t: any) => (t.id === updatedTask.id ? updatedTask : t))
+    const filePath = path.join(process.cwd(), 'data', 'tasks.json');
+    const fileExists = fs.existsSync(filePath);
 
-    fs.writeFileSync(filePath, JSON.stringify(newTasks, null, 2))
-    return NextResponse.json({ success: true })
-  } catch (error) {
-    console.error('❌ Update Error:', error)
-    return new NextResponse('Failed to update task.', { status: 500 })
+    if (!fileExists) {
+      return NextResponse.json({ error: 'Tasks file not found' }, { status: 404 });
+    }
+
+    const raw = fs.readFileSync(filePath, 'utf-8');
+    const tasks = JSON.parse(raw);
+
+    const index = tasks.findIndex((t: any) => t.id === id);
+    if (index === -1) {
+      return NextResponse.json({ error: 'Task not found' }, { status: 404 });
+    }
+
+    // Coerce boolean if editing 'billable'
+    tasks[index][field] = field === 'billable' ? value === 'true' : value;
+
+    fs.writeFileSync(filePath, JSON.stringify(tasks, null, 2));
+
+    return NextResponse.json({ success: true });
+  } catch (err) {
+    console.error('❌ Failed to update task:', err);
+    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }

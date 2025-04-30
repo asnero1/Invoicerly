@@ -1,0 +1,90 @@
+[
+  {
+    "id": "task-001",
+    "title": "Landing Page",
+    "description": "Build landing page",
+    "client": "Marnie",
+    "date": "2025-04-06",
+    "dueDate": "2025-04-10",
+    "billable": true,
+    "amount": 450,
+    "paid": false,
+    "attachment": "brief.pdf",
+    "voiceNote": "voice1.mp3",
+    "userName": "Antonio"
+  },
+  {
+    "id": "task-002",
+    "title": "Logo Design",
+    "description": "Logo design revision",
+    "client": "Allegra Sunshine",
+    "date": "2025-04-05",
+    "dueDate": "2025-04-09",
+    "billable": true,
+    "amount": 300,
+    "paid": false,
+    "attachment": "",
+    "voiceNote": "",
+    "userName": "Antonio"
+  },
+  {
+    "id": "task-003",
+    "title": "System QA",
+    "description": "Invoice system QA test",
+    "client": "Antonio",
+    "date": "2025-04-03",
+    "dueDate": "2025-04-08",
+    "billable": true,
+    "amount": 275,
+    "paid": false,
+    "attachment": "",
+    "voiceNote": "",
+    "userName": "Marnie"
+  },
+  {
+    "id": "task-004",
+    "title": "SEO Update",
+    "description": "Revise meta tags and links",
+    "client": "Marnie",
+    "date": "2025-04-12",
+    "dueDate": "2025-04-15",
+    "billable": true,
+    "amount": 250,
+    "paid": false,
+    "attachment": "",
+    "voiceNote": "",
+    "userName": "Antonio"
+  },
+  {
+    "id": "01faaef2-8b06-4923-9876-ea6cd6a13048",
+    "description": "",
+    "client": "",
+    "date": "2025-04-24T01:31:47.924Z",
+    "amount": 0,
+    "billable": false
+  },
+  {
+    "id": "2442c26c-206d-44be-bdfa-252a887a409d",
+    "description": "hello",
+    "client": "",
+    "date": "2025-04-24T01:31:55.859Z",
+    "amount": 0,
+    "billable": false
+  },
+  {
+    "id": "a8e49be2-bea7-4764-8862-6a2684cbac19",
+    "description": "",
+    "client": "",
+    "date": "2025-04-24T02:33:28.180Z",
+    "amount": 0,
+    "billable": false
+  },
+  {
+    "id": "430b047e-4329-4799-a085-7fb0f158a3eb",
+    "description": "and what happens now do you just keep adding onto what's already there",
+    "client": "",
+    "date": "2025-04-24T06:16:56.474Z",
+    "amount": 0,
+    "billable": false
+  }
+]

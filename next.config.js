@@ -1,11 +1,19 @@
-/** @type {import('next').NextConfig} */
+// File: /next.config.js
+
 const nextConfig = {
-  reactStrictMode: true,
-  experimental: {
-    appDir: true,
+  async headers() {
+    return [
+      {
+        source: '/attachments/:path*',
+        headers: [
+          {
+            key: 'Content-Type',
+            value: 'application/octet-stream',
+          },
+        ],
+      },
+    ];
   },
-}
+};
 
-module.exports = nextConfig
-
-
+module.exports = nextConfig;

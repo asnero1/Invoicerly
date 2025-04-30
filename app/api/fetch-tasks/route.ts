@@ -1,16 +1,21 @@
-import { NextResponse } from 'next/server'
-import fs from 'fs'
-import path from 'path'
+// ✅ /api/fetch-tasks/route.ts
+import { NextRequest, NextResponse } from 'next/server';
+import fs from 'fs';
+import path from 'path';
 
-const filePath = path.join(process.cwd(), 'data', 'tasks.json')
+const taskFilePath = path.join(process.cwd(), 'data', 'tasks.json');
 
-export async function GET() {
+export async function GET(req: NextRequest) {
   try {
-    const file = fs.readFileSync(filePath, 'utf-8')
-    const tasks = JSON.parse(file)
-    return NextResponse.json({ tasks })
+    const tasks = fs.existsSync(taskFilePath)
+      ? JSON.parse(fs.readFileSync(taskFilePath, 'utf-8'))
+      : [];
+
+    return NextResponse.json({ tasks });
   } catch (err) {
-    console.error('❌ Failed to fetch tasks:', err)
-    return NextResponse.json({ tasks: [] }, { status: 500 })
+    console.error('❌ Error reading tasks.json:', err);
+    return NextResponse.json({ message: '❌ Failed to load tasks' }, { status: 500 });
   }
 }
+
+

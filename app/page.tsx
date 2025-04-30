@@ -1,32 +1,71 @@
-'use client'
+// File: app/page.tsx
+'use client';
 
-import React from 'react'
-import TaskLogger from './components/TaskLogger'
-import TaskList from './components/TaskList'
-import InvoiceGenerator from './components/invoice/InvoiceGenerator'
+import React, { useState } from 'react';
+import TaskForm from '@/components/TaskForm';
+import TaskList from '@/components/TaskList';
+import AIAssistant from '@/components/AIAssistant';
+import FeedbackButton from '@/components/FeedbackButton';
+import SmartSuggestions from '@/components/SmartSuggestions';
+import VTOLogger from '@/components/VTOLogger';
+import { Task } from '@/types';
+import { v4 as uuidv4 } from 'uuid';
 
 export default function Home() {
+  const [tasks, setTasks] = useState<Task[]>([
+    {
+      id: '1',
+      description: 'Finish frontend polish',
+      client: 'DesignCo',
+      date: '2025-04-19',
+      amount: 300,
+      billable: true,
+    },
+    {
+      id: '2',
+      description: 'Fix backend bug in invoice export',
+      client: 'DevSquad',
+      date: '2025-04-18',
+      amount: 500,
+      billable: true,
+    },
+  ]);
+
+  const addTask = (newTask: Omit<Task, 'id'>) => {
+    const fullTask: Task = { id: uuidv4(), ...newTask };
+    setTasks((prev) => [...prev, fullTask]);
+  };
+
+  const updateTask = (
+    taskId: string,
+    field: keyof Task,
+    value: string | number | boolean
+  ) => {
+    setTasks((prev) =>
+      prev.map((task) =>
+        task.id === taskId
+          ? {
+              ...task,
+              [field]:
+                field === 'amount'
+                  ? parseFloat(value as string) || 0
+                  : field === 'billable'
+                  ? Boolean(value)
+                  : (value as string | number | boolean), // ✅ ensure compatibility
+            }
+          : task
+      )
+    );
+  };  
+
   return (
-    <main className="min-h-screen flex flex-col items-center justify-start bg-gray-100 py-10 px-4">
-      <div className="max-w-3xl w-full mx-auto space-y-8">
-        {/* Task Logger Section */}
-        <section className="w-full bg-white shadow-md rounded-lg p-6">
-          <h2 className="text-2xl font-semibold mb-4 text-gray-700">Log a New Task</h2>
-          <TaskLogger />
-        </section>
-
-        {/* Task List Section */}
-        <section className="w-full bg-white shadow-md rounded-lg p-6">
-          <h2 className="text-2xl font-semibold mb-4 text-gray-700">Task List</h2>
-          <TaskList />
-        </section>
-
-        {/* Invoice Generator Section */}
-        <section className="w-full bg-white shadow-md rounded-lg p-6">
-          <h2 className="text-2xl font-semibold mb-4 text-gray-700">Generate Invoice</h2>
-          <InvoiceGenerator />
-        </section>
-      </div>
+    <main className="p-4 space-y-10 max-w-xl mx-auto">
+      <VTOLogger />
+      <TaskForm onSubmit={addTask} />
+      <TaskList tasks={tasks} onUpdate={updateTask} />
+      <SmartSuggestions />
+      <FeedbackButton />
+      <AIAssistant />
     </main>
-  )
+  );
 }

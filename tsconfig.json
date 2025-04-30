@@ -1,34 +1,45 @@
 {
   "compilerOptions": {
-    "target": "es2020",
+    "target": "ESNext",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
-    "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
+    "module": "ESNext",
+    "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
+    "incremental": true,
     "baseUrl": ".",
     "paths": {
       "@/*": ["./app/*"],
-      "@types/*": ["./types/*"],
       "@components/*": ["./app/components/*"],
-      "@data/*": ["./data/*"],
-      "@app/*": ["./app/*"],
-      "@shared/*": ["./types/*"]
+      "@types": ["./app/types"],
+      "@shared/*": ["./app/types/*"],
+      "@/components/*": ["./app/components/*"],
+      "@/types": ["./app/types"],
+      "@/lib/*": ["./lib/*"]
     },
-    "incremental": true,
+    "typeRoots": [
+      "./types",                 // ✅ includes your custom types like jspdf-autotable
+      "./node_modules/@types"   // ✅ default types
+    ],
     "plugins": [
       {
         "name": "next"
       }
     ]
   },
-  "include": ["**/*.ts", "**/*.tsx", "next-env.d.ts", ".next/types/**/*.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "app/types/json.d.ts",
+    "types/**/*.d.ts"           // ✅ explicitly includes your new types folder
+  ],
   "exclude": ["node_modules"]
 }

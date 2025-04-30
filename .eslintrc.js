@@ -42,4 +42,4 @@ module.exports = {
     },
   },
   ignorePatterns: ['node_modules/', 'build/', 'dist/', '.next/'], // ✅ Ignore build files
-}
+};

@@ -1,0 +1,14 @@
+{
+  "antonio@example.com": {
+    "name": "Antonio Nero",
+    "contact": "antonio@example.com",
+    "payid": "antonio@example.com",
+    "bank": "063-000 12345678"
+  },
+  "marnie@example.com": {
+    "name": "Marnie Doe",
+    "contact": "marnie@example.com",
+    "payid": "marnie@example.com",
+    "bank": "732-500 98765432"
+  }
+}

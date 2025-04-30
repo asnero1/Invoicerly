@@ -1,0 +1,32 @@
+/* globals.css */
+
+/* 🌈 Base Styles */
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+
+/* 🔗 Global Link Styling */
+a {
+  color: #1a73e8;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* 🎨 Heading Styles */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+}
+
+/* 📦 Container Utility */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}

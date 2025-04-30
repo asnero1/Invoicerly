@@ -1,27 +1,58 @@
-import { NextRequest, NextResponse } from 'next/server'
-import fs from 'fs'
-import path from 'path'
-import { Task } from 'types/task'
+import { NextRequest, NextResponse } from 'next/server';
+import fs from 'fs';
+import path from 'path';
 
-const filePath = path.join(process.cwd(), 'data', 'tasks.json')
+// ✅ Path to tasks.json
+const taskFilePath = path.join(process.cwd(), 'data', 'tasks.json');
 
 export async function DELETE(req: NextRequest) {
   try {
-    const { id } = await req.json()
+    const { searchParams } = new URL(req.url);
+    const taskId = searchParams.get('id');
 
-    if (!id) {
-      return NextResponse.json({ error: 'Task ID is required' }, { status: 400 })
+    if (!taskId) {
+      return NextResponse.json(
+        { error: 'Task ID is required' },
+        { status: 400 }
+      );
     }
 
-    const existing = fs.readFileSync(filePath, 'utf-8')
-    const tasks: Task[] = JSON.parse(existing)
-    const updatedTasks = tasks.filter((task) => task.id !== id)
+    // ✅ Read tasks.json
+    const tasks = fs.existsSync(taskFilePath)
+      ? JSON.parse(fs.readFileSync(taskFilePath, 'utf8'))
+      : [];
 
-    fs.writeFileSync(filePath, JSON.stringify(updatedTasks, null, 2))
+    const taskIndex = tasks.findIndex((task: any) => task.id === taskId);
+    if (taskIndex === -1) {
+      return NextResponse.json(
+        { error: 'Task not found' },
+        { status: 404 }
+      );
+    }
 
-    return NextResponse.json({ message: 'Task deleted' }, { status: 200 })
-  } catch (err) {
-    console.error('❌ Failed to delete task:', err)
-    return NextResponse.json({ error: 'Server error' }, { status: 500 })
+    // ✅ Delete attachment if exists
+    const taskToDelete = tasks[taskIndex];
+    if (taskToDelete.attachment) {
+      const attachmentPath = path.join(
+        process.cwd(),
+        'public',
+        taskToDelete.attachment
+      );
+      if (fs.existsSync(attachmentPath)) {
+        fs.unlinkSync(attachmentPath);
+      }
+    }
+
+    // ✅ Remove task and update file
+    tasks.splice(taskIndex, 1);
+    fs.writeFileSync(taskFilePath, JSON.stringify(tasks, null, 2));
+
+    return NextResponse.json({ success: true }, { status: 200 });
+  } catch (error: any) {
+    console.error('❌ Error deleting task:', error);
+    return NextResponse.json(
+      { error: 'Failed to delete task' },
+      { status: 500 }
+    );
   }
 }

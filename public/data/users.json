@@ -1,0 +1,29 @@
+[
+  {
+    "id": "1",
+    "userId": "antonio",
+    "name": "Antonio",
+    "email": "antonio@invoicerly.com",
+    "avatar": "/avatars/alex.jpg",
+    "role": "Founder & Builder",
+    "bio": "Turning chaos into code. Building Invoicerly from the beach, one task at a time."
+  },
+  {
+    "id": "2",
+    "userId": "marnie",
+    "name": "Marnie",
+    "email": "marnie@invoicerly.com",
+    "avatar": "/avatars/sam.jpg",
+    "role": "Content Queen",
+    "bio": "Digital storyteller, voice of sunshine, invoicing like a pro ✨"
+  },
+  {
+    "id": "3",
+    "userId": "allegra",
+    "name": "Allegra Sunshine",
+    "email": "allegra@invoicerly.com",
+    "avatar": "/avatars/jessie.jpg",
+    "role": "Junior Explorer",
+    "bio": "Lego builder by day, voice note queen by night. 🌈"
+  }
+]

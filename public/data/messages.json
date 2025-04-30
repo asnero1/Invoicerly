@@ -1,0 +1,33 @@
+[
+    {
+      "id": "msg1",
+      "from": "Sam Rivera",
+      "fromAvatar": "/avatars/sam.jpg",
+      "fromUserId": "sam-rivera",
+      "subject": "Quote Approved",
+      "body": "Hey Antonio, all good to go. Send through the final invoice when ready.",
+      "date": "2025-04-15",
+      "read": false
+    },
+    {
+      "id": "msg2",
+      "from": "Olivia Tran",
+      "fromAvatar": "/avatars/olivia.jpg",
+      "fromUserId": "olivia-tran",
+      "subject": "New project inquiry",
+      "body": "Hi there! Wondering if you're available next week for a quick job?",
+      "date": "2025-04-14",
+      "read": true
+    },
+    {
+      "id": "msg3",
+      "from": "Alex Zhao",
+      "fromAvatar": "/avatars/alex.jpg",
+      "fromUserId": "alex-zhao",
+      "subject": "Payment Sent",
+      "body": "Just confirming payment for the March invoice — thanks again for your work!",
+      "date": "2025-04-13",
+      "read": false
+    }
+  ]
+  

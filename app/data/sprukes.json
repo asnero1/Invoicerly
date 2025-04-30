@@ -1,0 +1,18 @@
+[
+  {
+    "id": "1",
+    "user": "Antonio",
+    "video": "/media/garden.mp4",
+    "caption": "My garden work",
+    "date": "6/5/2025",
+    "likes": 3
+  },
+  {
+    "id": "2",
+    "user": "Marnie",
+    "audio": "/media/hello.mp3",
+    "caption": "G'day world",
+    "date": "6/5/2025",
+    "likes": 1
+  }
+]

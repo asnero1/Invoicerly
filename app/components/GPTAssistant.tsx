@@ -1,41 +1,40 @@
-'use client'
+'use client';
 
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
 const GPTAssistant: React.FC = () => {
-  const [input, setInput] = useState('')
-  const [response, setResponse] = useState('')
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState('')
+  const [input, setInput] = useState('');
+  const [response, setResponse] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const askAssistant = async () => {
-    if (!input.trim()) return
-
-    setLoading(true)
-    setResponse('')
-    setError('')
+    if (!input.trim()) return;
+    setLoading(true);
+    setResponse('');
+    setError('');
 
     try {
       const res = await fetch('/api/gpt-assistant', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ prompt: input }),
-      })
+      });
 
-      const data = await res.json()
+      const data = await res.json();
 
       if (!res.ok) {
-        throw new Error(data.error || 'Unknown error')
+        throw new Error(data.error || 'Unknown error');
       }
 
-      setResponse(data.reply)
+      setResponse(data.reply);
     } catch (err: any) {
-      console.error('❌ GPT Assistant Error:', err)
-      setError('GPT API error occurred.')
-    } finally {
-      setLoading(false)
+      console.error('❌ GPT Assistant Error:', err);
+      setError('❌ GPT API error occurred.');
     }
-  }
+
+    setLoading(false);
+  };
 
   return (
     <div className="p-4 bg-white rounded shadow mt-8">
@@ -57,20 +56,17 @@ const GPTAssistant: React.FC = () => {
           Ask
         </button>
       </div>
-
       {loading && <p className="text-sm text-gray-400">Thinking...</p>}
-
       {error && (
-        <div className="mt-2 p-2 border rounded bg-red-50 text-sm text-red-700">❌ {error}</div>
+        <p className="text-sm text-red-600 bg-red-100 border border-red-300 p-2 rounded">{error}</p>
       )}
-
       {response && (
         <div className="mt-2 p-2 border rounded bg-gray-50 text-sm whitespace-pre-wrap">
           {response}
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default GPTAssistant
+export default GPTAssistant;

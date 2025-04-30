@@ -1,45 +1,61 @@
-'use client' // ✅ This tells Next.js to treat it as a Client Component
+// ✅ FILE: app/components/Navbar.tsx
+'use client';
 
-import React from 'react'
-import Link from 'next/link'
-import { useState } from 'react'
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false) // State to toggle mobile menu
+  const pathname = usePathname();
+  const [showDot, setShowDot] = useState(false);
+
+  useEffect(() => {
+    const dismissed = localStorage.getItem('nudgeDismissed');
+    if (!dismissed) {
+      setShowDot(true);
+    }
+  }, []);
+
+  const links = [
+    { href: '/', label: 'Dashboard' },
+    { href: '/task', label: 'Tasks' },
+    { href: '/generate-invoice', label: 'Invoices' },
+    { href: '/payme', label: 'Pay Me' },
+    { href: '/payout', label: '💸 PayOut' },
+    { href: '/look', label: 'Look' },
+    { href: '/find', label: 'Find' },
+    { href: '/inbox', label: 'Inbox' },
+    { href: '/profile', label: 'Profile' },
+    {
+      href: '/help',
+      label: (
+        <span className="relative">
+          Help
+          {showDot && (
+            <span className="absolute -top-2 -right-3 bg-red-500 rounded-full w-2.5 h-2.5" />
+          )}
+        </span>
+      ),
+    },
+  ];
 
   return (
-    <nav className="bg-blue-600 text-white p-4 shadow-md sticky top-0 w-full">
-      <div className="container mx-auto flex justify-between items-center">
-        {/* Logo */}
-        <Link href="/" className="text-2xl font-bold hover:text-gray-300">
-          Invoicerly
-        </Link>
-
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden block text-white focus:outline-none"
-        >
-          {isOpen ? '✖' : '☰'} {/* Shows X when open, ☰ when closed */}
-        </button>
-
-        {/* Links - Shown Horizontally on Desktop, Dropdown on Mobile */}
-        <div
-          className={`md:flex flex-col md:flex-row absolute md:static top-16 left-0 w-full md:w-auto bg-blue-600 md:bg-transparent shadow-md md:shadow-none transition-all duration-300 ease-in-out ${
-            isOpen ? 'block' : 'hidden'
-          } md:block`}
-        >
-          <Link href="/dashboard" className="block px-4 py-2 md:py-0 hover:text-gray-300">
-            Dashboard
-          </Link>
-          <Link href="/invoices" className="block px-4 py-2 md:py-0 hover:text-gray-300">
-            Invoices
-          </Link>
-          <Link href="/clients" className="block px-4 py-2 md:py-0 hover:text-gray-300">
-            Clients
-          </Link>
-        </div>
-      </div>
+    <nav className="bg-white border-b shadow-sm px-6 py-3 flex justify-between items-center">
+      <h1 className="text-xl font-bold text-purple-700">Invoicerly</h1>
+      <ul className="flex space-x-6 text-sm">
+        {links.map((link) => (
+          <li key={typeof link.label === 'string' ? link.label : link.href}>
+            <Link
+              href={link.href}
+              className={`hover:underline ${
+                pathname === link.href ? 'text-purple-700 font-semibold' : 'text-gray-700'
+              }`}
+            >
+              {link.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
     </nav>
-  )
+  );
 }
