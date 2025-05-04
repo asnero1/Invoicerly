@@ -4,10 +4,13 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
+import { Menu, X } from 'lucide-react';
 
 export default function Navbar() {
   const pathname = usePathname();
   const [showDot, setShowDot] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const dismissed = localStorage.getItem('nudgeDismissed');
@@ -40,15 +43,30 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="bg-white border-b shadow-sm px-6 py-3 flex justify-between items-center">
-      <h1 className="text-xl font-bold text-purple-700">Invoicerly</h1>
-      <ul className="flex space-x-6 text-sm">
+    <nav className="bg-white border-b shadow-sm px-4 py-3 flex justify-between items-center relative z-50">
+      {/* Logo and Title */}
+      <Link href="/" className="flex items-center gap-2 group hover:opacity-90 transition no-underline">
+  <Image
+    src="/images/logo.png"
+    alt="Logo"
+    width={28}
+    height={28}
+    className="transition-transform duration-200 group-hover:scale-105"
+  />
+  <span className="text-lg font-bold text-indigo-700 leading-none">Poni</span>
+</Link>
+
+
+      {/* Desktop Menu */}
+      <ul className="hidden md:flex space-x-6 text-sm">
         {links.map((link) => (
           <li key={typeof link.label === 'string' ? link.label : link.href}>
             <Link
               href={link.href}
-              className={`hover:underline ${
-                pathname === link.href ? 'text-purple-700 font-semibold' : 'text-gray-700'
+              className={`transition duration-200 border-b-2 pb-1 ${
+                pathname === link.href
+                  ? 'text-indigo-700 border-indigo-500'
+                  : 'text-gray-700 border-transparent hover:border-indigo-300 hover:text-indigo-600'
               }`}
             >
               {link.label}
@@ -56,6 +74,38 @@ export default function Navbar() {
           </li>
         ))}
       </ul>
+
+      {/* Mobile Menu Toggle */}
+      <button
+        className="md:hidden text-gray-600"
+        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        aria-label="Toggle menu"
+      >
+        {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+      </button>
+
+      {/* Mobile Menu Drawer */}
+      {mobileMenuOpen && (
+        <div className="absolute top-16 left-0 w-full bg-white border-t shadow-md md:hidden">
+          <ul className="flex flex-col gap-4 p-4">
+            {links.map((link) => (
+              <li key={typeof link.label === 'string' ? link.label : link.href}>
+                <Link
+                  href={link.href}
+                  className={`block w-full py-2 px-2 rounded transition ${
+                    pathname === link.href
+                      ? 'bg-indigo-100 text-indigo-700 font-medium'
+                      : 'text-gray-700 hover:bg-gray-100'
+                  }`}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </nav>
   );
 }

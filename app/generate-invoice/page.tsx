@@ -43,7 +43,7 @@ export default function GenerateInvoicePage() {
     }
   };  
 
-  const handleSendWhatsApp = () => {
+  const handleSendWhatsApp = () => { 
     if (!previewUrl) {
       toast.error('Invoice not ready yet!');
       return;
