@@ -16,16 +16,16 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./app/*"],
-      "@components/*": ["./app/components/*"],
-      "@types": ["./app/types"],
-      "@shared/*": ["./app/types/*"],
       "@/components/*": ["./app/components/*"],
       "@/types": ["./app/types"],
-      "@/lib/*": ["./lib/*"]
+      "@/shared/*": ["./app/types/*"],
+      "@/server/*": ["./app/server/*"],
+      "@/lib/*": ["./lib/*"],
+      "@/utils/*": ["./app/utils/*"]
     },
     "typeRoots": [
-      "./types",                 // ✅ includes your custom types like jspdf-autotable
-      "./node_modules/@types"   // ✅ default types
+      "./types",                // ✅ your custom types
+      "./node_modules/@types"  // ✅ default type definitions
     ],
     "plugins": [
       {
@@ -39,7 +39,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "app/types/json.d.ts",
-    "types/**/*.d.ts"           // ✅ explicitly includes your new types folder
+    "types/**/*.d.ts"
   ],
   "exclude": ["node_modules"]
 }
