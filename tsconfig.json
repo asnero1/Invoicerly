@@ -20,7 +20,8 @@
   "@/types": ["types"],
   "@/types/*": ["types/*"],
   "@/utils/*": ["./app/utils/*"],
-  "@/data/*": ["./app/data/*"]
+  "@/data/*": ["./app/data/*"],
+  "@/lib/*": ["./app/lib/*"]
 },
     "typeRoots": [
       "./types",                // ✅ Custom global types (not `app/types`)
