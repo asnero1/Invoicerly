@@ -1,21 +1,17 @@
 import { NextResponse } from 'next/server';
-import fs from 'fs';
 import path from 'path';
+import sendWhatsAppInvoice from '@/lib/sendWhatsAppInvoice'; // ✅ FIXED THIS LINE
 
 export async function POST(req: Request) {
-  const body = await req.json();
-  const { to, filename, message } = body;
-
   try {
-    const filePath = path.join(process.cwd(), 'public/invoices', filename);
-    const fileBuffer = fs.readFileSync(filePath);
+    const body = await req.json();
+    const { phoneNumber, fileName, message } = body;
 
-    // TODO: Replace with real WhatsApp/Twilio logic here
-    console.log(`Sending ${filename} to ${to}: ${message}`);
+    await sendWhatsAppInvoice({ phoneNumber, fileName, message });
 
     return NextResponse.json({ success: true });
   } catch (err) {
-    console.error('WhatsApp Send Error:', err);
+    console.error('WhatsApp Send Invoice Error:', err);
     const errorMessage = err instanceof Error ? err.message : 'Unknown error';
     return NextResponse.json({ success: false, error: errorMessage }, { status: 500 });
   }
