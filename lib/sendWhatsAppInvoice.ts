@@ -11,24 +11,19 @@ const client = twilio(accountSid, authToken);
 export default async function sendWhatsAppInvoice({
   phoneNumber,
   fileName,
+  message, // ✅ Add this
 }: {
   phoneNumber: string;
   fileName: string;
+  message?: string; // ✅ Optional if needed
 }) {
-  try {
-    const filePath = path.join(process.cwd(), 'public/invoices', fileName);
-    const fileUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/invoices/${fileName}`;
+  const filePath = path.join(process.cwd(), 'public/invoices', fileName);
+  const fileUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/invoices/${fileName}`;
 
-    await client.messages.create({
-      from: `whatsapp:${fromNumber}`,
-      to: `whatsapp:${phoneNumber}`,
-      body: `Here is your invoice: ${fileUrl}`,
-    });
-
-    console.log(`✅ WhatsApp invoice sent to ${phoneNumber}`);
-    return true;
-  } catch (err) {
-    console.error('❌ WhatsApp send failed:', err);
-    throw err;
-  }
+  await client.messages.create({
+    from: `whatsapp:${fromNumber}`,
+    to: `whatsapp:${phoneNumber}`,
+    body: message || 'Here is your invoice:',
+    mediaUrl: [fileUrl],
+  });
 }
