@@ -3,7 +3,6 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment, useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { sendWhatsAppInvoice } from '@/lib/sendWhatsAppInvoice';
 
 interface ResendInvoiceModalProps {
   isOpen: boolean;
@@ -20,7 +19,11 @@ const ResendInvoiceModal: React.FC<ResendInvoiceModalProps> = ({ isOpen, onClose
     if (!viewed) return;
     setSending(true);
     try {
-      await sendWhatsAppInvoice({ phoneNumber, fileName });
+      await fetch('/api/send-whatsapp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ to: phoneNumber, filename: fileName, message: "Here's your invoice from Antonio" }),
+      });      
       onClose();
     } catch (error) {
       console.error('Error resending invoice:', error);

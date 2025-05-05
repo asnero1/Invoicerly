@@ -1,17 +1,23 @@
-// app/api/send-whatsapp/route.ts
 import { NextResponse } from 'next/server';
-import { writeFileSync } from 'fs';
+import fs from 'fs';
 import path from 'path';
 
 export async function POST(req: Request) {
   const body = await req.json();
+  const { to, filename, message } = body;
 
-  // Example: you might pass messageText and filename
-  const { messageText, filename } = body;
+  try {
+    const filePath = path.join(process.cwd(), 'public/invoices', filename);
+    const fileBuffer = fs.readFileSync(filePath);
 
-  const outputPath = path.join(process.cwd(), 'public', 'outgoing.txt');
+    // Call your WhatsApp send logic here (e.g., Twilio API)
+    console.log(`Sending ${filename} to ${to}: ${message}`);
 
-  writeFileSync(outputPath, `Message: ${messageText}\nFilename: ${filename}`);
-
-  return NextResponse.json({ success: true, saved: outputPath });
+    return NextResponse.json({ success: true });
+  } catch (err) {
+    console.error('WhatsApp Send Error:', err);
+    const errorMessage = err instanceof Error ? err.message : 'Unknown error';
+    return NextResponse.json({ success: false, error: errorMessage }, { status: 500 });
+  }
+  
 }
