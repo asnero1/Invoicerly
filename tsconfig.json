@@ -14,18 +14,17 @@
     "jsx": "preserve",
     "incremental": true,
     "baseUrl": ".",
-    "paths": {
-      "@/*": ["./app/*"],
-      "@/components/*": ["./app/components/*"],
-      "@/types": ["./app/types"],
-      "@/shared/*": ["./app/types/*"],
-      "@/server/*": ["./app/server/*"],
-      "@/lib/*": ["./lib/*"],
-      "@/utils/*": ["./app/utils/*"]
-    },
+"paths": {
+  "@/*": ["./app/*"],
+  "@/components/*": ["./app/components/*"],
+  "@/types": ["types"],
+  "@/types/*": ["types/*"],
+  "@/utils/*": ["./app/utils/*"],
+  "@/data/*": ["./app/data/*"]
+},
     "typeRoots": [
-      "./types",                // ✅ your custom types
-      "./node_modules/@types"  // ✅ default type definitions
+      "./types",                // ✅ Custom global types (not `app/types`)
+      "./node_modules/@types"  // ✅ Default type definitions
     ],
     "plugins": [
       {
@@ -38,7 +37,6 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "app/types/json.d.ts",
     "types/**/*.d.ts"
   ],
   "exclude": ["node_modules"]

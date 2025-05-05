@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { toast } from 'sonner';
+import Image from 'next/image';
 
 interface User {
   id: string;
@@ -52,7 +53,9 @@ export default function FindPage() {
         >
           <option value="All">All Roles</option>
           {roles.map((role) => (
-            <option key={role}>{role}</option>
+            <option key={role} value={role}>
+              {role}
+            </option>
           ))}
         </select>
       </div>
@@ -65,10 +68,12 @@ export default function FindPage() {
             className="border rounded-lg p-4 bg-white shadow hover:shadow-md transition"
           >
             <div className="flex items-center gap-4">
-              <img
+              <Image
                 src={u.avatarUrl || '/default-avatar.png'}
                 alt={u.name}
-                className="w-14 h-14 rounded-full object-cover"
+                width={56}
+                height={56}
+                className="rounded-full object-cover"
               />
               <div className="flex-1">
                 <p className="font-bold text-lg">{u.name}</p>
@@ -91,6 +96,8 @@ export default function FindPage() {
             <span
               key={star}
               className="text-yellow-500 text-2xl cursor-pointer hover:scale-110 transition-transform"
+              role="button"
+              aria-label={`Rate ${star} stars`}
             >
               ★
             </span>

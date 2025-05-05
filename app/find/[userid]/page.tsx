@@ -1,53 +1,33 @@
+// FILE: app/find/[userid]/page.tsx
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import { FaWhatsapp } from 'react-icons/fa';
-import users from '@/data/users.json';
-import invoices from '@/public/data/invoices.json';
-import { sendWhatsAppInvoice } from '@/lib/sendWhatsAppInvoice';
-import ContactClientModal from '@/components/ContactClientModal';
-import { Invoice, User } from '@/types';
+import React from 'react';
+import { useParams } from 'next/navigation';
+import TaskList from '@/components/TaskList';
+import { Task } from '@/types';
 
-export default function UserProfilePage({ params }: { params: { userid: string } }) {
-  const [userInvoices, setUserInvoices] = useState<Invoice[]>([]);
+import { mockTasks } from '@/data/mockTasks';
 
-  const user = users.find((u: User) => u.id === params.userid);
+export default function UserProfilePage() {
+  const params = useParams();
+  const userId = params?.userid;
 
-  useEffect(() => {
-    const filtered = invoices.filter((inv: Invoice) => inv.clientId === params.userid);
-    setUserInvoices(filtered);
-  }, [params.userid]);
+  const handleUpdate = (taskId: string, field: keyof Task, value: string | number | boolean) => {
+    console.log(`Updated ${taskId}: ${field} => ${value}`);
+  };
+
+  const handleGenerateInvoice = (taskId: string) => {
+    console.log(`Generate invoice for task: ${taskId}`);
+  };
 
   return (
-    <div className="p-6 space-y-6">
-      <h1 className="text-2xl font-bold">{user?.name}'s Profile</h1>
-      <p>Contact: {user?.phone}</p>
-
-      <div className="space-y-3">
-        <h2 className="text-xl font-semibold">Invoices</h2>
-        <ul className="space-y-2">
-          {userInvoices.map((inv: Invoice) => (
-            <li key={inv.id} className="border p-3 rounded shadow-sm">
-              <p>{inv.description}</p>
-              <p className="text-sm text-gray-500">Amount: ${inv.amount}</p>
-              <button
-                className="mt-1 text-sm text-blue-600 hover:underline inline-flex items-center gap-2"
-                onClick={() =>
-                  sendWhatsAppInvoice({
-                    phoneNumber: user?.phone || '',
-                    fileName: `Invoice_${inv.id}.pdf`,
-                  })
-                }
-              >
-                <FaWhatsapp className="inline mr-1" />
-                Send via WhatsApp
-              </button>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {user && <ContactClientModal client={user} onClose={() => {}} />}
+    <div className="p-4">
+      <h1 className="text-2xl font-semibold mb-4">Client Tasks</h1>
+      <TaskList
+        tasks={mockTasks}
+        onUpdate={handleUpdate}
+        onGenerateInvoice={handleGenerateInvoice}
+      />
     </div>
   );
 }

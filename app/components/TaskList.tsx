@@ -1,11 +1,9 @@
-// File: app/components/TaskList.tsx
 'use client';
 
 import React, { useState } from 'react';
 import { Task } from '@/types';
-import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import TaskCard from './TaskCard'; // ✅ Import your TaskCard (since you're using it visually already)
+import TaskCard from './TaskCard';
 
 interface Props {
   tasks: Task[];
@@ -15,23 +13,10 @@ interface Props {
 
 export default function TaskList({ tasks, onUpdate, onGenerateInvoice }: Props) {
   const [editing, setEditing] = useState<string | null>(null);
-  const [editFields, setEditFields] = useState<Partial<Task>>({});
-
-  const handleEditChange = (field: keyof Task, value: string) => {
-    setEditFields((prev) => ({ ...prev, [field]: value }));
-  };
-
-  const saveEdit = (taskId: string) => {
-    Object.entries(editFields).forEach(([key, value]) => {
-      onUpdate(taskId, key as keyof Task, value as string | number | boolean);
-    });
-    setEditing(null);
-    setEditFields({});
-  };
 
   const handleSendWhatsApp = (task: Task) => {
     if (!task.clientPhone) {
-      alert('No client phone number provided for WhatsApp message.');
+      alert('No client phone number provided.');
       return;
     }
 
@@ -46,7 +31,7 @@ export default function TaskList({ tasks, onUpdate, onGenerateInvoice }: Props) 
         <TaskCard
           key={task.id}
           task={task}
-          onMarkDone={(id) => onUpdate(id, 'done', true)}
+          onMarkDone={(id) => onUpdate(id, 'billable', false)} // ✅ Use a valid field here
           onEdit={(id) => setEditing(id)}
           onSendWhatsApp={handleSendWhatsApp}
         />

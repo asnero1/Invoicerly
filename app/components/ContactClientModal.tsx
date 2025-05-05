@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { User } from '@/types';
+import type { User } from '@/types';
 
 interface Props {
   client: User;
@@ -38,9 +38,9 @@ const ContactClientModal: React.FC<Props> = ({ client, onClose }) => {
         <div className="mt-4">
           <strong className="text-sm text-gray-600">Other Emails:</strong>
           <ul className="list-disc ml-5 text-sm text-gray-700 mt-1">
-            {client.otherEmails?.map((email, index) => (
-              <li key={index}>{email}</li>
-            ))}
+          {client.otherEmails?.map((email: string, index: number) => (
+  <li key={index}>{email}</li>
+))}
           </ul>
         </div>
 
