@@ -14,18 +14,17 @@
     "jsx": "preserve",
     "incremental": true,
     "baseUrl": ".",
-"paths": {
-  "@/*": ["./app/*"],
-  "@/components/*": ["./app/components/*"],
-  "@/types": ["types"],
-  "@/types/*": ["types/*"],
-  "@/utils/*": ["./app/utils/*"],
-  "@/data/*": ["./app/data/*"],
-  "@/lib/*": ["./app/lib/*"]
-},
+    "paths": {
+      "@/components/*": ["./app/components/*"],
+      "@/types": ["types"],
+      "@/types/*": ["types/*"],
+      "@/utils/*": ["./app/utils/*"],
+      "@/data/*": ["./app/data/*"],
+      "@/lib/*": ["./lib/*"]
+    },
     "typeRoots": [
-      "./types",                // ✅ Custom global types (not `app/types`)
-      "./node_modules/@types"  // ✅ Default type definitions
+      "./types",
+      "./node_modules/@types"
     ],
     "plugins": [
       {
