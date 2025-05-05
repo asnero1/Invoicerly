@@ -1,18 +1,18 @@
-'use client';
+'use client'
 
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
 type Task = {
-  description: string;
-  client: string;
-  date: string;
-  billable: boolean;
-  voiceNote?: string;
-  attachment?: File;
-  dueDate?: string;
-  priority?: string;
-  tags?: string[];
-};
+  description: string
+  client: string
+  date: string
+  billable: boolean
+  voiceNote?: string
+  attachment?: File
+  dueDate?: string
+  priority?: string
+  tags?: string[]
+}
 
 const TaskLogger: React.FC = () => {
   const [task, setTask] = useState<Task>({
@@ -25,98 +25,100 @@ const TaskLogger: React.FC = () => {
     dueDate: '',
     priority: 'Medium',
     tags: [],
-  });
+  })
 
-  const [tagInput, setTagInput] = useState('');
+  const [tagInput, setTagInput] = useState('')
 
   // 📚 Handle Input Changes
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
   ) => {
-    const { name, value, type } = e.target;
-    const checked = (e.target as HTMLInputElement).checked;
-    const files = (e.target as HTMLInputElement).files;
+    const { name, value, type } = e.target
+    const checked = (e.target as HTMLInputElement).checked
+    const files = (e.target as HTMLInputElement).files
 
     if (type === 'checkbox') {
-      setTask((prev) => ({ ...prev, [name]: checked }));
+      setTask((prev) => ({ ...prev, [name]: checked }))
     } else if (type === 'file' && files) {
       if (name === 'attachment') {
-        setTask((prev) => ({ ...prev, [name]: files[0] }));
+        setTask((prev) => ({ ...prev, [name]: files[0] }))
       } else if (name === 'voiceNote') {
-        handleVoiceUpload(files[0]);
+        handleVoiceUpload(files[0])
       }
     } else {
-      setTask((prev) => ({ ...prev, [name]: value }));
+      setTask((prev) => ({ ...prev, [name]: value }))
     }
-  };
+  }
 
   // 🎙️ Handle Voice Upload
   const handleVoiceUpload = async (file: File) => {
-    const formData = new FormData();
-    formData.append('file', file);
+    const formData = new FormData()
+    formData.append('file', file)
 
     try {
       const res = await fetch('/api/upload-voice', {
         method: 'POST',
         body: formData,
-      });
+      })
 
-      const data = await res.json();
+      const data = await res.json()
       if (data?.url) {
-        setTask((prev) => ({ ...prev, voiceNote: data.url }));
+        setTask((prev) => ({ ...prev, voiceNote: data.url }))
       }
     } catch (error) {
-      console.error('❌ Voice upload failed:', error);
+      console.error('❌ Voice upload failed:', error)
     }
-  };
+  }
 
   // 🏷️ Handle Adding Tags
   const handleAddTag = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter' && tagInput.trim() !== '') {
-      e.preventDefault();
+      e.preventDefault()
       setTask((prev) => ({
         ...prev,
         tags: [...(prev.tags || []), tagInput.trim()],
-      }));
-      setTagInput('');
+      }))
+      setTagInput('')
     }
-  };
+  }
 
   // ❌ Remove Tag
   const handleRemoveTag = (index: number) => {
     setTask((prev) => ({
       ...prev,
       tags: prev.tags?.filter((_, i) => i !== index) || [],
-    }));
-  };
+    }))
+  }
 
   // ✅ Handle Task Submission
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-  
+    e.preventDefault()
+
     try {
-      const formData = new FormData();
-      formData.append('description', task.description || '');
-      formData.append('client', task.client || '');
-      formData.append('date', task.date || '');
-      formData.append('billable', String(task.billable));
-      formData.append('voiceNote', task.voiceNote || '');
-      formData.append('dueDate', task.dueDate || '');
-      formData.append('priority', task.priority || 'Medium');
-      formData.append('tags', JSON.stringify(task.tags || []));
-  
+      const formData = new FormData()
+      formData.append('description', task.description || '')
+      formData.append('client', task.client || '')
+      formData.append('date', task.date || '')
+      formData.append('billable', String(task.billable))
+      formData.append('voiceNote', task.voiceNote || '')
+      formData.append('dueDate', task.dueDate || '')
+      formData.append('priority', task.priority || 'Medium')
+      formData.append('tags', JSON.stringify(task.tags || []))
+
       // ✅ Upload the attachment if available
       if (task.attachment) {
-        formData.append('attachment', task.attachment);
+        formData.append('attachment', task.attachment)
       }
-  
+
       const response = await fetch('/api/log-task', {
         method: 'POST',
         body: formData,
-      });
-  
+      })
+
       if (response.status === 200) {
-        alert('✅ Task saved successfully!');
+        alert('✅ Task saved successfully!')
         setTask({
           description: '',
           client: '',
@@ -127,17 +129,17 @@ const TaskLogger: React.FC = () => {
           dueDate: '',
           priority: 'Medium',
           tags: [],
-        });
-        window.dispatchEvent(new Event('task-added'));
+        })
+        window.dispatchEvent(new Event('task-added'))
       } else {
-        alert('❌ Failed to save task.');
+        alert('❌ Failed to save task.')
       }
     } catch (error) {
-      console.error('❌ Submission failed:', error);
-      alert('❌ Network error.');
+      console.error('❌ Submission failed:', error)
+      alert('❌ Network error.')
     }
-  };
-  
+  }
+
   return (
     <div className="p-4 bg-white shadow rounded mt-4">
       <h2 className="text-xl font-bold mb-2">Log a New Task</h2>
@@ -227,12 +229,22 @@ const TaskLogger: React.FC = () => {
 
         {/* ✅ Billable Checkbox */}
         <label className="flex items-center space-x-2">
-          <input type="checkbox" name="billable" checked={task.billable} onChange={handleChange} />
+          <input
+            type="checkbox"
+            name="billable"
+            checked={task.billable}
+            onChange={handleChange}
+          />
           <span>Billable</span>
         </label>
 
         {/* 📎 Attachment */}
-        <input type="file" name="attachment" onChange={handleChange} className="w-full" />
+        <input
+          type="file"
+          name="attachment"
+          onChange={handleChange}
+          className="w-full"
+        />
 
         {/* 🎙️ Voice Note Upload */}
         <label className="block mt-2">
@@ -265,7 +277,7 @@ const TaskLogger: React.FC = () => {
         </button>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default TaskLogger;
+export default TaskLogger

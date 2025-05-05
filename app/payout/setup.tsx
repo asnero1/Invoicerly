@@ -1,27 +1,27 @@
-'use client';
+'use client'
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'
 
 export default function PayMeSetupPage() {
-  const [payId, setPayId] = useState('');
-  const [bankDetails, setBankDetails] = useState('');
-  const [stripeLink, setStripeLink] = useState('');
+  const [payId, setPayId] = useState('')
+  const [bankDetails, setBankDetails] = useState('')
+  const [stripeLink, setStripeLink] = useState('')
 
   useEffect(() => {
-    const storedPayId = localStorage.getItem('payId') || '';
-    const storedBank = localStorage.getItem('bankDetails') || '';
-    const storedStripe = localStorage.getItem('stripeLink') || '';
-    setPayId(storedPayId);
-    setBankDetails(storedBank);
-    setStripeLink(storedStripe);
-  }, []);
+    const storedPayId = localStorage.getItem('payId') || ''
+    const storedBank = localStorage.getItem('bankDetails') || ''
+    const storedStripe = localStorage.getItem('stripeLink') || ''
+    setPayId(storedPayId)
+    setBankDetails(storedBank)
+    setStripeLink(storedStripe)
+  }, [])
 
   const handleSave = () => {
-    localStorage.setItem('payId', payId);
-    localStorage.setItem('bankDetails', bankDetails);
-    localStorage.setItem('stripeLink', stripeLink);
-    alert('✅ Payment preferences saved!');
-  };
+    localStorage.setItem('payId', payId)
+    localStorage.setItem('bankDetails', bankDetails)
+    localStorage.setItem('stripeLink', stripeLink)
+    alert('✅ Payment preferences saved!')
+  }
 
   return (
     <div className="max-w-xl mx-auto p-6">
@@ -40,7 +40,9 @@ export default function PayMeSetupPage() {
         </div>
 
         <div>
-          <label className="block font-semibold mb-1">Bank Account Details</label>
+          <label className="block font-semibold mb-1">
+            Bank Account Details
+          </label>
           <textarea
             value={bankDetails}
             onChange={(e) => setBankDetails(e.target.value)}
@@ -51,7 +53,9 @@ export default function PayMeSetupPage() {
         </div>
 
         <div>
-          <label className="block font-semibold mb-1">Stripe Payment Link (optional)</label>
+          <label className="block font-semibold mb-1">
+            Stripe Payment Link (optional)
+          </label>
           <input
             type="url"
             value={stripeLink}
@@ -69,5 +73,5 @@ export default function PayMeSetupPage() {
         </button>
       </div>
     </div>
-  );
+  )
 }

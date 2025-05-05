@@ -1,37 +1,37 @@
 // ✅ FILE: /components/AIBubble.tsx
 
-'use client';
+'use client'
 
-import { useState } from 'react';
-import { Sparkles, X, Bot } from 'lucide-react';
-import { toast } from 'sonner';
-import { useRouter } from 'next/navigation';
+import { useState } from 'react'
+import { Sparkles, X, Bot } from 'lucide-react'
+import { toast } from 'sonner'
+import { useRouter } from 'next/navigation'
 
 export default function AIBubble() {
-  const [open, setOpen] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const router = useRouter();
+  const [open, setOpen] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const router = useRouter()
 
   const fetchAIResponse = async (action: string) => {
     try {
-      setLoading(true);
+      setLoading(true)
       const res = await fetch('/api/assistant', {
         method: 'POST',
         body: JSON.stringify({ action }),
         headers: { 'Content-Type': 'application/json' },
-      });
-      const data = await res.json();
-      toast(data.message || '✅ Done');
+      })
+      const data = await res.json()
+      toast(data.message || '✅ Done')
     } catch (e) {
-      toast.error('❌ Failed to fetch AI response');
+      toast.error('❌ Failed to fetch AI response')
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  };
+  }
 
-  const handleSummarize = () => fetchAIResponse('summarize');
-  const handleSuggestInvoice = () => fetchAIResponse('suggest_invoice');
-  const handleReminder = () => toast('⏰ I’ll remind you again in 1 hour.');
+  const handleSummarize = () => fetchAIResponse('summarize')
+  const handleSuggestInvoice = () => fetchAIResponse('suggest_invoice')
+  const handleReminder = () => toast('⏰ I’ll remind you again in 1 hour.')
 
   return (
     <div className="fixed bottom-4 right-4 z-50">
@@ -41,7 +41,10 @@ export default function AIBubble() {
             <h3 className="font-semibold text-sm text-gray-700 flex items-center gap-1">
               <Bot className="w-4 h-4" /> Smart Actions
             </h3>
-            <button onClick={() => setOpen(false)} className="text-gray-400 hover:text-red-500">
+            <button
+              onClick={() => setOpen(false)}
+              className="text-gray-400 hover:text-red-500"
+            >
               <X className="w-4 h-4" />
             </button>
           </div>
@@ -78,5 +81,5 @@ export default function AIBubble() {
         </button>
       )}
     </div>
-  );
+  )
 }

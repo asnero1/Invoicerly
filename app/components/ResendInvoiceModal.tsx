@@ -1,36 +1,45 @@
-'use client';
+'use client'
 
-import { Dialog, Transition } from '@headlessui/react';
-import { Fragment, useState } from 'react';
-import { Button } from '@/components/ui/button';
+import { Dialog, Transition } from '@headlessui/react'
+import { Fragment, useState } from 'react'
+import { Button } from '@/components/ui/button'
 
 interface ResendInvoiceModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  fileName: string;
-  phoneNumber: string;
+  isOpen: boolean
+  onClose: () => void
+  fileName: string
+  phoneNumber: string
 }
 
-const ResendInvoiceModal: React.FC<ResendInvoiceModalProps> = ({ isOpen, onClose, fileName, phoneNumber }) => {
-  const [viewed, setViewed] = useState(false);
-  const [sending, setSending] = useState(false);
+const ResendInvoiceModal: React.FC<ResendInvoiceModalProps> = ({
+  isOpen,
+  onClose,
+  fileName,
+  phoneNumber,
+}) => {
+  const [viewed, setViewed] = useState(false)
+  const [sending, setSending] = useState(false)
 
   const handleResend = async () => {
-    if (!viewed) return;
-    setSending(true);
+    if (!viewed) return
+    setSending(true)
     try {
       await fetch('/api/send-whatsapp', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ to: phoneNumber, filename: fileName, message: "Here's your invoice from Antonio" }),
-      });      
-      onClose();
+        body: JSON.stringify({
+          to: phoneNumber,
+          filename: fileName,
+          message: "Here's your invoice from Antonio",
+        }),
+      })
+      onClose()
     } catch (error) {
-      console.error('Error resending invoice:', error);
+      console.error('Error resending invoice:', error)
     } finally {
-      setSending(false);
+      setSending(false)
     }
-  };
+  }
 
   return (
     <Transition appear show={isOpen} as={Fragment}>
@@ -59,14 +68,18 @@ const ResendInvoiceModal: React.FC<ResendInvoiceModalProps> = ({ isOpen, onClose
               leaveTo="opacity-0 scale-95"
             >
               <Dialog.Panel className="relative bg-white p-6 rounded-xl w-full max-w-3xl shadow-xl">
-                <Dialog.Title className="text-xl font-bold mb-4">📄 Preview & Resend Invoice</Dialog.Title>
+                <Dialog.Title className="text-xl font-bold mb-4">
+                  📄 Preview & Resend Invoice
+                </Dialog.Title>
                 <iframe
                   src={`/invoices/${fileName}`}
                   className="w-full h-96 border rounded-md"
                   onLoad={() => setViewed(true)}
                 />
                 <div className="mt-6 flex justify-end space-x-4">
-                  <Button variant="secondary" onClick={onClose}>Cancel</Button>
+                  <Button variant="secondary" onClick={onClose}>
+                    Cancel
+                  </Button>
                   <Button onClick={handleResend} disabled={!viewed || sending}>
                     {sending ? 'Resending...' : 'Resend via WhatsApp'}
                   </Button>
@@ -77,7 +90,7 @@ const ResendInvoiceModal: React.FC<ResendInvoiceModalProps> = ({ isOpen, onClose
         </div>
       </Dialog>
     </Transition>
-  );
-};
+  )
+}
 
-export default ResendInvoiceModal;
+export default ResendInvoiceModal

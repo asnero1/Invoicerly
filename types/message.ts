@@ -1,5 +1,4 @@
 export type Message = {
-    name: string;
-    email?: string;
-  };
-  
+  name: string
+  email?: string
+}

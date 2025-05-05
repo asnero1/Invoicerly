@@ -1,14 +1,14 @@
-'use client';
+'use client'
 
-import React from 'react';
-import messages from '@/data/messages.json';
-import { formatDistanceToNow } from 'date-fns/formatDistanceToNow';
-import { FaUserCircle } from 'react-icons/fa';
+import React from 'react'
+import messages from '@/data/messages.json'
+import { formatDistanceToNow } from 'date-fns/formatDistanceToNow'
+import { FaUserCircle } from 'react-icons/fa'
 
 const InboxMessageList: React.FC = () => {
   const sortedMessages = [...messages].sort(
     (a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()
-  );
+  )
 
   return (
     <div className="space-y-4">
@@ -33,7 +33,7 @@ const InboxMessageList: React.FC = () => {
         </div>
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default InboxMessageList;
+export default InboxMessageList

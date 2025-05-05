@@ -1,35 +1,34 @@
 // File: app/components/VoiceUploadForm.tsx
 
-'use client';
+'use client'
 
-import React, { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { toast } from 'sonner';
-import { transcribeAudio } from '@/lib/transcribeAudio'; // ✅ clean, alias-based
-
+import React, { useState } from 'react'
+import { Button } from '@/components/ui/button'
+import { toast } from 'sonner'
+import { transcribeAudio } from '@/lib/transcribeAudio' // ✅ clean, alias-based
 
 interface Props {
-  onTranscription: (text: string) => void;
+  onTranscription: (text: string) => void
 }
 
 export default function VoiceUploadForm({ onTranscription }: Props) {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false)
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
+    const file = e.target.files?.[0]
+    if (!file) return
 
-    setLoading(true);
+    setLoading(true)
     try {
-      const text = await transcribeAudio(file);
-      onTranscription(text);
-      toast.success('Voice transcription complete!');
+      const text = await transcribeAudio(file)
+      onTranscription(text)
+      toast.success('Voice transcription complete!')
     } catch (error) {
-      toast.error('Transcription failed');
+      toast.error('Transcription failed')
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  };
+  }
 
   return (
     <div className="space-y-2">
@@ -39,5 +38,5 @@ export default function VoiceUploadForm({ onTranscription }: Props) {
         {loading ? 'Transcribing...' : 'Upload & Transcribe'}
       </Button>
     </div>
-  );
+  )
 }

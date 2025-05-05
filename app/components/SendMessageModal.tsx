@@ -1,23 +1,26 @@
 // ✅ FILE: components/SendMessageModal.tsx
-'use client';
+'use client'
 
-import { useState, useEffect } from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { toast } from 'sonner';
+import { useState, useEffect } from 'react'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Textarea } from '@/components/ui/textarea'
+import { toast } from 'sonner'
 
-export default function SendMessageModal({ recipient, onClose }: {
-  recipient: { name: string; email: string; avatar: string; userId: string },
+export default function SendMessageModal({
+  recipient,
+  onClose,
+}: {
+  recipient: { name: string; email: string; avatar: string; userId: string }
   onClose: () => void
 }) {
-  const [subject, setSubject] = useState('');
-  const [body, setBody] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [audioUrl, setAudioUrl] = useState<string | null>(null);
-  const [audioBlob, setAudioBlob] = useState<Blob | null>(null);
-  const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder | null>(null);
-  const [suggestions, setSuggestions] = useState<string[]>([]);
+  const [subject, setSubject] = useState('')
+  const [body, setBody] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [audioUrl, setAudioUrl] = useState<string | null>(null)
+  const [audioBlob, setAudioBlob] = useState<Blob | null>(null)
+  const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder | null>(null)
+  const [suggestions, setSuggestions] = useState<string[]>([])
 
   useEffect(() => {
     if (!body && subject) {
@@ -26,51 +29,51 @@ export default function SendMessageModal({ recipient, onClose }: {
         body: JSON.stringify({ subject }),
       })
         .then((res) => res.json())
-        .then((data) => setSuggestions(data.suggestions || []));
+        .then((data) => setSuggestions(data.suggestions || []))
     }
-  }, [subject]);
+  }, [subject])
 
   const startRecording = async () => {
-    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-    const recorder = new MediaRecorder(stream);
-    const chunks: Blob[] = [];
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
+    const recorder = new MediaRecorder(stream)
+    const chunks: Blob[] = []
 
-    recorder.ondataavailable = (e) => chunks.push(e.data);
+    recorder.ondataavailable = (e) => chunks.push(e.data)
     recorder.onstop = () => {
-      const blob = new Blob(chunks, { type: 'audio/webm' });
-      setAudioBlob(blob);
-      const url = URL.createObjectURL(blob);
-      setAudioUrl(url);
-    };
+      const blob = new Blob(chunks, { type: 'audio/webm' })
+      setAudioBlob(blob)
+      const url = URL.createObjectURL(blob)
+      setAudioUrl(url)
+    }
 
-    recorder.start();
-    setMediaRecorder(recorder);
-  };
+    recorder.start()
+    setMediaRecorder(recorder)
+  }
 
   const stopRecording = () => {
-    mediaRecorder?.stop();
-  };
+    mediaRecorder?.stop()
+  }
 
   const sendMessage = async () => {
     if (!subject.trim() || (!body.trim() && !audioUrl)) {
-      toast.error('Please provide text or voice to send.');
-      return;
+      toast.error('Please provide text or voice to send.')
+      return
     }
 
-    setLoading(true);
+    setLoading(true)
 
-    let uploadedVoiceUrl = null;
+    let uploadedVoiceUrl = null
     if (audioBlob) {
-      const formData = new FormData();
-      formData.append('file', audioBlob, 'voice.webm');
+      const formData = new FormData()
+      formData.append('file', audioBlob, 'voice.webm')
 
       const res = await fetch('/api/upload-voice', {
         method: 'POST',
         body: formData,
-      });
+      })
 
-      const data = await res.json();
-      uploadedVoiceUrl = data.url;
+      const data = await res.json()
+      uploadedVoiceUrl = data.url
     }
 
     const newMessage = {
@@ -86,28 +89,35 @@ export default function SendMessageModal({ recipient, onClose }: {
       body,
       voice: uploadedVoiceUrl,
       date: new Date().toISOString(),
-      read: false
-    };
+      read: false,
+    }
 
     const res = await fetch('/api/send-message', {
       method: 'POST',
-      body: JSON.stringify(newMessage)
-    });
+      body: JSON.stringify(newMessage),
+    })
 
     if (res.ok) {
-      toast.success('Message sent!');
-      onClose();
+      toast.success('Message sent!')
+      onClose()
     } else {
-      toast.error('Failed to send message.');
+      toast.error('Failed to send message.')
     }
-    setLoading(false);
-  };
+    setLoading(false)
+  }
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center">
       <div className="bg-white p-6 rounded-xl w-full max-w-lg space-y-4 relative">
-        <button onClick={onClose} className="absolute top-2 right-4 text-gray-400 hover:text-black">✖</button>
-        <h2 className="text-xl font-bold">📩 New Message to {recipient.name}</h2>
+        <button
+          onClick={onClose}
+          className="absolute top-2 right-4 text-gray-400 hover:text-black"
+        >
+          ✖
+        </button>
+        <h2 className="text-xl font-bold">
+          📩 New Message to {recipient.name}
+        </h2>
 
         <Input
           placeholder="Subject..."
@@ -137,20 +147,26 @@ export default function SendMessageModal({ recipient, onClose }: {
         )}
 
         <div className="flex gap-2 items-center">
-          <Button variant="secondary" onClick={startRecording}>🎤 Start</Button>
-          <Button variant="secondary" onClick={stopRecording}>⏹ Stop</Button>
+          <Button variant="secondary" onClick={startRecording}>
+            🎤 Start
+          </Button>
+          <Button variant="secondary" onClick={stopRecording}>
+            ⏹ Stop
+          </Button>
           {audioUrl && (
             <audio controls src={audioUrl} className="ml-2 w-full" />
           )}
         </div>
 
         <div className="flex justify-end gap-2">
-          <Button variant="secondary" onClick={onClose}>Cancel</Button>
+          <Button variant="secondary" onClick={onClose}>
+            Cancel
+          </Button>
           <Button disabled={loading} onClick={sendMessage}>
             {loading ? 'Sending...' : 'Send Message'}
           </Button>
         </div>
       </div>
     </div>
-  );
-} 
+  )
+}

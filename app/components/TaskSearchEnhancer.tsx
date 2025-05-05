@@ -1,11 +1,11 @@
 // components/TaskSearchEnhancer.tsx
-import React from 'react';
+import React from 'react'
 
 interface Props {
-  search: string;
-  setSearch: (value: string) => void;
-  showBillableOnly: boolean;
-  setShowBillableOnly: (value: boolean) => void;
+  search: string
+  setSearch: (value: string) => void
+  showBillableOnly: boolean
+  setShowBillableOnly: (value: boolean) => void
 }
 
 const TaskSearchEnhancer: React.FC<Props> = ({
@@ -32,7 +32,7 @@ const TaskSearchEnhancer: React.FC<Props> = ({
         <span>Billable only</span>
       </label>
     </div>
-  );
-};
+  )
+}
 
-export default TaskSearchEnhancer;
+export default TaskSearchEnhancer

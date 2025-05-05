@@ -1,57 +1,59 @@
-'use client';
+'use client'
 
-import { useEffect, useRef, useState } from 'react';
-import { useParams } from 'next/navigation';
-import { Input } from '@/components/ui/input';
-import { motion } from 'framer-motion';
-import { toast } from 'sonner';
-import Image from 'next/image';
-import SendMessageModal from '@/components/SendMessageModal';
+import { useEffect, useRef, useState } from 'react'
+import { useParams } from 'next/navigation'
+import { Input } from '@/components/ui/input'
+import { motion } from 'framer-motion'
+import { toast } from 'sonner'
+import Image from 'next/image'
+import SendMessageModal from '@/components/SendMessageModal'
 
 interface Message {
-  id?: string;
-  from: string;
-  to: string;
-  subject?: string;
-  body?: string;
-  message?: string;
-  date?: string;
-  timestamp?: string;
-  read?: boolean;
-  fromAvatar?: string;
-  replies?: Reply[];
-  source?: string;
+  id?: string
+  from: string
+  to: string
+  subject?: string
+  body?: string
+  message?: string
+  date?: string
+  timestamp?: string
+  read?: boolean
+  fromAvatar?: string
+  replies?: Reply[]
+  source?: string
 }
 
 interface Reply {
-  id?: string;
-  messageId?: string;
-  text?: string;
-  fileUrl?: string;
-  date?: string;
-  from?: string;
+  id?: string
+  messageId?: string
+  text?: string
+  fileUrl?: string
+  date?: string
+  from?: string
 }
 
 interface User {
-  userId: string;
-  name: string;
-  email: string;
-  avatar: string;
+  userId: string
+  name: string
+  email: string
+  avatar: string
 }
 
 export default function UserInboxPage() {
-  const { userid } = useParams();
-  const [messages, setMessages] = useState<Message[]>([]);
-  const [users, setUsers] = useState<User[]>([]);
-  const [recipient, setRecipient] = useState<User | null>(null);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedSource, setSelectedSource] = useState<'All' | 'WhatsApp Only' | 'App Only'>('All');
-  const [showUnreadOnly, setShowUnreadOnly] = useState(false);
-  const [filteredMessages, setFilteredMessages] = useState<Message[]>([]);
-  const [replyInputs, setReplyInputs] = useState<Record<string, string>>({});
-  const [fileInputs, setFileInputs] = useState<Record<string, File | null>>({});
+  const { userid } = useParams()
+  const [messages, setMessages] = useState<Message[]>([])
+  const [users, setUsers] = useState<User[]>([])
+  const [recipient, setRecipient] = useState<User | null>(null)
+  const [searchTerm, setSearchTerm] = useState('')
+  const [selectedSource, setSelectedSource] = useState<
+    'All' | 'WhatsApp Only' | 'App Only'
+  >('All')
+  const [showUnreadOnly, setShowUnreadOnly] = useState(false)
+  const [filteredMessages, setFilteredMessages] = useState<Message[]>([])
+  const [replyInputs, setReplyInputs] = useState<Record<string, string>>({})
+  const [fileInputs, setFileInputs] = useState<Record<string, File | null>>({})
 
-  const bottomRef = useRef<HTMLDivElement | null>(null);
+  const bottomRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
     fetch('/data/messages.json')
@@ -59,64 +61,64 @@ export default function UserInboxPage() {
       .then((data: Message[]) => {
         const userMessages = data.filter(
           (msg) => msg.to === userid || msg.from === userid
-        );
-        setMessages(userMessages);
+        )
+        setMessages(userMessages)
       })
-      .catch(() => toast.error('Failed to load messages'));
-  }, [userid]);
+      .catch(() => toast.error('Failed to load messages'))
+  }, [userid])
 
   useEffect(() => {
     fetch('/data/users.json')
       .then((res) => res.json())
       .then((data: User[]) => {
-        setUsers(data);
-        const found = data.find((u) => u.userId === userid);
-        if (found) setRecipient(found);
-        else toast.error('Recipient not found');
+        setUsers(data)
+        const found = data.find((u) => u.userId === userid)
+        if (found) setRecipient(found)
+        else toast.error('Recipient not found')
       })
-      .catch(() => toast.error('Failed to load user info'));
-  }, [userid]);
+      .catch(() => toast.error('Failed to load user info'))
+  }, [userid])
 
   useEffect(() => {
-    const lowerSearch = searchTerm.toLowerCase();
+    const lowerSearch = searchTerm.toLowerCase()
     const filtered = messages.filter((msg) => {
       const matchSearch =
         msg.message?.toLowerCase().includes(lowerSearch) ||
         msg.subject?.toLowerCase().includes(lowerSearch) ||
-        msg.body?.toLowerCase().includes(lowerSearch);
+        msg.body?.toLowerCase().includes(lowerSearch)
 
       const matchSource =
         selectedSource === 'All' ||
         (selectedSource === 'WhatsApp Only' && msg.source === 'whatsapp') ||
-        (selectedSource === 'App Only' && msg.source !== 'whatsapp');
+        (selectedSource === 'App Only' && msg.source !== 'whatsapp')
 
-      const matchUnread = !showUnreadOnly || msg.read === false;
+      const matchUnread = !showUnreadOnly || msg.read === false
 
-      return matchSearch && matchSource && matchUnread;
-    });
+      return matchSearch && matchSource && matchUnread
+    })
 
-    setFilteredMessages(filtered);
-  }, [searchTerm, selectedSource, showUnreadOnly, messages]);
+    setFilteredMessages(filtered)
+  }, [searchTerm, selectedSource, showUnreadOnly, messages])
 
   useEffect(() => {
     if (bottomRef.current) {
-      bottomRef.current.scrollIntoView({ behavior: 'smooth' });
+      bottomRef.current.scrollIntoView({ behavior: 'smooth' })
     }
-  }, [filteredMessages]);
+  }, [filteredMessages])
 
   const handleReplyChange = (id: string, value: string) => {
-    setReplyInputs((prev) => ({ ...prev, [id]: value }));
-  };
+    setReplyInputs((prev) => ({ ...prev, [id]: value }))
+  }
 
   const handleFileChange = (id: string, file: File | null) => {
-    setFileInputs((prev) => ({ ...prev, [id]: file }));
-  };
+    setFileInputs((prev) => ({ ...prev, [id]: file }))
+  }
 
   const handleSendReply = (msgId: string) => {
-    const replyText = replyInputs[msgId]?.trim();
-    const file = fileInputs[msgId];
+    const replyText = replyInputs[msgId]?.trim()
+    const file = fileInputs[msgId]
 
-    if (!replyText && !file) return;
+    if (!replyText && !file) return
 
     const newReply: Reply = {
       id: `${msgId}-${Date.now()}`,
@@ -125,7 +127,7 @@ export default function UserInboxPage() {
       fileUrl: file ? `/mock-uploads/${file.name}` : undefined,
       date: new Date().toLocaleString(),
       from: 'You',
-    };
+    }
 
     setMessages((prev) =>
       prev.map((msg) =>
@@ -133,12 +135,12 @@ export default function UserInboxPage() {
           ? { ...msg, replies: [...(msg.replies || []), newReply] }
           : msg
       )
-    );
+    )
 
-    setReplyInputs((prev) => ({ ...prev, [msgId]: '' }));
-    setFileInputs((prev) => ({ ...prev, [msgId]: null }));
-    toast.success('Reply sent (mocked)');
-  };
+    setReplyInputs((prev) => ({ ...prev, [msgId]: '' }))
+    setFileInputs((prev) => ({ ...prev, [msgId]: null }))
+    toast.success('Reply sent (mocked)')
+  }
 
   return (
     <div className="p-6 space-y-6">
@@ -153,7 +155,9 @@ export default function UserInboxPage() {
         <select
           value={selectedSource}
           onChange={(e) =>
-            setSelectedSource(e.target.value as 'All' | 'WhatsApp Only' | 'App Only')
+            setSelectedSource(
+              e.target.value as 'All' | 'WhatsApp Only' | 'App Only'
+            )
           }
           className="border p-2 rounded"
         >
@@ -235,7 +239,9 @@ export default function UserInboxPage() {
               <div className="mt-4 space-y-2">
                 <textarea
                   value={replyInputs[msg.id || ''] || ''}
-                  onChange={(e) => handleReplyChange(msg.id || '', e.target.value)}
+                  onChange={(e) =>
+                    handleReplyChange(msg.id || '', e.target.value)
+                  }
                   rows={2}
                   placeholder="Type your reply..."
                   className="w-full border rounded p-2 text-sm"
@@ -260,7 +266,9 @@ export default function UserInboxPage() {
         </div>
       )}
 
-      {recipient && <SendMessageModal recipient={recipient} onClose={() => {}} />}
+      {recipient && (
+        <SendMessageModal recipient={recipient} onClose={() => {}} />
+      )}
     </div>
-  );
+  )
 }

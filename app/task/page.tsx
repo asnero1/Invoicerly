@@ -1,11 +1,11 @@
-'use client';
+'use client'
 
-import React, { useState } from 'react';
-import TaskForm from '@/components/TaskForm';
-import TaskList from '@/components/TaskList';
-import SmartSuggestionBox from '@/components/SmartSuggestionBox';
-import { Task } from '@/types';
-import { v4 as uuidv4 } from 'uuid';
+import React, { useState } from 'react'
+import TaskForm from '@/components/TaskForm'
+import TaskList from '@/components/TaskList'
+import SmartSuggestionBox from '@/components/SmartSuggestionBox'
+import { Task } from '@/types'
+import { v4 as uuidv4 } from 'uuid'
 
 export default function TaskPage() {
   const [tasks, setTasks] = useState<Task[]>([
@@ -25,15 +25,18 @@ export default function TaskPage() {
       amount: 500,
       billable: true,
     },
-  ]);
+  ])
 
   const addTask = (newTask: Omit<Task, 'id'>) => {
-    const fullTask: Task = { id: uuidv4(), ...newTask };
-    setTasks((prev) => [...prev, fullTask]);
-  };
+    const fullTask: Task = { id: uuidv4(), ...newTask }
+    setTasks((prev) => [...prev, fullTask])
+  }
 
-  const updateTask = (taskId: string, field: keyof Task, value: string | number | boolean) => {
-
+  const updateTask = (
+    taskId: string,
+    field: keyof Task,
+    value: string | number | boolean
+  ) => {
     setTasks((prev) =>
       prev.map((task) =>
         task.id === taskId
@@ -43,13 +46,13 @@ export default function TaskPage() {
                 field === 'amount'
                   ? parseFloat(value as string) || 0
                   : field === 'billable'
-                  ? Boolean(value)
-                  : value,
+                    ? Boolean(value)
+                    : value,
             }
           : task
       )
-    );
-  };
+    )
+  }
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-8 space-y-10">
@@ -77,9 +80,9 @@ export default function TaskPage() {
           { message: '💼 Mark billable tasks for invoice generation.' },
         ]}
         onApply={() => {
-          console.log('Applied suggestion');
+          console.log('Applied suggestion')
         }}
       />
     </div>
-  );
+  )
 }

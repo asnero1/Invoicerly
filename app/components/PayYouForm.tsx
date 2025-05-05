@@ -1,15 +1,15 @@
-'use client';
+'use client'
 
-import { useState } from 'react';
+import { useState } from 'react'
 
 export default function PayYouForm({ onSubmit }: { onSubmit: () => void }) {
-  const [title, setTitle] = useState('');
-  const [amount, setAmount] = useState('');
-  const [dueDate, setDueDate] = useState('');
-  const [description, setDescription] = useState('');
+  const [title, setTitle] = useState('')
+  const [amount, setAmount] = useState('')
+  const [dueDate, setDueDate] = useState('')
+  const [description, setDescription] = useState('')
 
   async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
+    e.preventDefault()
 
     await fetch('/api/payyou', {
       method: 'POST',
@@ -23,17 +23,20 @@ export default function PayYouForm({ onSubmit }: { onSubmit: () => void }) {
       headers: {
         'Content-Type': 'application/json',
       },
-    });
+    })
 
-    setTitle('');
-    setAmount('');
-    setDueDate('');
-    setDescription('');
-    onSubmit(); // refresh list
+    setTitle('')
+    setAmount('')
+    setDueDate('')
+    setDescription('')
+    onSubmit() // refresh list
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-3 border p-4 rounded-md shadow-md bg-white">
+    <form
+      onSubmit={handleSubmit}
+      className="space-y-3 border p-4 rounded-md shadow-md bg-white"
+    >
       <input
         type="text"
         placeholder="Title"
@@ -63,9 +66,12 @@ export default function PayYouForm({ onSubmit }: { onSubmit: () => void }) {
         onChange={(e) => setDescription(e.target.value)}
         className="w-full p-2 border rounded"
       />
-      <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+      <button
+        type="submit"
+        className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+      >
         Save
       </button>
     </form>
-  );
+  )
 }

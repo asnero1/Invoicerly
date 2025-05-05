@@ -1,23 +1,23 @@
 // ✅ FILE: app/components/Navbar.tsx
-'use client';
+'use client'
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { useEffect, useState } from 'react';
-import Image from 'next/image';
-import { Menu, X } from 'lucide-react';
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { useEffect, useState } from 'react'
+import Image from 'next/image'
+import { Menu, X } from 'lucide-react'
 
 export default function Navbar() {
-  const pathname = usePathname();
-  const [showDot, setShowDot] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname()
+  const [showDot, setShowDot] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   useEffect(() => {
-    const dismissed = localStorage.getItem('nudgeDismissed');
+    const dismissed = localStorage.getItem('nudgeDismissed')
     if (!dismissed) {
-      setShowDot(true);
+      setShowDot(true)
     }
-  }, []);
+  }, [])
 
   const links = [
     { href: '/', label: 'Dashboard' },
@@ -40,22 +40,26 @@ export default function Navbar() {
         </span>
       ),
     },
-  ];
+  ]
 
   return (
     <nav className="bg-white border-b shadow-sm px-4 py-3 flex justify-between items-center relative z-50">
       {/* Logo and Title */}
-      <Link href="/" className="flex items-center gap-2 group hover:opacity-90 transition no-underline">
-  <Image
-    src="/images/logo.png"
-    alt="Logo"
-    width={28}
-    height={28}
-    className="transition-transform duration-200 group-hover:scale-105"
-  />
-  <span className="text-lg font-bold text-indigo-700 leading-none">Poni</span>
-</Link>
-
+      <Link
+        href="/"
+        className="flex items-center gap-2 group hover:opacity-90 transition no-underline"
+      >
+        <Image
+          src="/images/logo.png"
+          alt="Logo"
+          width={28}
+          height={28}
+          className="transition-transform duration-200 group-hover:scale-105"
+        />
+        <span className="text-lg font-bold text-indigo-700 leading-none">
+          Poni
+        </span>
+      </Link>
 
       {/* Desktop Menu */}
       <ul className="hidden md:flex space-x-6 text-sm">
@@ -81,7 +85,11 @@ export default function Navbar() {
         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         aria-label="Toggle menu"
       >
-        {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        {mobileMenuOpen ? (
+          <X className="w-6 h-6" />
+        ) : (
+          <Menu className="w-6 h-6" />
+        )}
       </button>
 
       {/* Mobile Menu Drawer */}
@@ -107,5 +115,5 @@ export default function Navbar() {
         </div>
       )}
     </nav>
-  );
+  )
 }

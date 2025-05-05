@@ -1,68 +1,68 @@
-'use client';
+'use client'
 
-import { useEffect, useState } from 'react';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { toast } from 'sonner';
-import { saveAs } from 'file-saver';
+import { useEffect, useState } from 'react'
+import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/button'
+import { toast } from 'sonner'
+import { saveAs } from 'file-saver'
 
 interface Payee {
-  id: string;
-  name: string;
-  contact: string;
-  payid: string;
-  bank: string;
-  tag: string;
+  id: string
+  name: string
+  contact: string
+  payid: string
+  bank: string
+  tag: string
 }
 
 export default function PayOutPage() {
-  const [payees, setPayees] = useState<Payee[]>([]);
-  const [filter, setFilter] = useState('');
-  const [editingId, setEditingId] = useState<string | null>(null);
-  const [editedData, setEditedData] = useState<Partial<Payee>>({});
-  const [selectedTag, setSelectedTag] = useState<string>('All');
+  const [payees, setPayees] = useState<Payee[]>([])
+  const [filter, setFilter] = useState('')
+  const [editingId, setEditingId] = useState<string | null>(null)
+  const [editedData, setEditedData] = useState<Partial<Payee>>({})
+  const [selectedTag, setSelectedTag] = useState<string>('All')
 
   useEffect(() => {
     fetch('/data/payout.json')
       .then((res) => res.json())
       .then((data: Record<string, Payee>) => setPayees(Object.values(data)))
-      .catch(() => toast.error('Failed to load PayOut data'));
-  }, []);
+      .catch(() => toast.error('Failed to load PayOut data'))
+  }, [])
 
-  const tags = Array.from(new Set(payees.map((p) => p.tag))).filter(Boolean);
+  const tags = Array.from(new Set(payees.map((p) => p.tag))).filter(Boolean)
 
   const grouped = payees.filter((p) => {
-    const matchesTag = selectedTag === 'All' || p.tag === selectedTag;
-    const matchesSearch = p.name.toLowerCase().includes(filter.toLowerCase());
-    return matchesTag && matchesSearch;
-  });
+    const matchesTag = selectedTag === 'All' || p.tag === selectedTag
+    const matchesSearch = p.name.toLowerCase().includes(filter.toLowerCase())
+    return matchesTag && matchesSearch
+  })
 
   const startEdit = (id: string) => {
-    const item = payees.find((p) => p.id === id);
+    const item = payees.find((p) => p.id === id)
     if (item) {
-      setEditedData(item);
-      setEditingId(id);
+      setEditedData(item)
+      setEditingId(id)
     }
-  };
+  }
 
   const cancelEdit = () => {
-    setEditingId(null);
-    setEditedData({});
-  };
+    setEditingId(null)
+    setEditedData({})
+  }
 
   const saveEdit = () => {
-    if (!editingId) return;
+    if (!editingId) return
     setPayees((prev) =>
       prev.map((p) => (p.id === editingId ? { ...p, ...editedData } : p))
-    );
-    toast.success('Entry updated');
-    cancelEdit();
-  };
+    )
+    toast.success('Entry updated')
+    cancelEdit()
+  }
 
   const deleteEntry = (id: string) => {
-    setPayees((prev) => prev.filter((p) => p.id !== id));
-    toast.success('Entry deleted');
-  };
+    setPayees((prev) => prev.filter((p) => p.id !== id))
+    toast.success('Entry deleted')
+  }
 
   const exportCSV = () => {
     const csv = [
@@ -70,11 +70,11 @@ export default function PayOutPage() {
       ...payees.map((p) => [p.name, p.contact, p.payid, p.bank, p.tag]),
     ]
       .map((row) => row.join(','))
-      .join('\n');
+      .join('\n')
 
-    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
-    saveAs(blob, 'payout-export.csv');
-  };
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' })
+    saveAs(blob, 'payout-export.csv')
+  }
 
   return (
     <div className="p-6 space-y-6">
@@ -97,7 +97,10 @@ export default function PayOutPage() {
             <option key={tag}>{tag}</option>
           ))}
         </select>
-        <Button onClick={exportCSV} className="bg-black text-white hover:bg-gray-800">
+        <Button
+          onClick={exportCSV}
+          className="bg-black text-white hover:bg-gray-800"
+        >
           Export CSV
         </Button>
       </div>
@@ -121,14 +124,20 @@ export default function PayOutPage() {
                   placeholder="Contact"
                   value={editedData.contact || ''}
                   onChange={(e) =>
-                    setEditedData((prev) => ({ ...prev, contact: e.target.value }))
+                    setEditedData((prev) => ({
+                      ...prev,
+                      contact: e.target.value,
+                    }))
                   }
                 />
                 <Input
                   placeholder="PayID"
                   value={editedData.payid || ''}
                   onChange={(e) =>
-                    setEditedData((prev) => ({ ...prev, payid: e.target.value }))
+                    setEditedData((prev) => ({
+                      ...prev,
+                      payid: e.target.value,
+                    }))
                   }
                 />
                 <Input
@@ -161,8 +170,8 @@ export default function PayOutPage() {
                   <Button
                     className="text-xs px-2 py-1"
                     onClick={() => {
-                      navigator.clipboard.writeText(p.payid);
-                      toast.success('PayID copied to clipboard');
+                      navigator.clipboard.writeText(p.payid)
+                      toast.success('PayID copied to clipboard')
                     }}
                   >
                     Copy PayID
@@ -170,8 +179,8 @@ export default function PayOutPage() {
                   <Button
                     className="text-xs px-2 py-1"
                     onClick={() => {
-                      navigator.clipboard.writeText(p.bank);
-                      toast.success('Bank copied to clipboard');
+                      navigator.clipboard.writeText(p.bank)
+                      toast.success('Bank copied to clipboard')
                     }}
                   >
                     Copy Bank
@@ -195,5 +204,5 @@ export default function PayOutPage() {
         ))}
       </div>
     </div>
-  );
+  )
 }

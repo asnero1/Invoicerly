@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "types": [],
     "target": "ESNext",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
@@ -22,10 +23,7 @@
       "@/data/*": ["./app/data/*"],
       "@/lib/*": ["./lib/*"]
     },
-    "typeRoots": [
-      "./types",
-      "./node_modules/@types"
-    ],
+    "typeRoots": ["./types", "./node_modules/@types"],
     "plugins": [
       {
         "name": "next"

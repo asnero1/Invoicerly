@@ -1,12 +1,12 @@
 // File: app/components/ui/dialog.tsx
-'use client';
+'use client'
 
-import * as React from 'react';
-import * as DialogPrimitive from '@radix-ui/react-dialog';
-import { cn } from '@/lib/utils';
+import * as React from 'react'
+import * as DialogPrimitive from '@radix-ui/react-dialog'
+import { cn } from '@/lib/utils'
 
-export const Dialog = DialogPrimitive.Root;
-export const DialogTrigger = DialogPrimitive.Trigger;
+export const Dialog = DialogPrimitive.Root
+export const DialogTrigger = DialogPrimitive.Trigger
 
 export function DialogContent({
   children,
@@ -26,13 +26,13 @@ export function DialogContent({
         {children}
       </DialogPrimitive.Content>
     </DialogPrimitive.Portal>
-  );
+  )
 }
 
 export function DialogTitle({ children }: { children: React.ReactNode }) {
-  return <h2 className="text-lg font-semibold mb-2">{children}</h2>;
+  return <h2 className="text-lg font-semibold mb-2">{children}</h2>
 }
 
 export function DialogDescription({ children }: { children: React.ReactNode }) {
-  return <p className="text-sm text-gray-600">{children}</p>;
+  return <p className="text-sm text-gray-600">{children}</p>
 }

@@ -1,6 +1,6 @@
-import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
-import TaskList from '../TaskList';
+import React from 'react'
+import { render, screen, waitFor } from '@testing-library/react'
+import TaskList from '../TaskList'
 
 describe('TaskList', () => {
   beforeEach(() => {
@@ -26,15 +26,15 @@ describe('TaskList', () => {
             ],
           }),
       })
-    ) as unknown as typeof fetch;
-  });
+    ) as unknown as typeof fetch
+  })
 
   it('renders a list of tasks', async () => {
-    render(<TaskList />);
+    render(<TaskList />)
 
     await waitFor(() => {
-      expect(screen.getByText('Mock Task 1')).toBeInTheDocument();
-      expect(screen.getByText('Mock Task 2')).toBeInTheDocument();
-    });
-  });
-});
+      expect(screen.getByText('Mock Task 1')).toBeInTheDocument()
+      expect(screen.getByText('Mock Task 2')).toBeInTheDocument()
+    })
+  })
+})

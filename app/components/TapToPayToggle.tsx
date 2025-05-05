@@ -1,13 +1,16 @@
-'use client';
+'use client'
 
-import React from 'react';
+import React from 'react'
 
 interface TapToPayToggleProps {
-  enabled: boolean;
-  onToggle: (enabled: boolean) => void;
+  enabled: boolean
+  onToggle: (enabled: boolean) => void
 }
 
-export default function TapToPayToggle({ enabled, onToggle }: TapToPayToggleProps) {
+export default function TapToPayToggle({
+  enabled,
+  onToggle,
+}: TapToPayToggleProps) {
   return (
     <div className="flex items-center gap-3">
       <label className="inline-flex items-center cursor-pointer">
@@ -29,5 +32,5 @@ export default function TapToPayToggle({ enabled, onToggle }: TapToPayToggleProp
         </div>
       </label>
     </div>
-  );
+  )
 }

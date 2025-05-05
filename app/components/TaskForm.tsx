@@ -1,23 +1,23 @@
-'use client';
+'use client'
 
-import React, { useState } from 'react';
-import { Task } from '@/types';
+import React, { useState } from 'react'
+import { Task } from '@/types'
 
 interface TaskFormProps {
-  onSubmit: (task: Omit<Task, 'id'>) => void;
+  onSubmit: (task: Omit<Task, 'id'>) => void
 }
 
 const TaskForm: React.FC<TaskFormProps> = ({ onSubmit }) => {
-  const [description, setDescription] = useState('');
-  const [client, setClient] = useState('');
-  const [clientPhone, setClientPhone] = useState('');
-  const [date, setDate] = useState('');
-  const [amount, setAmount] = useState('');
-  const [billable, setBillable] = useState(false);
+  const [description, setDescription] = useState('')
+  const [client, setClient] = useState('')
+  const [clientPhone, setClientPhone] = useState('')
+  const [date, setDate] = useState('')
+  const [amount, setAmount] = useState('')
+  const [billable, setBillable] = useState(false)
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!description || !client || !date || !amount) return;
+    e.preventDefault()
+    if (!description || !client || !date || !amount) return
 
     onSubmit({
       description,
@@ -26,16 +26,16 @@ const TaskForm: React.FC<TaskFormProps> = ({ onSubmit }) => {
       date,
       amount: parseFloat(amount),
       billable,
-    });
+    })
 
     // Clear form after submit
-    setDescription('');
-    setClient('');
-    setClientPhone('');
-    setDate('');
-    setAmount('');
-    setBillable(false);
-  };
+    setDescription('')
+    setClient('')
+    setClientPhone('')
+    setDate('')
+    setAmount('')
+    setBillable(false)
+  }
 
   return (
     <form
@@ -46,7 +46,9 @@ const TaskForm: React.FC<TaskFormProps> = ({ onSubmit }) => {
 
       <div className="space-y-4">
         <div>
-          <label className="block text-sm font-medium text-gray-600 mb-1">Description</label>
+          <label className="block text-sm font-medium text-gray-600 mb-1">
+            Description
+          </label>
           <input
             type="text"
             placeholder="Task description"
@@ -58,7 +60,9 @@ const TaskForm: React.FC<TaskFormProps> = ({ onSubmit }) => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-600 mb-1">Client</label>
+          <label className="block text-sm font-medium text-gray-600 mb-1">
+            Client
+          </label>
           <input
             type="text"
             placeholder="Client name"
@@ -69,7 +73,9 @@ const TaskForm: React.FC<TaskFormProps> = ({ onSubmit }) => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-600 mb-1">Client Phone (WhatsApp)</label>
+          <label className="block text-sm font-medium text-gray-600 mb-1">
+            Client Phone (WhatsApp)
+          </label>
           <input
             type="tel"
             placeholder="Client phone number"
@@ -80,7 +86,9 @@ const TaskForm: React.FC<TaskFormProps> = ({ onSubmit }) => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-600 mb-1">Date</label>
+          <label className="block text-sm font-medium text-gray-600 mb-1">
+            Date
+          </label>
           <input
             type="date"
             value={date}
@@ -90,7 +98,9 @@ const TaskForm: React.FC<TaskFormProps> = ({ onSubmit }) => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-600 mb-1">Amount</label>
+          <label className="block text-sm font-medium text-gray-600 mb-1">
+            Amount
+          </label>
           <input
             type="number"
             placeholder="Amount"
@@ -117,7 +127,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ onSubmit }) => {
         </button>
       </div>
     </form>
-  );
-};
+  )
+}
 
-export default TaskForm;
+export default TaskForm

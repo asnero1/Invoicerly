@@ -1,30 +1,30 @@
 // ✅ FILE: /components/AIAssistant.tsx – Floating AI Assistant
 
-'use client';
+'use client'
 
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
 const AIAssistant: React.FC = () => {
-  const [open, setOpen] = useState(false);
-  const [prompt, setPrompt] = useState('');
-  const [response, setResponse] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [open, setOpen] = useState(false)
+  const [prompt, setPrompt] = useState('')
+  const [response, setResponse] = useState('')
+  const [loading, setLoading] = useState(false)
 
   const handleAsk = async () => {
-    if (!prompt.trim()) return;
-    setLoading(true);
-    setResponse('');
+    if (!prompt.trim()) return
+    setLoading(true)
+    setResponse('')
 
     const res = await fetch('/api/ask-ai', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ prompt }),
-    });
+    })
 
-    const data = await res.json();
-    setResponse(data.reply || '⚠️ No response received.');
-    setLoading(false);
-  };
+    const data = await res.json()
+    setResponse(data.reply || '⚠️ No response received.')
+    setLoading(false)
+  }
 
   return (
     <div id="ai-assistant">
@@ -71,7 +71,7 @@ const AIAssistant: React.FC = () => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default AIAssistant;
+export default AIAssistant

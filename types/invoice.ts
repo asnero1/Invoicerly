@@ -1,5 +1,4 @@
 export type Invoice = {
-    name: string;
-    email?: string;
-  };
-  
+  name: string
+  email?: string
+}

@@ -1,4 +1,4 @@
-import { Task } from '@/types';
+import { Task } from '@/types'
 
 export const mockTasks: Task[] = [
   {
@@ -10,4 +10,4 @@ export const mockTasks: Task[] = [
     status: 'pending',
     done: false,
   },
-];
+]

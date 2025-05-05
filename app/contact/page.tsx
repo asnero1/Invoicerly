@@ -1,47 +1,52 @@
-'use client';
+'use client'
 
-import { useSearchParams } from 'next/navigation';
-import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation'
+import { useState, useEffect } from 'react'
 
 export default function ContactPage() {
-  const searchParams = useSearchParams();
-  const to = searchParams.get('to') || 'Unknown';
-  const spruke = searchParams.get('spruke') || 'None';
+  const searchParams = useSearchParams()
+  const to = searchParams.get('to') || 'Unknown'
+  const spruke = searchParams.get('spruke') || 'None'
 
-  const [recipientName, setRecipientName] = useState(to);
-  const [message, setMessage] = useState('');
-  const [name, setName] = useState('');
-  const [contact, setContact] = useState('');
-  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
+  const [recipientName, setRecipientName] = useState(to)
+  const [message, setMessage] = useState('')
+  const [name, setName] = useState('')
+  const [contact, setContact] = useState('')
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>(
+    'idle'
+  )
 
   useEffect(() => {
     // Try to resolve full name from /data/users.json
     async function fetchRecipientName() {
       try {
-        const res = await fetch('/data/users.json');
-        const users = await res.json();
-        const match = users.find((u: any) => 
-          u.id?.toLowerCase() === to.toLowerCase() ||
-          u.name?.toLowerCase() === to.toLowerCase()
-        );
+        const res = await fetch('/data/users.json')
+        const users = await res.json()
+        const match = users.find(
+          (u: any) =>
+            u.id?.toLowerCase() === to.toLowerCase() ||
+            u.name?.toLowerCase() === to.toLowerCase()
+        )
         if (match?.name) {
-          setRecipientName(match.name);
-          setMessage(`Hey ${match.name}, I saw your spruke and wanted to connect!`);
+          setRecipientName(match.name)
+          setMessage(
+            `Hey ${match.name}, I saw your spruke and wanted to connect!`
+          )
         } else {
-          setMessage(`Hey ${to}, I saw your spruke and wanted to connect!`);
+          setMessage(`Hey ${to}, I saw your spruke and wanted to connect!`)
         }
       } catch {
-        setMessage(`Hey ${to}, I saw your spruke and wanted to connect!`);
+        setMessage(`Hey ${to}, I saw your spruke and wanted to connect!`)
       }
     }
 
-    fetchRecipientName();
-  }, [to]);
+    fetchRecipientName()
+  }, [to])
 
   const handleSend = async () => {
-    if (!message.trim()) return;
+    if (!message.trim()) return
 
-    setStatus('sending');
+    setStatus('sending')
 
     try {
       const res = await fetch('/api/contact-pro', {
@@ -54,21 +59,21 @@ export default function ContactPage() {
           message,
           sprukeId: spruke,
         }),
-      });
+      })
 
-      const result = await res.json();
+      const result = await res.json()
       if (result.success) {
-        setStatus('sent');
-        setMessage('');
-        setName('');
-        setContact('');
+        setStatus('sent')
+        setMessage('')
+        setName('')
+        setContact('')
       } else {
-        setStatus('error');
+        setStatus('error')
       }
     } catch {
-      setStatus('error');
+      setStatus('error')
     }
-  };
+  }
 
   return (
     <div className="p-6 max-w-xl mx-auto bg-white rounded-xl shadow">
@@ -114,5 +119,5 @@ export default function ContactPage() {
         <p className="text-red-600 text-sm mt-3">❌ Error sending message.</p>
       )}
     </div>
-  );
+  )
 }

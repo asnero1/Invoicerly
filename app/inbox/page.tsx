@@ -1,49 +1,51 @@
-'use client';
+'use client'
 
-import { useEffect, useState } from 'react';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { motion } from 'framer-motion';
-import { toast } from 'sonner';
-import Image from 'next/image';
-import SendMessageModal from '@/components/SendMessageModal';
+import { useEffect, useState } from 'react'
+import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/button'
+import { motion } from 'framer-motion'
+import { toast } from 'sonner'
+import Image from 'next/image'
+import SendMessageModal from '@/components/SendMessageModal'
 
 interface Message {
-  id?: string;
-  from: string;
-  to: string;
-  subject?: string;
-  body?: string;
-  message?: string;
-  date?: string;
-  timestamp?: string;
-  read?: boolean;
-  fromAvatar?: string;
-  replies?: Reply[];
-  source?: string;
+  id?: string
+  from: string
+  to: string
+  subject?: string
+  body?: string
+  message?: string
+  date?: string
+  timestamp?: string
+  read?: boolean
+  fromAvatar?: string
+  replies?: Reply[]
+  source?: string
 }
 
 interface Reply {
-  id?: string;
-  messageId?: string;
-  text?: string;
-  fileUrl?: string;
-  date?: string;
-  message?: string;
-  source?: string;
+  id?: string
+  messageId?: string
+  text?: string
+  fileUrl?: string
+  date?: string
+  message?: string
+  source?: string
 }
 
 export default function InboxPage() {
-  const [messages, setMessages] = useState<Message[]>([]);
-  const [filter, setFilter] = useState('');
-  const [filterType, setFilterType] = useState<'all' | 'unread' | 'replied'>('all');
-  const [sourceFilter, setSourceFilter] = useState<'all' | 'whatsapp'>('all');
-  const [selectedMessage, setSelectedMessage] = useState<Message | null>(null);
-  const [showModal, setShowModal] = useState(false);
+  const [messages, setMessages] = useState<Message[]>([])
+  const [filter, setFilter] = useState('')
+  const [filterType, setFilterType] = useState<'all' | 'unread' | 'replied'>(
+    'all'
+  )
+  const [sourceFilter, setSourceFilter] = useState<'all' | 'whatsapp'>('all')
+  const [selectedMessage, setSelectedMessage] = useState<Message | null>(null)
+  const [showModal, setShowModal] = useState(false)
 
   useEffect(() => {
     async function loadMessages() {
-      const base = await fetch('/data/messages.json').then((res) => res.json());
+      const base = await fetch('/data/messages.json').then((res) => res.json())
 
       const grouped = base.reduce((acc: Message[], msg: Message) => {
         const existing = acc.find(
@@ -52,48 +54,48 @@ export default function InboxPage() {
             m.to === msg.to &&
             m.source !== 'whatsapp' &&
             !m.subject
-        );
+        )
 
         if (existing) {
-          existing.replies = existing.replies || [];
+          existing.replies = existing.replies || []
           existing.replies.push({
             message: msg.message,
             date: msg.timestamp,
             source: msg.source,
-          });
+          })
         } else {
-          acc.push(msg);
+          acc.push(msg)
         }
 
-        return acc;
-      }, []);
+        return acc
+      }, [])
 
-      setMessages(grouped);
+      setMessages(grouped)
     }
-    loadMessages();
-  }, []);
+    loadMessages()
+  }, [])
 
   const filtered = messages.filter((msg) => {
-    const content = `${msg.subject || ''} ${msg.body || ''} ${msg.message || ''}`;
-    const matchesText = content.toLowerCase().includes(filter.toLowerCase());
+    const content = `${msg.subject || ''} ${msg.body || ''} ${msg.message || ''}`
+    const matchesText = content.toLowerCase().includes(filter.toLowerCase())
     const matchesType =
       filterType === 'all' ||
       (filterType === 'unread' && !msg.read) ||
-      (filterType === 'replied' && msg.replies && msg.replies.length > 0);
+      (filterType === 'replied' && msg.replies && msg.replies.length > 0)
     const matchesSource =
-      sourceFilter === 'all' || msg.source?.toLowerCase() === sourceFilter;
+      sourceFilter === 'all' || msg.source?.toLowerCase() === sourceFilter
 
-    return matchesText && matchesType && matchesSource;
-  });
+    return matchesText && matchesType && matchesSource
+  })
 
   const markAsRead = async (id: string | undefined) => {
-    if (!id) return;
+    if (!id) return
     const updated = messages.map((msg) =>
       msg.id === id ? { ...msg, read: true } : msg
-    );
-    setMessages(updated);
-    toast.success('Marked as read');
-  };
+    )
+    setMessages(updated)
+    toast.success('Marked as read')
+  }
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-6 space-y-6">
@@ -176,8 +178,12 @@ export default function InboxPage() {
               )}
             </div>
 
-            <p className="text-sm text-gray-700 whitespace-pre-wrap">{msg.body}</p>
-            <p className="text-xs text-gray-400 mt-2">📅 {msg.date || msg.timestamp}</p>
+            <p className="text-sm text-gray-700 whitespace-pre-wrap">
+              {msg.body}
+            </p>
+            <p className="text-xs text-gray-400 mt-2">
+              📅 {msg.date || msg.timestamp}
+            </p>
 
             {Array.isArray(msg.replies) && msg.replies.length > 0 && (
               <div className="space-y-2 border-t pt-4 mt-4">
@@ -218,8 +224,8 @@ export default function InboxPage() {
             <div className="pt-4 flex justify-end">
               <Button
                 onClick={() => {
-                  setSelectedMessage(msg);
-                  setShowModal(true);
+                  setSelectedMessage(msg)
+                  setShowModal(true)
                 }}
               >
                 Reply
@@ -241,5 +247,5 @@ export default function InboxPage() {
         />
       )}
     </div>
-  );
+  )
 }

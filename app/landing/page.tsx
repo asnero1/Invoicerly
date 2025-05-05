@@ -1,6 +1,6 @@
 // ✅ FILE: app/landing/page.tsx
-import Image from 'next/image';
-import Link from 'next/link';
+import Image from 'next/image'
+import Link from 'next/link'
 
 export default function LandingPage() {
   return (
@@ -8,9 +8,12 @@ export default function LandingPage() {
       {/* Hero Section */}
       <section className="text-center py-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
         <h1 className="text-4xl font-bold mb-4">Poni</h1>
-        <p className="text-xl font-semibold mb-2">Turn your voice into invoices.</p>
+        <p className="text-xl font-semibold mb-2">
+          Turn your voice into invoices.
+        </p>
         <p className="mb-6 text-gray-700">
-          Powered by VTO — the Voice Task Output Engine. Speak. Log. Invoice. Done.
+          Powered by VTO — the Voice Task Output Engine. Speak. Log. Invoice.
+          Done.
         </p>
         <Link
           href="/log-task"
@@ -39,10 +42,15 @@ export default function LandingPage() {
           height={200}
           className="mx-auto rounded-xl"
         />
-        <p className="mt-2 text-sm text-gray-600">Logo Design for Jetset Digital</p>
+        <p className="mt-2 text-sm text-gray-600">
+          Logo Design for Jetset Digital
+        </p>
         <p className="mt-1 text-sm">
           ❤️ 2{' '}
-          <Link href="#" className="text-blue-600 underline hover:text-blue-800">
+          <Link
+            href="#"
+            className="text-blue-600 underline hover:text-blue-800"
+          >
             Contact this pro
           </Link>
         </p>
@@ -50,7 +58,9 @@ export default function LandingPage() {
 
       {/* Directory */}
       <section className="text-center py-12 px-4">
-        <h3 className="text-xl font-semibold mb-2">Find trusted professionals</h3>
+        <h3 className="text-xl font-semibold mb-2">
+          Find trusted professionals
+        </h3>
         <p className="mb-6 text-gray-700">
           Real creators, tradies, and freelancers using Poni
         </p>
@@ -85,7 +95,9 @@ export default function LandingPage() {
       <section className="text-center py-12 bg-white px-4">
         <h3 className="text-xl font-semibold mb-4">What is VTO?</h3>
         <p className="text-gray-700 max-w-2xl mx-auto">
-          VTO (Voice Task Output) is your invisible admin. Speak tasks out loud, and let Poni turn them into billable logs, summaries, and invoices — instantly.
+          VTO (Voice Task Output) is your invisible admin. Speak tasks out loud,
+          and let Poni turn them into billable logs, summaries, and invoices —
+          instantly.
         </p>
         <div className="mt-6">
           <Image
@@ -149,5 +161,5 @@ export default function LandingPage() {
         © {new Date().getFullYear()} Poni — Voice Task Output Engine
       </footer>
     </main>
-  );
+  )
 }

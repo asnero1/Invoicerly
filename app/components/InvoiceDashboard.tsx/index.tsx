@@ -1,32 +1,32 @@
-'use client';
+'use client'
 
-import React, { useEffect, useState } from 'react';
-import AIAssistant from '@/components/AIAssistant'; // ✅ Make sure path is correct
+import React, { useEffect, useState } from 'react'
+import AIAssistant from '@/components/AIAssistant' // ✅ Make sure path is correct
 
 type Invoice = {
-  id: string;
-  client: string;
-  date: string;
-  tasks: any[];
-  totalAmount: number;
-};
+  id: string
+  client: string
+  date: string
+  tasks: any[]
+  totalAmount: number
+}
 
 const InvoiceDashboard: React.FC = () => {
-  const [invoices, setInvoices] = useState<Invoice[]>([]);
+  const [invoices, setInvoices] = useState<Invoice[]>([])
 
   useEffect(() => {
     const fetchInvoices = async () => {
       try {
-        const res = await fetch('/api/fetch-invoices');
-        const data = await res.json();
-        setInvoices(data.invoices);
+        const res = await fetch('/api/fetch-invoices')
+        const data = await res.json()
+        setInvoices(data.invoices)
       } catch (err) {
-        console.error('❌ Failed to fetch invoices:', err);
+        console.error('❌ Failed to fetch invoices:', err)
       }
-    };
+    }
 
-    fetchInvoices();
-  }, []);
+    fetchInvoices()
+  }, [])
 
   const handleExport = async (id: string, type: 'pdf' | 'csv') => {
     try {
@@ -34,23 +34,23 @@ const InvoiceDashboard: React.FC = () => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id, type }),
-      });
+      })
 
-      if (!res.ok) throw new Error('Failed to export invoice.');
+      if (!res.ok) throw new Error('Failed to export invoice.')
 
-      const blob = await res.blob();
-      const url = window.URL.createObjectURL(blob);
+      const blob = await res.blob()
+      const url = window.URL.createObjectURL(blob)
 
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = `invoice-${id}.${type}`;
-      link.click();
-      window.URL.revokeObjectURL(url);
+      const link = document.createElement('a')
+      link.href = url
+      link.download = `invoice-${id}.${type}`
+      link.click()
+      window.URL.revokeObjectURL(url)
     } catch (err: any) {
-      console.error('❌ Export failed:', err);
-      alert('❌ Export failed. Check console.');
+      console.error('❌ Export failed:', err)
+      alert('❌ Export failed. Check console.')
     }
-  };
+  }
 
   return (
     <div className="p-6 bg-white shadow rounded mt-6 relative">
@@ -98,7 +98,7 @@ const InvoiceDashboard: React.FC = () => {
       {/* ✅ Floating AI Assistant */}
       <AIAssistant />
     </div>
-  );
-};
+  )
+}
 
-export default InvoiceDashboard;
+export default InvoiceDashboard

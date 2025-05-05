@@ -1,40 +1,40 @@
 // ✅ FILE: app/components/VoiceReplyForm.tsx
-'use client';
+'use client'
 
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
 interface Props {
-  messageId: string;
-  onSuccess?: () => void;
+  messageId: string
+  onSuccess?: () => void
 }
 
 export default function VoiceReplyForm({ messageId, onSuccess }: Props) {
-  const [file, setFile] = useState<File | null>(null);
-  const [loading, setLoading] = useState(false);
+  const [file, setFile] = useState<File | null>(null)
+  const [loading, setLoading] = useState(false)
 
   const handleUpload = async () => {
-    if (!file) return;
-    setLoading(true);
+    if (!file) return
+    setLoading(true)
 
-    const formData = new FormData();
-    formData.append('file', file);
-    formData.append('messageId', messageId);
+    const formData = new FormData()
+    formData.append('file', file)
+    formData.append('messageId', messageId)
 
     try {
       const res = await fetch('/api/save-replies', {
         method: 'POST',
         body: formData,
-      });
+      })
 
-      if (!res.ok) throw new Error('Upload failed');
+      if (!res.ok) throw new Error('Upload failed')
 
-      if (onSuccess) onSuccess();
+      if (onSuccess) onSuccess()
     } catch (err) {
-      console.error('Voice reply upload error:', err);
+      console.error('Voice reply upload error:', err)
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  };
+  }
 
   return (
     <div className="space-y-2 border p-4 rounded bg-white shadow max-w-md">
@@ -53,5 +53,5 @@ export default function VoiceReplyForm({ messageId, onSuccess }: Props) {
         {loading ? 'Sending...' : 'Send Reply'}
       </button>
     </div>
-  );
+  )
 }

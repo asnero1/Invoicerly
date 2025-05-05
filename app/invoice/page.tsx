@@ -1,44 +1,46 @@
-'use client';
+'use client'
 
-import { useState } from 'react';
-import { FaWhatsapp } from 'react-icons/fa';
-import invoices from '@/data/invoices.json';
-import ResendInvoiceModal from '@/components/ResendInvoiceModal';
+import { useState } from 'react'
+import { FaWhatsapp } from 'react-icons/fa'
+import invoices from '@/data/invoices.json'
+import ResendInvoiceModal from '@/components/ResendInvoiceModal'
 
 export default function InvoicePage() {
-  const [selectedEmail, setSelectedEmail] = useState('marnie@personal.com');
-  const [statusFilter, setStatusFilter] = useState('all');
-  const [modalOpen, setModalOpen] = useState(false);
-  const [selectedInvoice, setSelectedInvoice] = useState<any | null>(null);
+  const [selectedEmail, setSelectedEmail] = useState('marnie@personal.com')
+  const [statusFilter, setStatusFilter] = useState('all')
+  const [modalOpen, setModalOpen] = useState(false)
+  const [selectedInvoice, setSelectedInvoice] = useState<any | null>(null)
 
   const emailOptions = [
     { label: 'Marnie (Personal)', value: 'marnie@personal.com' },
     { label: 'Food For Health (FFH)', value: 'marnie@foodforhealth.com.au' },
-  ];
+  ]
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedEmail(e.target.value);
-  };
+    setSelectedEmail(e.target.value)
+  }
 
   const handleStatusChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setStatusFilter(e.target.value);
-  };
+    setStatusFilter(e.target.value)
+  }
 
   const handleResendWhatsApp = (invoice: any) => {
-    setSelectedInvoice(invoice);
-    setModalOpen(true);
-  };
+    setSelectedInvoice(invoice)
+    setModalOpen(true)
+  }
 
   const filteredInvoices = invoices.filter((inv: any) =>
     statusFilter === 'all' ? true : inv.status === statusFilter
-  );
+  )
 
   return (
     <div className="p-8 max-w-3xl mx-auto">
       <h1 className="text-3xl font-bold mb-6">🧾 Send Invoice</h1>
 
       <div className="mb-6">
-        <label className="block mb-2 font-semibold text-sm">Select sender email:</label>
+        <label className="block mb-2 font-semibold text-sm">
+          Select sender email:
+        </label>
         <select
           value={selectedEmail}
           onChange={handleEmailChange}
@@ -53,7 +55,9 @@ export default function InvoicePage() {
       </div>
 
       <div className="mb-6">
-        <label className="block mb-2 font-semibold text-sm">Filter by status:</label>
+        <label className="block mb-2 font-semibold text-sm">
+          Filter by status:
+        </label>
         <select
           value={statusFilter}
           onChange={handleStatusChange}
@@ -71,18 +75,27 @@ export default function InvoicePage() {
       </div>
 
       <div className="bg-white p-6 border border-dashed border-gray-300 rounded text-center text-gray-500">
-        <p className="text-sm">💡 This is where the invoice builder or preview will go soon.</p>
-        <p className="text-xs mt-1">WIP – data integration & PDF generation coming 🔧</p>
+        <p className="text-sm">
+          💡 This is where the invoice builder or preview will go soon.
+        </p>
+        <p className="text-xs mt-1">
+          WIP – data integration & PDF generation coming 🔧
+        </p>
       </div>
 
       <div className="mt-10">
         <h2 className="text-lg font-bold mb-2">🧾 Invoices</h2>
         {filteredInvoices.length === 0 ? (
-          <p className="text-gray-500 italic">No invoices found for selected filter.</p>
+          <p className="text-gray-500 italic">
+            No invoices found for selected filter.
+          </p>
         ) : (
           <ul className="divide-y">
             {filteredInvoices.map((inv: any) => (
-              <li key={inv.id} className="py-4 flex justify-between items-center">
+              <li
+                key={inv.id}
+                className="py-4 flex justify-between items-center"
+              >
                 <div>
                   <p className="font-medium text-sm">Client: {inv.client}</p>
                   <p className="text-xs text-gray-500">
@@ -110,5 +123,5 @@ export default function InvoicePage() {
         />
       )}
     </div>
-  );
+  )
 }

@@ -1,38 +1,38 @@
-'use client';
+'use client'
 
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
-import { toast } from 'sonner';
-import Image from 'next/image';
+import { useEffect, useState } from 'react'
+import Link from 'next/link'
+import { toast } from 'sonner'
+import Image from 'next/image'
 
 interface User {
-  id: string;
-  name: string;
-  role: string;
-  avatarUrl: string;
-  bio: string;
-  likes?: number;
+  id: string
+  name: string
+  role: string
+  avatarUrl: string
+  bio: string
+  likes?: number
 }
 
 export default function FindPage() {
-  const [users, setUsers] = useState<User[]>([]);
-  const [search, setSearch] = useState('');
-  const [filterRole, setFilterRole] = useState('All');
+  const [users, setUsers] = useState<User[]>([])
+  const [search, setSearch] = useState('')
+  const [filterRole, setFilterRole] = useState('All')
 
   useEffect(() => {
     fetch('/data/users.json')
       .then((res) => res.json())
       .then((data) => setUsers(data))
-      .catch(() => toast.error('Failed to load user list'));
-  }, []);
+      .catch(() => toast.error('Failed to load user list'))
+  }, [])
 
-  const roles = Array.from(new Set(users.map((u) => u.role)));
+  const roles = Array.from(new Set(users.map((u) => u.role)))
 
   const filtered = users.filter((u) => {
-    const matchesSearch = u.name.toLowerCase().includes(search.toLowerCase());
-    const matchesRole = filterRole === 'All' || u.role === filterRole;
-    return matchesSearch && matchesRole;
-  });
+    const matchesSearch = u.name.toLowerCase().includes(search.toLowerCase())
+    const matchesRole = filterRole === 'All' || u.role === filterRole
+    return matchesSearch && matchesRole
+  })
 
   return (
     <div className="p-6 space-y-6">
@@ -81,7 +81,9 @@ export default function FindPage() {
                 <p className="text-xs text-gray-400 line-clamp-2">{u.bio}</p>
 
                 <span className="inline-block mt-2 text-xs px-2 py-1 rounded-full bg-blue-100 text-blue-800">
-                  {u.likes && u.likes > 0 ? `👍 ${u.likes} Like${u.likes > 1 ? 's' : ''}` : '🆕 New'}
+                  {u.likes && u.likes > 0
+                    ? `👍 ${u.likes} Like${u.likes > 1 ? 's' : ''}`
+                    : '🆕 New'}
                 </span>
               </div>
             </div>
@@ -115,5 +117,5 @@ export default function FindPage() {
         </div>
       </div>
     </div>
-  );
+  )
 }

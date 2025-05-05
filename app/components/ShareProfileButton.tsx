@@ -1,24 +1,24 @@
 // ✅ FILE: app/components/ShareProfileButton.tsx
 
-'use client';
+'use client'
 
-import React from 'react';
-import { useSession } from 'next-auth/react';
-import { toast } from 'sonner';
+import React from 'react'
+import { useSession } from 'next-auth/react'
+import { toast } from 'sonner'
 
 const ShareProfileButton: React.FC<{ username?: string }> = ({ username }) => {
-  const { data: session } = useSession();
+  const { data: session } = useSession()
 
   const handleCopyLink = () => {
     const userSlug = (username || session?.user?.name || 'unknown')
       .toLowerCase()
       .replace(/\s+/g, '-')
-      .replace(/[^a-z0-9-]/g, '');
+      .replace(/[^a-z0-9-]/g, '')
 
-    const url = `${window.location.origin}/pages/public-profile?user=${userSlug}`;
-    navigator.clipboard.writeText(url);
-    toast.success('Profile link copied to clipboard!');
-  };
+    const url = `${window.location.origin}/pages/public-profile?user=${userSlug}`
+    navigator.clipboard.writeText(url)
+    toast.success('Profile link copied to clipboard!')
+  }
 
   return (
     <div className="mb-6">
@@ -30,7 +30,7 @@ const ShareProfileButton: React.FC<{ username?: string }> = ({ username }) => {
         📎 Share My Profile
       </button>
     </div>
-  );
-};
+  )
+}
 
-export default ShareProfileButton;
+export default ShareProfileButton

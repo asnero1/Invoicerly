@@ -1,35 +1,33 @@
-'use client';
+'use client'
 
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { ThumbsUp } from 'lucide-react';
+import { useEffect, useState } from 'react'
+import Link from 'next/link'
+import { motion } from 'framer-motion'
+import { ThumbsUp } from 'lucide-react'
 
 interface Spruke {
-  id: string;
-  userName: string;
-  mediaUrl: string;
-  caption: string;
-  likes: number;
+  id: string
+  userName: string
+  mediaUrl: string
+  caption: string
+  likes: number
 }
 
 export default function LookPage() {
-  const [sprukes, setSprukes] = useState<Spruke[]>([]);
+  const [sprukes, setSprukes] = useState<Spruke[]>([])
 
   useEffect(() => {
     fetch('/data/sprukes.json')
       .then((res) => res.json())
-      .then(setSprukes);
-  }, []);
+      .then(setSprukes)
+  }, [])
 
   const handleLike = (id: string) => {
     setSprukes((prev) =>
-      prev.map((s) =>
-        s.id === id ? { ...s, likes: s.likes + 1 } : s
-      )
-    );
-    localStorage.setItem(`spruke-liked-${id}`, 'true');
-  };
+      prev.map((s) => (s.id === id ? { ...s, likes: s.likes + 1 } : s))
+    )
+    localStorage.setItem(`spruke-liked-${id}`, 'true')
+  }
 
   return (
     <div className="max-w-5xl mx-auto p-6 space-y-6">
@@ -69,7 +67,9 @@ export default function LookPage() {
                   <button
                     onClick={() => handleLike(s.id)}
                     className="flex items-center gap-1 text-blue-600 hover:text-blue-800"
-                    disabled={localStorage.getItem(`spruke-liked-${s.id}`) === 'true'}
+                    disabled={
+                      localStorage.getItem(`spruke-liked-${s.id}`) === 'true'
+                    }
                   >
                     <ThumbsUp size={16} /> Like
                   </button>
@@ -80,5 +80,5 @@ export default function LookPage() {
         </motion.div>
       )}
     </div>
-  );
+  )
 }

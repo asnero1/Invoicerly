@@ -1,21 +1,21 @@
 // ✅ FILE: app/components/MainWrapper.tsx
-'use client';
+'use client'
 
-import { ReactNode } from 'react';
-import { SessionProvider } from 'next-auth/react';
-import { usePathname } from 'next/navigation';
-import { Toaster } from 'sonner';
-import { AnimatePresence, motion } from 'framer-motion';
-import Navbar from './Navbar';
-import Nudge from './Nudge';
+import { ReactNode } from 'react'
+import { SessionProvider } from 'next-auth/react'
+import { usePathname } from 'next/navigation'
+import { Toaster } from 'sonner'
+import { AnimatePresence, motion } from 'framer-motion'
+import Navbar from './Navbar'
+import Nudge from './Nudge'
 
 export default function MainWrapper({ children }: { children: ReactNode }) {
-  const pathname = usePathname();
+  const pathname = usePathname()
 
   const showNudge =
     pathname !== '/generate-invoice' &&
     pathname !== '/inbox' &&
-    pathname !== '/settings';
+    pathname !== '/settings'
 
   return (
     <SessionProvider>
@@ -34,11 +34,13 @@ export default function MainWrapper({ children }: { children: ReactNode }) {
         >
           {/* Optional header text */}
           <div className="text-center mt-4">
-            <h1 className="text-2xl font-bold text-indigo-700 tracking-tight">Poni</h1>
+            <h1 className="text-2xl font-bold text-indigo-700 tracking-tight">
+              Poni
+            </h1>
           </div>
           {children}
         </motion.main>
       </AnimatePresence>
     </SessionProvider>
-  );
+  )
 }

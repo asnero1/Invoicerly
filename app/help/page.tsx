@@ -1,10 +1,10 @@
-'use client';
+'use client'
 
-import { useState } from 'react';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { Textarea } from '@/components/ui/textarea';
-import { motion } from 'framer-motion';
+import { useState } from 'react'
+import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/button'
+import { Textarea } from '@/components/ui/textarea'
+import { motion } from 'framer-motion'
 
 const faqs = [
   {
@@ -23,30 +23,30 @@ const faqs = [
     q: 'Where can I find tasks I forgot to bill?',
     a: 'Use the PayMe or Task List page filters to see unpaid or billable items.',
   },
-];
+]
 
 export default function HelpPage() {
-  const [query, setQuery] = useState('');
-  const [message, setMessage] = useState('');
-  const [email, setEmail] = useState('');
-  const [submitting, setSubmitting] = useState(false);
-  const [response, setResponse] = useState('');
+  const [query, setQuery] = useState('')
+  const [message, setMessage] = useState('')
+  const [email, setEmail] = useState('')
+  const [submitting, setSubmitting] = useState(false)
+  const [response, setResponse] = useState('')
 
   const filteredFaqs = faqs.filter((f) =>
     f.q.toLowerCase().includes(query.toLowerCase())
-  );
+  )
 
   const handleSubmit = async () => {
-    if (!email || !message) return;
-    setSubmitting(true);
+    if (!email || !message) return
+    setSubmitting(true)
     // Simulated delay for now
     setTimeout(() => {
-      setResponse('✅ Your question has been submitted!');
-      setSubmitting(false);
-      setEmail('');
-      setMessage('');
-    }, 1000);
-  };
+      setResponse('✅ Your question has been submitted!')
+      setSubmitting(false)
+      setEmail('')
+      setMessage('')
+    }, 1000)
+  }
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-6 space-y-8">
@@ -77,7 +77,9 @@ export default function HelpPage() {
 
       <div className="pt-8 space-y-2">
         <h2 className="text-xl font-bold">📨 Still stuck?</h2>
-        <p className="text-sm text-gray-600">Send us your question and we’ll get back to you:</p>
+        <p className="text-sm text-gray-600">
+          Send us your question and we’ll get back to you:
+        </p>
         <Input
           placeholder="Your email address"
           value={email}
@@ -89,11 +91,14 @@ export default function HelpPage() {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
         />
-        <Button onClick={handleSubmit} disabled={submitting || !email || !message}>
+        <Button
+          onClick={handleSubmit}
+          disabled={submitting || !email || !message}
+        >
           {submitting ? 'Sending...' : 'Submit Question'}
         </Button>
         {response && <p className="text-green-600 text-sm mt-2">{response}</p>}
       </div>
     </div>
-  );
+  )
 }

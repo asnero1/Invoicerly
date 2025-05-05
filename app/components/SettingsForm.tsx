@@ -1,16 +1,16 @@
-'use client';
+'use client'
 
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
 const SettingsForm: React.FC<{ user: any }> = ({ user }) => {
-  const [email, setEmail] = useState(user.email);
-  const [name, setName] = useState(user.userName);
+  const [email, setEmail] = useState(user.email)
+  const [name, setName] = useState(user.userName)
 
   const handleSave = () => {
-    const updatedUser = { ...user, email, userName: name };
-    localStorage.setItem('user', JSON.stringify(updatedUser));
-    alert('Your profile has been updated!');
-  };
+    const updatedUser = { ...user, email, userName: name }
+    localStorage.setItem('user', JSON.stringify(updatedUser))
+    alert('Your profile has been updated!')
+  }
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-md">
@@ -42,7 +42,7 @@ const SettingsForm: React.FC<{ user: any }> = ({ user }) => {
         </button>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default SettingsForm;
+export default SettingsForm

@@ -1,18 +1,18 @@
-'use client';
+'use client'
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import toast from 'react-hot-toast';
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import toast from 'react-hot-toast'
 
 export default function LogoutButton() {
-  const [confirmOpen, setConfirmOpen] = useState(false);
-  const router = useRouter();
+  const [confirmOpen, setConfirmOpen] = useState(false)
+  const router = useRouter()
 
   const handleLogout = () => {
-    localStorage.removeItem('userEmail');
-    toast.success('Logged out');
-    router.push('/login');
-  };
+    localStorage.removeItem('userEmail')
+    toast.success('Logged out')
+    router.push('/login')
+  }
 
   return (
     <>
@@ -48,5 +48,5 @@ export default function LogoutButton() {
         </div>
       )}
     </>
-  );
+  )
 }

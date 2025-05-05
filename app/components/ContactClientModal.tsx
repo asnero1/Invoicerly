@@ -1,15 +1,15 @@
-'use client';
+'use client'
 
-import React from 'react';
-import type { User } from '@/types';
+import React from 'react'
+import type { User } from '@/types'
 
 interface Props {
-  client: User;
-  onClose: () => void;
+  client: User
+  onClose: () => void
 }
 
 const ContactClientModal: React.FC<Props> = ({ client, onClose }) => {
-  if (!client) return null;
+  if (!client) return null
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
@@ -38,9 +38,9 @@ const ContactClientModal: React.FC<Props> = ({ client, onClose }) => {
         <div className="mt-4">
           <strong className="text-sm text-gray-600">Other Emails:</strong>
           <ul className="list-disc ml-5 text-sm text-gray-700 mt-1">
-          {client.otherEmails?.map((email: string, index: number) => (
-  <li key={index}>{email}</li>
-))}
+            {client.otherEmails?.map((email: string, index: number) => (
+              <li key={index}>{email}</li>
+            ))}
           </ul>
         </div>
 
@@ -55,7 +55,7 @@ const ContactClientModal: React.FC<Props> = ({ client, onClose }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ContactClientModal;
+export default ContactClientModal

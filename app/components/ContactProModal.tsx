@@ -1,13 +1,13 @@
-'use client';
+'use client'
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react'
 
 type ContactProModalProps = {
-  open: boolean;
-  onClose: () => void;
-  recipientName: string;
-  recipientId: string;
-};
+  open: boolean
+  onClose: () => void
+  recipientName: string
+  recipientId: string
+}
 
 export default function ContactProModal({
   open,
@@ -15,21 +15,23 @@ export default function ContactProModal({
   recipientName,
   recipientId,
 }: ContactProModalProps) {
-  const [message, setMessage] = useState('');
-  const [senderName, setSenderName] = useState('');
-  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
-  const [voiceNote, setVoiceNote] = useState<File | null>(null); // New state for file upload
+  const [message, setMessage] = useState('')
+  const [senderName, setSenderName] = useState('')
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>(
+    'idle'
+  )
+  const [voiceNote, setVoiceNote] = useState<File | null>(null) // New state for file upload
 
   useEffect(() => {
-    setMessage(`Hey ${recipientName}, I saw your spruke and wanted to connect!`);
-  }, [recipientName]);
+    setMessage(`Hey ${recipientName}, I saw your spruke and wanted to connect!`)
+  }, [recipientName])
 
-  if (!open) return null;
+  if (!open) return null
 
   const handleSend = async () => {
-    if (!message.trim()) return;
+    if (!message.trim()) return
 
-    setStatus('sending');
+    setStatus('sending')
 
     try {
       // Sending just message + name (basic MVP version)
@@ -41,22 +43,22 @@ export default function ContactProModal({
           recipient: recipientId,
           message,
         }),
-      });
+      })
 
-      const result = await res.json();
+      const result = await res.json()
       if (result.success) {
-        setStatus('sent');
-        setMessage('');
-        setSenderName('');
-        setVoiceNote(null);
-        setTimeout(() => onClose(), 2000);
+        setStatus('sent')
+        setMessage('')
+        setSenderName('')
+        setVoiceNote(null)
+        setTimeout(() => onClose(), 2000)
       } else {
-        setStatus('error');
+        setStatus('error')
       }
     } catch (err) {
-      setStatus('error');
+      setStatus('error')
     }
-  };
+  }
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
@@ -87,21 +89,26 @@ export default function ContactProModal({
           accept="audio/*"
           className="mb-3 block text-sm"
           onChange={(e) => {
-            const file = e.target.files?.[0];
+            const file = e.target.files?.[0]
             if (file) {
-              setVoiceNote(file);
-              setMessage(`[Voice message attached: ${file.name}]`);
+              setVoiceNote(file)
+              setMessage(`[Voice message attached: ${file.name}]`)
             }
           }}
         />
 
-          {voiceNote && (
-            <div className="mb-3">
-              <p className="text-xs text-gray-500 mb-1">🎧 Preview: {voiceNote.name}</p>
-              <audio controls src={URL.createObjectURL(voiceNote)} className="w-full rounded" />
-            </div>
-          )}
-
+        {voiceNote && (
+          <div className="mb-3">
+            <p className="text-xs text-gray-500 mb-1">
+              🎧 Preview: {voiceNote.name}
+            </p>
+            <audio
+              controls
+              src={URL.createObjectURL(voiceNote)}
+              className="w-full rounded"
+            />
+          </div>
+        )}
 
         <div className="flex justify-between">
           <button
@@ -128,5 +135,5 @@ export default function ContactProModal({
         )}
       </div>
     </div>
-  );
+  )
 }

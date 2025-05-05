@@ -1,37 +1,36 @@
-'use client';
+'use client'
 
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import { authConfig } from '../../lib/authConfig';
-import toast from 'react-hot-toast';
-
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
+import { authConfig } from '../../lib/authConfig'
+import toast from 'react-hot-toast'
 
 export default function LoginPage() {
-  const [email, setEmail] = useState('');
-  const [inviteCode, setInviteCode] = useState('');
-  const [error, setError] = useState('');
-  const router = useRouter();
+  const [email, setEmail] = useState('')
+  const [inviteCode, setInviteCode] = useState('')
+  const [error, setError] = useState('')
+  const router = useRouter()
 
   useEffect(() => {
-    const existing = localStorage.getItem('userEmail');
+    const existing = localStorage.getItem('userEmail')
     if (existing && authConfig.allowedEmails.includes(existing)) {
-      router.push('/');
+      router.push('/')
     }
-  }, []);
+  }, [])
 
   const handleLogin = () => {
-    const isAllowed = authConfig.allowedEmails.includes(email.trim());
-    const hasInvite = authConfig.inviteCodes.includes(inviteCode.trim());
-  
+    const isAllowed = authConfig.allowedEmails.includes(email.trim())
+    const hasInvite = authConfig.inviteCodes.includes(inviteCode.trim())
+
     if (authConfig.inviteOnly && !isAllowed && !hasInvite) {
-      setError('❌ You are not on the allowed test list.');
-      return;
+      setError('❌ You are not on the allowed test list.')
+      return
     }
-  
-    localStorage.setItem('userEmail', email.trim());
-    toast.success(`Welcome back, ${email.trim()}!`);
-    router.push('/');
-  };  
+
+    localStorage.setItem('userEmail', email.trim())
+    toast.success(`Welcome back, ${email.trim()}!`)
+    router.push('/')
+  }
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4">
@@ -58,5 +57,5 @@ export default function LoginPage() {
         Login
       </button>
     </div>
-  );
+  )
 }

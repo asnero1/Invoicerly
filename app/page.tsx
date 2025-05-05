@@ -1,15 +1,15 @@
 // File: app/page.tsx
-'use client';
+'use client'
 
-import React, { useState } from 'react';
-import TaskForm from '@/components/TaskForm';
-import TaskList from '@/components/TaskList';
-import AIAssistant from '@/components/AIAssistant';
-import FeedbackButton from '@/components/FeedbackButton';
-import SmartSuggestions from '@/components/SmartSuggestions';
-import VTOLogger from '@/components/VTOLogger';
-import { Task } from '@/types';
-import { v4 as uuidv4 } from 'uuid';
+import React, { useState } from 'react'
+import TaskForm from '@/components/TaskForm'
+import TaskList from '@/components/TaskList'
+import AIAssistant from '@/components/AIAssistant'
+import FeedbackButton from '@/components/FeedbackButton'
+import SmartSuggestions from '@/components/SmartSuggestions'
+import VTOLogger from '@/components/VTOLogger'
+import { Task } from '@/types'
+import { v4 as uuidv4 } from 'uuid'
 
 export default function Home() {
   const [tasks, setTasks] = useState<Task[]>([
@@ -29,12 +29,12 @@ export default function Home() {
       amount: 500,
       billable: true,
     },
-  ]);
+  ])
 
   const addTask = (newTask: Omit<Task, 'id'>) => {
-    const fullTask: Task = { id: uuidv4(), ...newTask };
-    setTasks((prev) => [...prev, fullTask]);
-  };
+    const fullTask: Task = { id: uuidv4(), ...newTask }
+    setTasks((prev) => [...prev, fullTask])
+  }
 
   const updateTask = (
     taskId: string,
@@ -50,13 +50,13 @@ export default function Home() {
                 field === 'amount'
                   ? parseFloat(value as string) || 0
                   : field === 'billable'
-                  ? Boolean(value)
-                  : (value as string | number | boolean), // ✅ ensure compatibility
+                    ? Boolean(value)
+                    : (value as string | number | boolean), // ✅ ensure compatibility
             }
           : task
       )
-    );
-  };  
+    )
+  }
 
   return (
     <main className="p-4 space-y-10 max-w-xl mx-auto">
@@ -67,5 +67,5 @@ export default function Home() {
       <FeedbackButton />
       <AIAssistant />
     </main>
-  );
+  )
 }

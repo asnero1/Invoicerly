@@ -1,16 +1,18 @@
-'use client';
+'use client'
 
-import React from 'react';
+import React from 'react'
 
 const fallbackAvatars = [
   '/avatars/avatar1.jpg',
   '/avatars/avatar2.jpg',
   '/avatars/avatar3.jpg',
   '/avatars/avatar4.jpg',
-];
+]
 
 const ProfileCard: React.FC<{ user: any }> = ({ user }) => {
-  const avatar = user.avatar || fallbackAvatars[Math.floor(Math.random() * fallbackAvatars.length)];
+  const avatar =
+    user.avatar ||
+    fallbackAvatars[Math.floor(Math.random() * fallbackAvatars.length)]
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-md">
@@ -27,7 +29,7 @@ const ProfileCard: React.FC<{ user: any }> = ({ user }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ProfileCard;
+export default ProfileCard

@@ -7,7 +7,7 @@
     "role": "Designer",
     "defaultEmail": "marnie@gmail.com",
     "otherEmails": ["marnie@foodforhealth.com.au"],
-    "phone": "+61438402050"  
+    "phone": "+61438402050"
   },
   {
     "id": "antonio",
@@ -17,6 +17,6 @@
     "role": "Builder",
     "defaultEmail": "antonio@email.com",
     "otherEmails": ["antonio@invoicerly.com"],
-    "phone": "+61488040450"  
+    "phone": "+61488040450"
   }
 ]

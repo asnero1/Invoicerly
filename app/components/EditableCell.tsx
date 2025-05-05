@@ -1,13 +1,13 @@
-'use client';
+'use client'
 
-import React, { useState } from 'react';
-import { Task } from '@/types';
+import React, { useState } from 'react'
+import { Task } from '@/types'
 
 interface EditableCellProps {
-  value: string | boolean;
-  taskId: string;
-  field: keyof Task;
-  onUpdate: (taskId: string, field: keyof Task, value: string | boolean) => void;
+  value: string | boolean
+  taskId: string
+  field: keyof Task
+  onUpdate: (taskId: string, field: keyof Task, value: string | boolean) => void
 }
 
 const EditableCell: React.FC<EditableCellProps> = ({
@@ -16,8 +16,8 @@ const EditableCell: React.FC<EditableCellProps> = ({
   field,
   onUpdate,
 }) => {
-  const [editing, setEditing] = useState(false);
-  const [currentValue, setCurrentValue] = useState(value.toString());
+  const [editing, setEditing] = useState(false)
+  const [currentValue, setCurrentValue] = useState(value.toString())
 
   const handleBlur = () => {
     if (currentValue !== value.toString()) {
@@ -25,13 +25,13 @@ const EditableCell: React.FC<EditableCellProps> = ({
         currentValue === 'true'
           ? true
           : currentValue === 'false'
-          ? false
-          : currentValue;
+            ? false
+            : currentValue
 
-      onUpdate(taskId, field, parsedValue);
+      onUpdate(taskId, field, parsedValue)
     }
-    setEditing(false);
-  };
+    setEditing(false)
+  }
 
   return editing ? (
     <input
@@ -40,7 +40,7 @@ const EditableCell: React.FC<EditableCellProps> = ({
       onBlur={handleBlur}
       onKeyDown={(e) => {
         if (e.key === 'Enter') {
-          (e.target as HTMLInputElement).blur();
+          ;(e.target as HTMLInputElement).blur()
         }
       }}
       autoFocus
@@ -53,7 +53,7 @@ const EditableCell: React.FC<EditableCellProps> = ({
     >
       {value?.toString() || '—'}
     </div>
-  );
-};
+  )
+}
 
-export default EditableCell;
+export default EditableCell

@@ -1,16 +1,16 @@
-'use client';
-import React from 'react';
-import { useRouter } from 'next/navigation';
+'use client'
+import React from 'react'
+import { useRouter } from 'next/navigation'
 
 const tiles = [
   { label: 'PayMe', description: 'Create & send invoices', path: '/payme' },
   { label: 'PayYou', description: 'Track what you owe', path: '/payyou' },
   { label: 'Find', description: 'Browse users & freelancers', path: '/find' },
   { label: 'Look', description: 'Show off your work (Spruke)', path: '/look' },
-];
+]
 
 const DashboardTiles = () => {
-  const router = useRouter();
+  const router = useRouter()
 
   return (
     <div className="grid grid-cols-2 gap-4 mb-8">
@@ -25,7 +25,7 @@ const DashboardTiles = () => {
         </div>
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default DashboardTiles;
+export default DashboardTiles

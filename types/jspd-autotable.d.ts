@@ -1,9 +1,9 @@
-import 'jspdf-autotable';
+import 'jspdf-autotable'
 
 declare module 'jspdf' {
   interface jsPDF {
     lastAutoTable: {
-      finalY: number;
-    };
+      finalY: number
+    }
   }
 }

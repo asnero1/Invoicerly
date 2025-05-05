@@ -1,15 +1,15 @@
 // File: app/components/FeedbackButton.tsx
-'use client';
+'use client'
 
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { toast } from 'sonner';
+import { useState } from 'react'
+import { Button } from '@/components/ui/button'
+import { toast } from 'sonner'
 
 export default function FeedbackButton() {
-  const [open, setOpen] = useState(false);
-  const [rating, setRating] = useState<number | null>(null);
-  const [comment, setComment] = useState('');
-  const [email, setEmail] = useState('');
+  const [open, setOpen] = useState(false)
+  const [rating, setRating] = useState<number | null>(null)
+  const [comment, setComment] = useState('')
+  const [email, setEmail] = useState('')
 
   const handleSubmit = async () => {
     const feedback = {
@@ -17,20 +17,20 @@ export default function FeedbackButton() {
       comment,
       email: email.trim() !== '' ? email : undefined,
       date: new Date().toISOString(),
-    };
+    }
 
     await fetch('/api/save-feedback', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(feedback),
-    });
+    })
 
-    toast.success('Thank you for your feedback!');
-    setOpen(false);
-    setRating(null);
-    setComment('');
-    setEmail('');
-  };
+    toast.success('Thank you for your feedback!')
+    setOpen(false)
+    setRating(null)
+    setComment('')
+    setEmail('')
+  }
 
   return (
     <div className="fixed bottom-4 left-4 z-40">
@@ -70,7 +70,11 @@ export default function FeedbackButton() {
             <Button onClick={handleSubmit} className="text-sm px-3 py-1">
               Submit
             </Button>
-            <Button variant="secondary" onClick={() => setOpen(false)} className="text-sm px-3 py-1">
+            <Button
+              variant="secondary"
+              onClick={() => setOpen(false)}
+              className="text-sm px-3 py-1"
+            >
               Cancel
             </Button>
           </div>
@@ -81,5 +85,5 @@ export default function FeedbackButton() {
         </Button>
       )}
     </div>
-  );
+  )
 }

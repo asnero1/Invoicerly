@@ -1,24 +1,28 @@
 // FILE: app/find/[userid]/page.tsx
-'use client';
+'use client'
 
-import React from 'react';
-import { useParams } from 'next/navigation';
-import TaskList from '@/components/TaskList';
-import { Task } from '@/types';
+import React from 'react'
+import { useParams } from 'next/navigation'
+import TaskList from '@/components/TaskList'
+import { Task } from '@/types'
 
-import { mockTasks } from '@/data/mockTasks';
+import { mockTasks } from '@/data/mockTasks'
 
 export default function UserProfilePage() {
-  const params = useParams();
-  const userId = params?.userid;
+  const params = useParams()
+  const userId = params?.userid
 
-  const handleUpdate = (taskId: string, field: keyof Task, value: string | number | boolean) => {
-    console.log(`Updated ${taskId}: ${field} => ${value}`);
-  };
+  const handleUpdate = (
+    taskId: string,
+    field: keyof Task,
+    value: string | number | boolean
+  ) => {
+    console.log(`Updated ${taskId}: ${field} => ${value}`)
+  }
 
   const handleGenerateInvoice = (taskId: string) => {
-    console.log(`Generate invoice for task: ${taskId}`);
-  };
+    console.log(`Generate invoice for task: ${taskId}`)
+  }
 
   return (
     <div className="p-4">
@@ -29,5 +33,5 @@ export default function UserProfilePage() {
         onGenerateInvoice={handleGenerateInvoice}
       />
     </div>
-  );
+  )
 }

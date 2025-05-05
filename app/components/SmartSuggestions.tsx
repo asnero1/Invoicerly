@@ -1,44 +1,44 @@
 // File: app/components/SmartSuggestions.tsx
-'use client';
+'use client'
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'
 
 const suggestions = [
   '🧾 Tip: Log any task with “invoice”, and we’ll mark it billable.',
   '📅 Tip: Say “due Friday” in your task to auto-add a due date.',
   '📁 Tip: Use keywords like “health” or “creative” to auto-tag.',
   '🎙️ Tip: Use the Speak button to quickly voice log jobs on the go.',
-  '🔔 Tip: Enable Smart Nudges in Settings to catch invoice requests from clients.'
-];
+  '🔔 Tip: Enable Smart Nudges in Settings to catch invoice requests from clients.',
+]
 
 export default function SmartSuggestions() {
-  const [dismissed, setDismissed] = useState(false);
-  const [current, setCurrent] = useState(0);
+  const [dismissed, setDismissed] = useState(false)
+  const [current, setCurrent] = useState(0)
 
   useEffect(() => {
-    const local = localStorage.getItem('suggestionsDismissed');
-    setDismissed(local === 'true');
-  }, []);
+    const local = localStorage.getItem('suggestionsDismissed')
+    setDismissed(local === 'true')
+  }, [])
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % suggestions.length);
-    }, 8000);
-    return () => clearInterval(interval);
-  }, []);
+      setCurrent((prev) => (prev + 1) % suggestions.length)
+    }, 8000)
+    return () => clearInterval(interval)
+  }, [])
 
   if (dismissed) {
     return (
       <p
         onClick={() => {
-          setDismissed(false);
-          localStorage.setItem('suggestionsDismissed', 'false');
+          setDismissed(false)
+          localStorage.setItem('suggestionsDismissed', 'false')
         }}
         className="text-xs text-gray-400 text-center cursor-pointer hover:underline"
       >
         Suggestions hidden. Tap to show.
       </p>
-    );
+    )
   }
 
   return (
@@ -47,8 +47,8 @@ export default function SmartSuggestions() {
         <span>{suggestions[current]}</span>
         <button
           onClick={() => {
-            setDismissed(true);
-            localStorage.setItem('suggestionsDismissed', 'true');
+            setDismissed(true)
+            localStorage.setItem('suggestionsDismissed', 'true')
           }}
           className="text-xs text-yellow-700 hover:underline"
         >
@@ -56,5 +56,5 @@ export default function SmartSuggestions() {
         </button>
       </div>
     </div>
-  );
+  )
 }

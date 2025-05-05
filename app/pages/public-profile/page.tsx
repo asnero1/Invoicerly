@@ -1,47 +1,52 @@
-'use client';
+'use client'
 
-import { useEffect, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
-import { Button } from '@/components/ui/button';
-import { ThumbsUp } from 'lucide-react';
+import { useEffect, useState } from 'react'
+import { useSearchParams } from 'next/navigation'
+import { Button } from '@/components/ui/button'
+import { ThumbsUp } from 'lucide-react'
 
 interface UserProfile {
-  name: string;
-  role: string;
-  bio?: string;
-  avatar?: string;
-  likes?: number;
-  contactEnabled?: boolean;
+  name: string
+  role: string
+  bio?: string
+  avatar?: string
+  likes?: number
+  contactEnabled?: boolean
 }
 
 export default function PublicProfilePage() {
-  const searchParams = useSearchParams();
-  const username = searchParams.get('user') || '';
-  const [profile, setProfile] = useState<UserProfile | null>(null);
-  const [liked, setLiked] = useState(false);
+  const searchParams = useSearchParams()
+  const username = searchParams.get('user') || ''
+  const [profile, setProfile] = useState<UserProfile | null>(null)
+  const [liked, setLiked] = useState(false)
 
   useEffect(() => {
-    if (!username) return;
+    if (!username) return
     fetch(`/data/users.json`)
       .then((res) => res.json())
       .then((data) => {
-        const match = data.find((u: UserProfile) =>
-          u.name.toLowerCase().replace(/\s+/g, '-') === username.toLowerCase()
-        );
-        if (match) setProfile(match);
-      });
+        const match = data.find(
+          (u: UserProfile) =>
+            u.name.toLowerCase().replace(/\s+/g, '-') === username.toLowerCase()
+        )
+        if (match) setProfile(match)
+      })
 
-    setLiked(localStorage.getItem(`liked-profile-${username}`) === 'true');
-  }, [username]);
+    setLiked(localStorage.getItem(`liked-profile-${username}`) === 'true')
+  }, [username])
 
   const handleLike = () => {
-    setLiked(true);
-    localStorage.setItem(`liked-profile-${username}`, 'true');
-    setProfile((prev) => prev ? { ...prev, likes: (prev.likes || 0) + 1 } : null);
-  };
+    setLiked(true)
+    localStorage.setItem(`liked-profile-${username}`, 'true')
+    setProfile((prev) =>
+      prev ? { ...prev, likes: (prev.likes || 0) + 1 } : null
+    )
+  }
 
   if (!profile) {
-    return <div className="p-6 text-center text-gray-500">Loading profile...</div>;
+    return (
+      <div className="p-6 text-center text-gray-500">Loading profile...</div>
+    )
   }
 
   return (
@@ -62,7 +67,9 @@ export default function PublicProfilePage() {
         <Button
           onClick={handleLike}
           disabled={liked}
-          className={liked ? 'bg-gray-300 text-gray-600 cursor-not-allowed' : ''}
+          className={
+            liked ? 'bg-gray-300 text-gray-600 cursor-not-allowed' : ''
+          }
         >
           <ThumbsUp size={16} className="mr-2" /> {liked ? 'Liked' : 'Like'}
         </Button>
@@ -77,5 +84,5 @@ export default function PublicProfilePage() {
         </a>
       )}
     </div>
-  );
+  )
 }
