@@ -69,14 +69,14 @@ export default function HelpPage() {
         )}
         {filteredFaqs.map((faq, idx) => (
           <div key={idx} className="bg-white shadow p-4 rounded-lg">
-            <h2 className="font-semibold">â" {faq.q}</h2>
+            <h2 className="font-semibold">ï¿½" {faq.q}</h2>
             <p className="text-sm text-gray-700 mt-1">{faq.a}</p>
           </div>
         ))}
       </motion.div>
 
       <div className="pt-8 space-y-2">
-        <h2 className="text-xl font-bold">ğŸ"¨ Still stuck?</h2>
+        <h2 className="text-xl font-bold">ï¿½"ï¿½ Still stuck?</h2>
         <p className="text-sm text-gray-600">
           Send us your question and weâ€™ll get back to you:
         </p>

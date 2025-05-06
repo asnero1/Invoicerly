@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ThumbsUp } from 'lucide-react'
 
@@ -24,14 +23,16 @@ export default function LookPage() {
 
   const handleLike = (id: string) => {
     setSprukes((prev) =>
-      prev.map((s) => (s.id === id ? { ...s, likes: s.likes + 1 } : s))
+      prev.map((s) =>
+        s.id === id ? { ...s, likes: s.likes + 1 } : s
+      )
     )
     localStorage.setItem(`spruke-liked-${id}`, 'true')
   }
 
   return (
     <div className="max-w-5xl mx-auto p-6 space-y-6">
-      <h1 className="text-3xl font-bold">🎥 Look �" Spotlight Posts</h1>
+      <h1 className="text-3xl font-bold">🎥 Look – Spotlight Posts</h1>
 
       {sprukes.length === 0 ? (
         <p className="text-gray-500 italic">No sprukes available yet.</p>
@@ -66,7 +67,7 @@ export default function LookPage() {
                   <span>{s.likes} Likes</span>
                   <button
                     onClick={() => handleLike(s.id)}
-                    className="flex items-center gap-1 text-blue-600 hover:text-blue-800"
+                    className="flex items-center gap-1 text-blue-600 hover:text-blue-800 disabled:opacity-50"
                     disabled={
                       localStorage.getItem(`spruke-liked-${s.id}`) === 'true'
                     }
@@ -82,4 +83,3 @@ export default function LookPage() {
     </div>
   )
 }
-

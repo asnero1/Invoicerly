@@ -36,7 +36,7 @@ export default function FindPage() {
 
   return (
     <div className="p-6 space-y-6">
-      <h1 className="text-3xl font-bold">ğŸ" Find Professionals</h1>
+      <h1 className="text-3xl font-bold">ï¿½"ï¿½ Find Professionals</h1>
 
       <div className="flex flex-col md:flex-row md:items-center gap-4">
         <input

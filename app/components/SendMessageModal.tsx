@@ -116,7 +116,7 @@ export default function SendMessageModal({
           âœ–
         </button>
         <h2 className="text-xl font-bold">
-          ðŸ"© New Message to {recipient.name}
+          ï¿½"ï¿½ New Message to {recipient.name}
         </h2>
 
         <Input
@@ -133,7 +133,7 @@ export default function SendMessageModal({
 
         {suggestions.length > 0 && (
           <div className="text-sm text-gray-500 space-y-1">
-            <p className="font-semibold">ðŸ'¡ Suggestions:</p>
+            <p className="font-semibold">ï¿½'ï¿½ Suggestions:</p>
             {suggestions.map((s, i) => (
               <button
                 key={i}

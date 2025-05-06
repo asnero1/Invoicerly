@@ -12,9 +12,9 @@ const onboardingNudge = {
 
 const routineMessages = [
   { text: 'ğŸ§  Donâ€™t forget to invoice Marnie!', route: '/generate-invoice' },
-  { text: 'ğŸ"¦ You have unbilled tasks!', route: '/task' },
-  { text: 'ğŸ'¬ You were just paid. Log more work?', route: '/task' },
-  { text: 'ğŸ"¸ Snap your receipts while itâ€™s fresh!', route: '/task' },
+  { text: 'â³ You have unbilled tasks!', route: '/task' },
+  { text: 'ğŸ’¸ You were just paid. Log more work?', route: '/task' },
+  { text: 'ğŸ“¸ Snap your receipts while itâ€™s fresh!', route: '/task' },
 ]
 
 export default function Nudge() {
@@ -85,4 +85,3 @@ export default function Nudge() {
     </div>
   )
 }
-

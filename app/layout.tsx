@@ -7,8 +7,8 @@ import MainWrapper from './components/MainWrapper'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'Poni �" Voice Task Output Engine',
-  description: 'Say it. Log it. Get paid. Powered by VTO.',
+  title: 'Poni – Voice Task Output Engine',
+  description: 'Powered by VTO – the Voice Task Output Engine. Speak. Log. Invoice. Done.',
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {
