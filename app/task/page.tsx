@@ -57,7 +57,7 @@ export default function TaskPage() {
   return (
     <div className="max-w-5xl mx-auto px-4 py-8 space-y-10">
       <header className="text-center">
-        <h1 className="text-3xl font-bold">📝 Tasks</h1>
+        <h1 className="text-3xl font-bold">�"� Tasks</h1>
         <p className="text-gray-500 mt-2">Log and manage your tasks here.</p>
       </header>
 
@@ -73,16 +73,18 @@ export default function TaskPage() {
 
       {/* ✅ Floating Smart Suggestions */}
       <SmartSuggestionBox
-        suggestions={[
-          { message: '🧠 Group tasks by client for cleaner exports.' },
-          { message: '🗓️ Add due dates to keep work on track.' },
-          { message: '🎷 Attach voice notes when on the go.' },
-          { message: '💼 Mark billable tasks for invoice generation.' },
-        ]}
-        onApply={() => {
-          console.log('Applied suggestion')
-        }}
-      />
+  suggestions={[
+    { message: '🧠 Group tasks by client for cleaner exports.' },
+    { message: '📅 Add due dates to keep work on track.' },
+    { message: '🎤 Attach voice notes when on the go.' },
+    { message: '💼 Mark billable tasks for invoice generation.' }
+  ]}
+  onApply={() => {
+    console.log('Applied suggestion');
+  }}
+/>
+
     </div>
   )
 }
+

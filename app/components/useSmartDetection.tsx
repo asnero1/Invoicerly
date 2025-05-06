@@ -36,3 +36,4 @@ export const useSmartDetection = (
 
   return { suggestedClient, suggestedBillable }
 }
+

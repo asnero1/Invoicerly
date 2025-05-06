@@ -12,7 +12,7 @@ export default function LandingPage() {
           Turn your voice into invoices.
         </p>
         <p className="mb-6 text-gray-700">
-          Powered by VTO â€” the Voice Task Output Engine. Speak. Log. Invoice.
+          Powered by VTO â€" the Voice Task Output Engine. Speak. Log. Invoice.
           Done.
         </p>
         <Link
@@ -68,7 +68,7 @@ export default function LandingPage() {
           href="/find"
           className="inline-block text-blue-600 underline hover:text-blue-800 text-sm mb-6"
         >
-          Explore the Directory â†’
+          Explore the Directory â†'
         </Link>
         <div className="flex justify-center gap-6 mt-6 flex-wrap">
           {[
@@ -96,7 +96,7 @@ export default function LandingPage() {
         <h3 className="text-xl font-semibold mb-4">What is VTO?</h3>
         <p className="text-gray-700 max-w-2xl mx-auto">
           VTO (Voice Task Output) is your invisible admin. Speak tasks out loud,
-          and let Poni turn them into billable logs, summaries, and invoices â€”
+          and let Poni turn them into billable logs, summaries, and invoices â€"
           instantly.
         </p>
         <div className="mt-6">
@@ -158,8 +158,9 @@ export default function LandingPage() {
 
       {/* Footer */}
       <footer className="text-center text-sm py-8 text-gray-500">
-        Â© {new Date().getFullYear()} Poni â€” Voice Task Output Engine
+        Â© {new Date().getFullYear()} Poni â€" Voice Task Output Engine
       </footer>
     </main>
   )
 }
+

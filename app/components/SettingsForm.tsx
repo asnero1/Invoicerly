@@ -46,3 +46,4 @@ const SettingsForm: React.FC<{ user: any }> = ({ user }) => {
 }
 
 export default SettingsForm
+

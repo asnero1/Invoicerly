@@ -21,3 +21,4 @@ export function generateInvoicesFromTasks(): Record<string, any[]> {
 
   return grouped
 }
+

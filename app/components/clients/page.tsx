@@ -31,7 +31,7 @@ export default function ClientPage() {
 
   return (
     <div className="p-6 space-y-4">
-      <h1 className="text-2xl font-semibold">ğŸ“‹ Client Task Log</h1>
+      <h1 className="text-2xl font-semibold">ğŸ"‹ Client Task Log</h1>
       <TaskList
         tasks={tasks}
         onUpdate={handleUpdateTask}
@@ -40,3 +40,4 @@ export default function ClientPage() {
     </div>
   )
 }
+

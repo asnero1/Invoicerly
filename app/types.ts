@@ -67,3 +67,4 @@ export interface Invoice {
   description: string
   amount: number
 }
+

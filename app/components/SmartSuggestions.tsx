@@ -5,10 +5,10 @@ import { useEffect, useState } from 'react'
 
 const suggestions = [
   '🧾 Tip: Log any task with “invoice”, and we’ll mark it billable.',
-  '📅 Tip: Say “due Friday” in your task to auto-add a due date.',
-  '📁 Tip: Use keywords like “health” or “creative” to auto-tag.',
+  '�"� Tip: Say “due Friday” in your task to auto-add a due date.',
+  '�"� Tip: Use keywords like “health” or “creative” to auto-tag.',
   '🎙️ Tip: Use the Speak button to quickly voice log jobs on the go.',
-  '🔔 Tip: Enable Smart Nudges in Settings to catch invoice requests from clients.',
+  '�"" Tip: Enable Smart Nudges in Settings to catch invoice requests from clients.',
 ]
 
 export default function SmartSuggestions() {
@@ -58,3 +58,4 @@ export default function SmartSuggestions() {
     </div>
   )
 }
+

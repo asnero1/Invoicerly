@@ -42,7 +42,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ onSubmit }) => {
       onSubmit={handleSubmit}
       className="bg-white shadow rounded-xl p-6 space-y-4 max-w-2xl mx-auto"
     >
-      <h2 className="text-xl font-bold">ğŸ“ Log a New Task</h2>
+      <h2 className="text-xl font-bold">ğŸ" Log a New Task</h2>
 
       <div className="space-y-4">
         <div>
@@ -131,3 +131,4 @@ const TaskForm: React.FC<TaskFormProps> = ({ onSubmit }) => {
 }
 
 export default TaskForm
+

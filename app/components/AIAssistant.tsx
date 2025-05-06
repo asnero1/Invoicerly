@@ -1,4 +1,4 @@
-// ✅ FILE: /components/AIAssistant.tsx – Floating AI Assistant
+// ✅ FILE: /components/AIAssistant.tsx �" Floating AI Assistant
 
 'use client'
 
@@ -15,15 +15,17 @@ const AIAssistant: React.FC = () => {
     setLoading(true)
     setResponse('')
 
-    const res = await fetch('/api/ask-ai', {
+    const res = (await fetch('/api/ask-ai', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ prompt }),
-    })
-
-    const data = await res.json()
-    setResponse(data.reply || '⚠️ No response received.')
-    setLoading(false)
+    })) as Response;
+    
+    const data = await res.json();
+    
+    setResponse(data.reply || '⚠️ No response received.');
+    setLoading(false);
+    
   }
 
   return (
@@ -75,3 +77,4 @@ const AIAssistant: React.FC = () => {
 }
 
 export default AIAssistant
+

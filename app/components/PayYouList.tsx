@@ -38,7 +38,7 @@ export default function PayYouList({
           <div>
             <h3 className="font-semibold">{item.title}</h3>
             <p>
-              ${item.amount} â€“ Due:{' '}
+              ${item.amount} â€" Due:{' '}
               {new Date(item.dueDate).toLocaleDateString()}
             </p>
             {item.description && (
@@ -56,3 +56,4 @@ export default function PayYouList({
     </div>
   )
 }
+

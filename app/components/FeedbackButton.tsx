@@ -81,9 +81,10 @@ export default function FeedbackButton() {
         </div>
       ) : (
         <Button onClick={() => setOpen(true)} className="text-xs px-3 py-1">
-          ðŸ’¬ Feedback
+          ðŸ'¬ Feedback
         </Button>
       )}
     </div>
   )
 }
+

@@ -13,3 +13,4 @@ export const authConfig = {
   ],
   inviteCodes: ['INVOICERLY2024', 'TEST123'], // ✅ for Phase 2
 }
+

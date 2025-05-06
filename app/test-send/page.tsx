@@ -12,9 +12,9 @@ export default function TestSendPage() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        phoneNumber: '+61412345678', // ğŸ” Replace with your test number
+        phoneNumber: '+61412345678', // ğŸ" Replace with your test number
         fileName: 'invoice-test-001.pdf',
-        message: 'Here is your invoice via WhatsApp ğŸ“©',
+        message: 'Here is your invoice via WhatsApp ğŸ"©',
       }),
     })
 
@@ -33,3 +33,4 @@ export default function TestSendPage() {
     </div>
   )
 }
+

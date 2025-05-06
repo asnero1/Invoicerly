@@ -6,3 +6,4 @@ export interface User {
   phone?: string
   otherEmails?: string[]
 }
+

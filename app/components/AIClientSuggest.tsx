@@ -44,9 +44,10 @@ const AIClientSuggest: React.FC<Props> = ({
 
   return (
     <p className="text-sm text-blue-600 mt-1">
-      ğŸ’¡ Suggested client: <strong>{suggestedClient}</strong>
+      ğŸ'¡ Suggested client: <strong>{suggestedClient}</strong>
     </p>
   )
 }
 
 export default AIClientSuggest
+

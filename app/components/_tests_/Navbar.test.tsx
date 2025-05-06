@@ -8,3 +8,4 @@ describe('Navbar', () => {
     expect(screen.getByRole('navigation')).toBeInTheDocument()
   })
 })
+

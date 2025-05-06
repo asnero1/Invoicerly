@@ -22,7 +22,7 @@ const ContactClientModal: React.FC<Props> = ({ client, onClose }) => {
           Ã—
         </button>
 
-        {/* ðŸ’¼ Client Details */}
+        {/* ðŸ'¼ Client Details */}
         <h2 className="text-xl font-bold mb-4">Contact {client.name}</h2>
         <p className="text-sm text-gray-700 mb-2">
           <strong>Role:</strong> {client.role}
@@ -44,7 +44,7 @@ const ContactClientModal: React.FC<Props> = ({ client, onClose }) => {
           </ul>
         </div>
 
-        {/* ðŸ“Ž Actions (Placeholder for now) */}
+        {/* ðŸ"Ž Actions (Placeholder for now) */}
         <div className="mt-6 text-right">
           <button
             className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800"
@@ -59,3 +59,4 @@ const ContactClientModal: React.FC<Props> = ({ client, onClose }) => {
 }
 
 export default ContactClientModal
+

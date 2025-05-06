@@ -54,7 +54,7 @@ const InvoiceDashboard: React.FC = () => {
 
   return (
     <div className="p-6 bg-white shadow rounded mt-6 relative">
-      <h2 className="text-2xl font-bold mb-4">ðŸ“‹ All Invoices</h2>
+      <h2 className="text-2xl font-bold mb-4">ðŸ"‹ All Invoices</h2>
       {invoices.length === 0 ? (
         <p className="text-gray-500">No invoices found.</p>
       ) : (
@@ -80,13 +80,13 @@ const InvoiceDashboard: React.FC = () => {
                     onClick={() => handleExport(inv.id, 'pdf')}
                     className="text-blue-600 hover:underline text-sm"
                   >
-                    ðŸ“„ PDF
+                    ðŸ"„ PDF
                   </button>
                   <button
                     onClick={() => handleExport(inv.id, 'csv')}
                     className="text-green-600 hover:underline text-sm"
                   >
-                    ðŸ“Š CSV
+                    ðŸ"Š CSV
                   </button>
                 </td>
               </tr>
@@ -102,3 +102,4 @@ const InvoiceDashboard: React.FC = () => {
 }
 
 export default InvoiceDashboard
+

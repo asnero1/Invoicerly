@@ -69,10 +69,11 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ success: true, fileName })
   } catch (error) {
-    console.error('ðŸ”¥ Fatal error in POST /post-spruke:', error)
+    console.error('ðŸ"¥ Fatal error in POST /post-spruke:', error)
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }
     )
   }
 }
+

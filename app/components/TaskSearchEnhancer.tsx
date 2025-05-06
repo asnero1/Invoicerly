@@ -36,3 +36,4 @@ const TaskSearchEnhancer: React.FC<Props> = ({
 }
 
 export default TaskSearchEnhancer
+

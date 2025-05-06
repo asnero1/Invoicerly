@@ -80,9 +80,10 @@ export default function PublicProfilePage() {
           href={`/contact?to=${encodeURIComponent(profile.name)}&spruke=general`}
           className="text-blue-600 hover:underline block text-sm"
         >
-          ðŸ“§ Contact This Pro
+          ðŸ"§ Contact This Pro
         </a>
       )}
     </div>
   )
 }
+

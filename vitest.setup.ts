@@ -1,14 +1,12 @@
-import '@testing-library/jest-dom'
-import { vi } from 'vitest'
-import type { vi as viType } from 'vitest'
+import '@testing-library/jest-dom';
+import { vi as vitestVi } from 'vitest';
 
-// Extend globalThis with vi (no circular typing)
+// Extend globalThis to recognize `vi` mock utility
 declare global {
-  // eslint-disable-next-line no-var
-  var vi: typeof viType
+  var vi: typeof vitestVi;
   interface Window {
-    vi: typeof viType
+    vi: typeof vitestVi;
   }
 }
 
-globalThis.vi = vi
+globalThis.vi = vitestVi;

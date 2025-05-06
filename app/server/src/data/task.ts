@@ -20,3 +20,4 @@ export const sampleTasks: Task[] = [
 export function getTasks(): Task[] {
   return sampleTasks
 }
+

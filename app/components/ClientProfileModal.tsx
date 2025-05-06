@@ -60,3 +60,4 @@ const ClientProfileModal: React.FC<Props> = ({ task, onClose }) => {
 }
 
 export default ClientProfileModal
+

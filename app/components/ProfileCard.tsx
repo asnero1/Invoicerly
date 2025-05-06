@@ -33,3 +33,4 @@ const ProfileCard: React.FC<{ user: any }> = ({ user }) => {
 }
 
 export default ProfileCard
+

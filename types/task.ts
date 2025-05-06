@@ -13,3 +13,4 @@ export type Task = {
   amount?: number
   done?: boolean // ✅ required for onMarkDone
 }
+

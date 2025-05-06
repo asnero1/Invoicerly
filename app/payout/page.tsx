@@ -78,7 +78,7 @@ export default function PayOutPage() {
 
   return (
     <div className="p-6 space-y-6">
-      <h1 className="text-3xl font-bold">ðŸ“¤ PayOut â€“ Payments You've Made</h1>
+      <h1 className="text-3xl font-bold">ðŸ"¤ PayOut â€" Payments You've Made</h1>
 
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <Input
@@ -166,7 +166,7 @@ export default function PayOutPage() {
                 <p className="font-semibold">{p.name}</p>
                 <p className="text-sm text-gray-600">{p.contact}</p>
                 <p className="text-sm flex items-center gap-2">
-                  {p.payid} â€” {p.bank}
+                  {p.payid} â€" {p.bank}
                   <Button
                     className="text-xs px-2 py-1"
                     onClick={() => {
@@ -206,3 +206,4 @@ export default function PayOutPage() {
     </div>
   )
 }
+

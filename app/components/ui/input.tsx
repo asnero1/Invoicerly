@@ -6,3 +6,4 @@ export const Input = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
     {...props}
   />
 )
+

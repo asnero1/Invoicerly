@@ -68,3 +68,4 @@ export default function InvoicePreviewModal({ task, onClose }: Props) {
     </Dialog>
   )
 }
+

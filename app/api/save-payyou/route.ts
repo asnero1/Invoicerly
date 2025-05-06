@@ -71,3 +71,4 @@ export async function PUT(req: NextRequest) {
     return NextResponse.json({ status: 'error', error: err }, { status: 500 })
   }
 }
+

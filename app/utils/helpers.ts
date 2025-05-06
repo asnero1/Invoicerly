@@ -21,3 +21,4 @@ export function saveLocalTasks(tasks: Task[]): void {
     console.error('Failed to save tasks to localStorage:', error)
   }
 }
+

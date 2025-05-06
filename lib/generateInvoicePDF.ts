@@ -46,3 +46,4 @@ export async function generateInvoicePDF(task: {
     publicUrl: `/invoices/${fileName}`,
   }
 }
+

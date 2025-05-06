@@ -17,3 +17,4 @@ export function AvatarImage({ src }: { src?: string }) {
 export function AvatarFallback({ children }: { children: React.ReactNode }) {
   return <>{children}</>
 }
+

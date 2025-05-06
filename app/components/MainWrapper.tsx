@@ -44,3 +44,4 @@ export default function MainWrapper({ children }: { children: ReactNode }) {
     </SessionProvider>
   )
 }
+

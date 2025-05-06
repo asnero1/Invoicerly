@@ -9,3 +9,4 @@ export async function transcribeAudio(file: File): Promise<string> {
     }, 1500)
   })
 }
+

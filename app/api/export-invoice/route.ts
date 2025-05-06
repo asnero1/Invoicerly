@@ -65,7 +65,7 @@ export async function POST(req: NextRequest) {
       const doc = new PDFDocument({
         size: 'A4',
         margin: 50,
-        font: fontPath, // ðŸ’¥ Use custom font from the very start
+        font: fontPath, // ðŸ'¥ Use custom font from the very start
       })
 
       const chunks: Uint8Array[] = []
@@ -109,3 +109,4 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Server error' }, { status: 500 })
   }
 }
+

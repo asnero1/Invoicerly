@@ -31,7 +31,7 @@ export default function LookPage() {
 
   return (
     <div className="max-w-5xl mx-auto p-6 space-y-6">
-      <h1 className="text-3xl font-bold">🎥 Look — Spotlight Posts</h1>
+      <h1 className="text-3xl font-bold">🎥 Look �" Spotlight Posts</h1>
 
       {sprukes.length === 0 ? (
         <p className="text-gray-500 italic">No sprukes available yet.</p>
@@ -82,3 +82,4 @@ export default function LookPage() {
     </div>
   )
 }
+

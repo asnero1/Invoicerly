@@ -24,10 +24,11 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ success: true, likes: sprukes[index].likes })
   } catch (err) {
-    console.error('ðŸ’¥ Error liking spruke:', err)
+    console.error('ðŸ'¥ Error liking spruke:', err)
     return NextResponse.json(
       { error: 'Internal Server Error' },
       { status: 500 }
     )
   }
 }
+

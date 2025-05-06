@@ -8,3 +8,4 @@ export async function POST() {
 
   return NextResponse.json({ status: 'ok', message: 'Logged out successfully' })
 }
+

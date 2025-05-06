@@ -48,7 +48,7 @@ export default function InvoicePage() {
         >
           {emailOptions.map((option) => (
             <option key={option.value} value={option.value}>
-              {option.label} â€” {option.value}
+              {option.label} â€" {option.value}
             </option>
           ))}
         </select>
@@ -76,10 +76,10 @@ export default function InvoicePage() {
 
       <div className="bg-white p-6 border border-dashed border-gray-300 rounded text-center text-gray-500">
         <p className="text-sm">
-          ðŸ’¡ This is where the invoice builder or preview will go soon.
+          ðŸ'¡ This is where the invoice builder or preview will go soon.
         </p>
         <p className="text-xs mt-1">
-          WIP â€“ data integration & PDF generation coming ðŸ”§
+          WIP â€" data integration & PDF generation coming ðŸ"§
         </p>
       </div>
 
@@ -99,7 +99,7 @@ export default function InvoicePage() {
                 <div>
                   <p className="font-medium text-sm">Client: {inv.client}</p>
                   <p className="text-xs text-gray-500">
-                    {inv.date} â€” ${inv.amount} ({inv.status})
+                    {inv.date} â€" ${inv.amount} ({inv.status})
                   </p>
                 </div>
                 <button
@@ -125,3 +125,4 @@ export default function InvoicePage() {
     </div>
   )
 }
+

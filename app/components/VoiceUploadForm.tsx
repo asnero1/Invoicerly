@@ -40,3 +40,4 @@ export default function VoiceUploadForm({ onTranscription }: Props) {
     </div>
   )
 }
+

@@ -30,7 +30,7 @@ export default function ReadyToTapModal({
         animate={{ scale: 1, opacity: 1 }}
         className="bg-white p-6 rounded-xl shadow-lg text-center space-y-3"
       >
-        <p className="text-lg font-semibold">ðŸ“¡ Ready to Tap</p>
+        <p className="text-lg font-semibold">ðŸ"¡ Ready to Tap</p>
         <p className="text-sm text-gray-500">
           Awaiting contactless payment for:
         </p>
@@ -44,3 +44,4 @@ export default function ReadyToTapModal({
     </div>
   )
 }
+

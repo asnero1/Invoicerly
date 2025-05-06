@@ -29,7 +29,7 @@ const TaskLogger: React.FC = () => {
 
   const [tagInput, setTagInput] = useState('')
 
-  // ğŸ“š Handle Input Changes
+  // ğŸ"š Handle Input Changes
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
@@ -144,7 +144,7 @@ const TaskLogger: React.FC = () => {
     <div className="p-4 bg-white shadow rounded mt-4">
       <h2 className="text-xl font-bold mb-2">Log a New Task</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
-        {/* ğŸ“ Task Description */}
+        {/* ğŸ" Task Description */}
         <input
           type="text"
           name="description"
@@ -166,7 +166,7 @@ const TaskLogger: React.FC = () => {
           required
         />
 
-        {/* ğŸ“… Task Date */}
+        {/* ğŸ"… Task Date */}
         <input
           type="date"
           name="date"
@@ -176,7 +176,7 @@ const TaskLogger: React.FC = () => {
           required
         />
 
-        {/* ğŸ“† Due Date */}
+        {/* ğŸ"† Due Date */}
         <input
           type="date"
           name="dueDate"
@@ -238,7 +238,7 @@ const TaskLogger: React.FC = () => {
           <span>Billable</span>
         </label>
 
-        {/* ğŸ“ Attachment */}
+        {/* ğŸ" Attachment */}
         <input
           type="file"
           name="attachment"
@@ -281,3 +281,4 @@ const TaskLogger: React.FC = () => {
 }
 
 export default TaskLogger
+

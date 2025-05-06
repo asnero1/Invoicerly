@@ -33,3 +33,4 @@ export function exportToPDF(data: any[], filename = 'export.pdf') {
 
   doc.save(filename)
 }
+

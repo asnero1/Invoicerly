@@ -27,7 +27,7 @@ export async function POST(req: Request) {
 
     const rawText = completion.choices[0].message.content || ''
     const suggestions = rawText
-      .split(/\n|•|–|-/)
+      .split(/\n|•|�"|-/)
       .map((s) => s.trim())
       .filter(Boolean)
       .slice(0, 3)
@@ -38,3 +38,4 @@ export async function POST(req: Request) {
     return NextResponse.json({ suggestions: [] }, { status: 200 })
   }
 }
+

@@ -62,19 +62,19 @@ export default function TaskCard({
               <h2 className="text-xl font-semibold text-gray-800 mb-1">
                 {task.description}
               </h2>
-              <p className="text-sm text-gray-500">ğŸ“ {task.client}</p>
+              <p className="text-sm text-gray-500">ğŸ" {task.client}</p>
             </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-600">
             <p>
-              ğŸ“… <strong>Logged:</strong> {task.date}
+              ğŸ"… <strong>Logged:</strong> {task.date}
             </p>
             <p>
               â° <strong>Due:</strong> {task.dueDate || 'N/A'}
             </p>
             <p>
-              ğŸ’° <strong>Amount:</strong> ${task.amount?.toFixed(2) || '0.00'}
+              ğŸ'° <strong>Amount:</strong> ${task.amount?.toFixed(2) || '0.00'}
             </p>
             <p>
               âœ… <strong>Billable:</strong> {task.billable ? 'Yes' : 'No'}
@@ -83,7 +83,7 @@ export default function TaskCard({
 
           {task.attachment && (
             <p className="text-sm text-blue-600 underline">
-              ğŸ“{' '}
+              ğŸ"{' '}
               <a href={task.attachment} target="_blank" rel="noreferrer">
                 Attachment
               </a>
@@ -125,3 +125,4 @@ export default function TaskCard({
     </motion.div>
   )
 }
+

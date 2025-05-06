@@ -34,7 +34,7 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4">
-      <h1 className="text-3xl font-bold mb-4">ğŸ” Login to Invoicerly MVP</h1>
+      <h1 className="text-3xl font-bold mb-4">ğŸ" Login to Invoicerly MVP</h1>
       <input
         value={email}
         onChange={(e) => setEmail(e.target.value)}
@@ -59,3 +59,4 @@ export default function LoginPage() {
     </div>
   )
 }
+

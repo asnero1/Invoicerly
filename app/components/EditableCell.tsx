@@ -51,9 +51,10 @@ const EditableCell: React.FC<EditableCellProps> = ({
       onClick={() => setEditing(true)}
       className="cursor-pointer px-1 py-0.5 hover:bg-gray-100 rounded"
     >
-      {value?.toString() || 'â€”'}
+      {value?.toString() || 'â€"'}
     </div>
   )
 }
 
 export default EditableCell
+
