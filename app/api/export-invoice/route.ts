@@ -65,7 +65,7 @@ export async function POST(req: NextRequest) {
       const doc = new PDFDocument({
         size: 'A4',
         margin: 50,
-        font: fontPath, // ðŸ'¥ Use custom font from the very start
+        font: fontPath, // ï¿½'ï¿½ Use custom font from the very start
       })
 
       const chunks: Uint8Array[] = []
