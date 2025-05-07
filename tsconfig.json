@@ -32,11 +32,16 @@
     ]
   },
   "include": [
-  "next-env.d.ts",
-  "**/*.ts",
-  "**/*.tsx",
-  "types"
-],
-"exclude": ["node_modules"]
-
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "types"
+  ],
+  "exclude": [
+    "node_modules",
+    "vitest.config.ts",
+    "**/*.test.ts",
+    "**/*.spec.ts"
+  ]
 }
+
