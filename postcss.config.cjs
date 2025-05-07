@@ -1,7 +1,6 @@
-// ✅ FILE: postcss.config.cjs
 module.exports = {
   plugins: {
-    '@tailwindcss/postcss': {}, // ✅ NEW WAY
+    tailwindcss: {},     // ✅ Correct way
     autoprefixer: {},
   },
-}
+};
