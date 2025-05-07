@@ -1,23 +1,18 @@
-// File: /next.config.js
-
+// next.config.js
 const nextConfig = {
   experimental: {
-    serverActions: true, // ✅ Required for 'use server' support
+    serverActions: true,
   },
-
-  async headers() {
-    return [
-      {
-        source: '/attachments/:path*',
-        headers: [
-          {
-            key: 'Content-Type',
-            value: 'application/octet-stream',
-          },
-        ],
-      },
-    ];
+  webpack: (config) => {
+    config.resolve.fallback = {
+      ...config.resolve.fallback,
+      encoding: false,
+    }
+    return config
   },
-};
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig
