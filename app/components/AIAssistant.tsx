@@ -1,4 +1,4 @@
-// ✅ FILE: /components/AIAssistant.tsx �" Floating AI Assistant
+﻿// âœ… FILE: /components/AIAssistant.tsx ï¿½" Floating AI Assistant
 
 'use client'
 
@@ -23,7 +23,7 @@ const AIAssistant: React.FC = () => {
     
     const data = await res.json();
     
-    setResponse(data.reply || '⚠️ No response received.');
+    setResponse(data.reply || 'âš ï¸ No response received.');
     setLoading(false);
     
   }
@@ -35,7 +35,7 @@ const AIAssistant: React.FC = () => {
         onClick={() => setOpen(true)}
         className="fixed bottom-4 right-4 bg-purple-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-purple-700 z-50"
       >
-        🧠 Ask AI
+        ðŸ§  Ask AI
       </button>
 
       {/* Modal */}

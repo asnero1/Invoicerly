@@ -1,4 +1,4 @@
-// ✅ FILE: app/components/VoiceReplyForm.tsx
+﻿// âœ… FILE: app/components/VoiceReplyForm.tsx
 'use client'
 
 import React, { useState } from 'react'
@@ -38,7 +38,7 @@ export default function VoiceReplyForm({ messageId, onSuccess }: Props) {
 
   return (
     <div className="space-y-2 border p-4 rounded bg-white shadow max-w-md">
-      <h3 className="text-sm font-medium">🎧 Upload Voice Reply</h3>
+      <h3 className="text-sm font-medium">ðŸŽ§ Upload Voice Reply</h3>
       <input
         type="file"
         accept=".mp3,.wav"

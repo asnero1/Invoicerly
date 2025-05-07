@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import React, { useState, useEffect } from 'react'
 import TaskList from '@/components/TaskList'
@@ -31,7 +31,7 @@ export default function ClientPage() {
 
   return (
     <div className="p-6 space-y-4">
-      <h1 className="text-2xl font-semibold">�"� Client Task Log</h1>
+      <h1 className="text-2xl font-semibold">ðŸ"‹ Client Task Log</h1>
       <TaskList
         tasks={tasks}
         onUpdate={handleUpdateTask}

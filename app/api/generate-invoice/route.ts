@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server'
+﻿import { NextResponse } from 'next/server'
 import path from 'path'
 import fs from 'fs'
 import { generateInvoicePDF } from '@/lib/generateInvoicePDF'

@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server'
+﻿import { NextResponse } from 'next/server'
 import fs from 'fs'
 import path from 'path'
 
@@ -11,7 +11,7 @@ export async function GET() {
 
     return NextResponse.json({ invoices }, { status: 200 })
   } catch (err) {
-    console.error('❌ Failed to fetch invoices:', err)
+    console.error('âŒ Failed to fetch invoices:', err)
     return NextResponse.json(
       { error: 'Failed to fetch invoices' },
       { status: 500 }

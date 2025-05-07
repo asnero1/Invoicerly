@@ -1,4 +1,4 @@
-// ✅ FILE: /app/api/create-group/route.ts
+﻿// âœ… FILE: /app/api/create-group/route.ts
 
 import { promises as fs } from 'fs'
 import path from 'path'
@@ -34,7 +34,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ status: 'ok', group: newGroup })
   } catch (e) {
-    console.error('❌ Failed to create group:', e)
+    console.error('âŒ Failed to create group:', e)
     return NextResponse.json({
       status: 'error',
       message: 'Create group failed',

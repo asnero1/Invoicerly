@@ -1,4 +1,4 @@
-// ✅ FILE: app/components/VoiceCommandHandler.tsx
+﻿// âœ… FILE: app/components/VoiceCommandHandler.tsx
 'use client'
 
 import React, { useState, useRef } from 'react'
@@ -68,7 +68,7 @@ const VoiceCommandHandler = () => {
           recording ? 'bg-red-600' : 'bg-blue-600'
         }`}
       >
-        {recording ? 'Stop Recording' : '🎤 Voice Log Task'}
+        {recording ? 'Stop Recording' : 'ðŸŽ¤ Voice Log Task'}
       </button>
 
       {audioURL && (

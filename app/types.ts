@@ -1,4 +1,4 @@
-// app/types.ts
+﻿// app/types.ts
 
 export type Spruke = {
   fileName: string
@@ -12,14 +12,14 @@ export type Spruke = {
 }
 
 export type User = {
-  id: string // ✅ Required for routing (e.g. 'antonio')
+  id: string // âœ… Required for routing (e.g. 'antonio')
   name: string // Display name (e.g. 'Antonio')
   avatar: string // Path to avatar
   role: string // e.g. 'Designer'
   bio?: string // Optional bio line
-  defaultEmail?: string // ✅ Optional default sender email
-  otherEmails?: string[] // ✅ Optional secondary emails
-  phone?: string // ✅ ✅ NEW: For WhatsApp & messaging
+  defaultEmail?: string // âœ… Optional default sender email
+  otherEmails?: string[] // âœ… Optional secondary emails
+  phone?: string // âœ… âœ… NEW: For WhatsApp & messaging
 }
 
 export type Task = {
@@ -36,7 +36,7 @@ export type Task = {
   attachment?: string
   voiceNote?: string
   clientPhone?: string
-  done?: boolean // ✅ <-- Add this new optional field
+  done?: boolean // âœ… <-- Add this new optional field
 }
 
 export type Reply = {

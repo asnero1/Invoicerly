@@ -1,4 +1,4 @@
-// ✅ FILE: /components/AIBubble.tsx
+﻿// âœ… FILE: /components/AIBubble.tsx
 
 'use client'
 
@@ -21,9 +21,9 @@ export default function AIBubble() {
         headers: { 'Content-Type': 'application/json' },
       })
       const data = await res.json()
-      toast(data.message || '✅ Done')
+      toast(data.message || 'âœ… Done')
     } catch (e) {
-      toast.error('❌ Failed to fetch AI response')
+      toast.error('âŒ Failed to fetch AI response')
     } finally {
       setLoading(false)
     }
@@ -31,7 +31,7 @@ export default function AIBubble() {
 
   const handleSummarize = () => fetchAIResponse('summarize')
   const handleSuggestInvoice = () => fetchAIResponse('suggest_invoice')
-  const handleReminder = () => toast('⏰ I’ll remind you again in 1 hour.')
+  const handleReminder = () => toast('â° Iâ€™ll remind you again in 1 hour.')
 
   return (
     <div className="fixed bottom-4 right-4 z-50">
@@ -54,7 +54,7 @@ export default function AIBubble() {
             className="text-sm text-left w-full px-3 py-2 hover:bg-gray-50 rounded border border-gray-200 disabled:opacity-50"
             disabled={loading}
           >
-            🧠 Summarize recent activity
+            ðŸ§  Summarize recent activity
           </button>
 
           <button
@@ -62,14 +62,14 @@ export default function AIBubble() {
             className="text-sm text-left w-full px-3 py-2 hover:bg-gray-50 rounded border border-gray-200 disabled:opacity-50"
             disabled={loading}
           >
-            🧾 Suggest invoice from log
+            ðŸ§¾ Suggest invoice from log
           </button>
 
           <button
             onClick={handleReminder}
             className="text-sm text-left w-full px-3 py-2 hover:bg-gray-50 rounded border border-gray-200"
           >
-            ⏰ Remind me about this later
+            â° Remind me about this later
           </button>
         </div>
       ) : (

@@ -1,4 +1,4 @@
-import { promises as fs } from 'fs'
+﻿import { promises as fs } from 'fs'
 import path from 'path'
 import { NextResponse } from 'next/server'
 
@@ -29,7 +29,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ status: 'ok', updated: messages[msgIndex] })
   } catch (error) {
-    console.error('❌ Reaction update failed:', error)
+    console.error('âŒ Reaction update failed:', error)
     return NextResponse.json({ status: 'error', message: 'Reaction failed' })
   }
 }

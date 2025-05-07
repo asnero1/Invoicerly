@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server'
+﻿import { NextRequest, NextResponse } from 'next/server'
 import fs from 'fs'
 import path from 'path'
 
@@ -29,9 +29,9 @@ export async function POST(req: NextRequest) {
     existing.push(feedbackEntry)
     fs.writeFileSync(feedbackPath, JSON.stringify(existing, null, 2))
 
-    return NextResponse.json({ message: 'Feedback saved ✅' })
+    return NextResponse.json({ message: 'Feedback saved âœ…' })
   } catch (err) {
-    console.error('❌ Error saving feedback:', err)
+    console.error('âŒ Error saving feedback:', err)
     return NextResponse.json(
       { error: 'Failed to save feedback' },
       { status: 500 }

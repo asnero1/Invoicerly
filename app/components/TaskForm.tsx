@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import React, { useState } from 'react'
 import { Task } from '@/types'
@@ -22,7 +22,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ onSubmit }) => {
     onSubmit({
       description,
       client,
-      clientPhone, // ✅ Now included!
+      clientPhone, // âœ… Now included!
       date,
       amount: parseFloat(amount),
       billable,
@@ -42,7 +42,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ onSubmit }) => {
       onSubmit={handleSubmit}
       className="bg-white shadow rounded-xl p-6 space-y-4 max-w-2xl mx-auto"
     >
-      <h2 className="text-xl font-bold">�"� Log a New Task</h2>
+      <h2 className="text-xl font-bold">ï¿½"ï¿½ Log a New Task</h2>
 
       <div className="space-y-4">
         <div>
@@ -123,7 +123,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ onSubmit }) => {
           type="submit"
           className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800"
         >
-          ➕ Add Task
+          âž• Add Task
         </button>
       </div>
     </form>

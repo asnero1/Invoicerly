@@ -1,4 +1,4 @@
-// ✅ FILE: app/components/ShareProfileButton.tsx
+﻿// âœ… FILE: app/components/ShareProfileButton.tsx
 
 'use client'
 
@@ -22,12 +22,12 @@ const ShareProfileButton: React.FC<{ username?: string }> = ({ username }) => {
 
   return (
     <div className="mb-6">
-      <p className="text-sm text-gray-700">�"� Share your Invoicerly profile:</p>
+      <p className="text-sm text-gray-700">ï¿½"ï¿½ Share your Invoicerly profile:</p>
       <button
         onClick={handleCopyLink}
         className="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
       >
-        �"� Share My Profile
+        ï¿½"ï¿½ Share My Profile
       </button>
     </div>
   )

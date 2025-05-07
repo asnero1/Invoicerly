@@ -1,4 +1,4 @@
-export type Invoice = {
+﻿export type Invoice = {
   name: string
   email?: string
 }

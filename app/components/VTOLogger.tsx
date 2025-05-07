@@ -1,4 +1,4 @@
-// File: app/components/VTOLogger.tsx
+﻿// File: app/components/VTOLogger.tsx
 'use client'
 
 import React, { useState, useRef, useEffect } from 'react'
@@ -128,7 +128,7 @@ export default function VTOLogger() {
     recognition.interimResults = false
     recognition.maxAlternatives = 1
 
-    toast.loading('🎙️ Listening... Speak now.')
+    toast.loading('ðŸŽ™ï¸ Listening... Speak now.')
 
     recognition.onresult = (event: any) => {
       const speechResult = event.results[0][0].transcript
@@ -148,7 +148,7 @@ export default function VTOLogger() {
   return (
     <div className="relative space-y-6">
       <div className="border p-6 rounded shadow bg-white space-y-6">
-        <h2 className="text-xl font-bold">🎙️ Log a Task with VTO</h2>
+        <h2 className="text-xl font-bold">ðŸŽ™ï¸ Log a Task with VTO</h2>
         <div className="flex flex-col md:flex-row items-start gap-2">
           <Input
             placeholder="Type or speak your task here..."
@@ -191,7 +191,7 @@ export default function VTOLogger() {
 
         {confirmedTag && (
           <div className="text-sm text-green-700">
-            ✅ Folder confirmed: <strong>{confirmedTag}</strong>
+            âœ… Folder confirmed: <strong>{confirmedTag}</strong>
           </div>
         )}
 
@@ -210,7 +210,7 @@ export default function VTOLogger() {
           className={`fixed bottom-6 right-6 z-50 bg-purple-600 text-white rounded-full px-4 py-2 text-sm shadow-lg cursor-move transition-opacity duration-500 ${fade ? 'opacity-40' : 'opacity-100'}`}
           onClick={startVoiceCapture}
         >
-          🎙️ Speak
+          ðŸŽ™ï¸ Speak
         </div>
       )}
     </div>

@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useEffect, useState } from 'react'
 
@@ -20,12 +20,12 @@ export default function PayMeSetupPage() {
     localStorage.setItem('payId', payId)
     localStorage.setItem('bankDetails', bankDetails)
     localStorage.setItem('stripeLink', stripeLink)
-    alert('✅ Payment preferences saved!')
+    alert('âœ… Payment preferences saved!')
   }
 
   return (
     <div className="max-w-xl mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-6">🛠️ PayMe Setup</h1>
+      <h1 className="text-3xl font-bold mb-6">ðŸ› ï¸ PayMe Setup</h1>
 
       <div className="space-y-4">
         <div>

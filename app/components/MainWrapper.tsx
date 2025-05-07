@@ -1,4 +1,4 @@
-// ✅ FILE: app/components/MainWrapper.tsx
+﻿// âœ… FILE: app/components/MainWrapper.tsx
 'use client'
 
 import { ReactNode } from 'react'

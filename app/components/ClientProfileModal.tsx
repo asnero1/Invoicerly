@@ -1,9 +1,9 @@
-// File: app/components/ClientProfileModal.tsx
+﻿// File: app/components/ClientProfileModal.tsx
 'use client'
 
 import React from 'react'
-import { Task } from '@/types' // ✅ Correct source of the Task type
-import { Button } from '@/components/ui/button' // ✅ Assuming you have a standard Button
+import { Task } from '@/types' // âœ… Correct source of the Task type
+import { Button } from '@/components/ui/button' // âœ… Assuming you have a standard Button
 
 type Props = {
   task: Task
@@ -19,7 +19,7 @@ const ClientProfileModal: React.FC<Props> = ({ task, onClose }) => {
       return
     }
 
-    const message = `🧾 *Invoice Details*\n\n*Client:* ${task.client}\n*Task:* ${task.description}\n*Amount:* $${task.amount?.toFixed(2) || '0.00'}\n*Due:* ${task.dueDate || 'N/A'}`
+    const message = `ðŸ§¾ *Invoice Details*\n\n*Client:* ${task.client}\n*Task:* ${task.description}\n*Amount:* $${task.amount?.toFixed(2) || '0.00'}\n*Due:* ${task.dueDate || 'N/A'}`
     const url = `https://api.whatsapp.com/send?phone=${encodeURIComponent(task.clientPhone)}&text=${encodeURIComponent(message)}`
     window.open(url, '_blank')
   }
@@ -32,7 +32,7 @@ const ClientProfileModal: React.FC<Props> = ({ task, onClose }) => {
           className="absolute top-2 right-2 text-gray-600 hover:text-gray-900 text-xl"
           onClick={onClose}
         >
-          ✕
+          âœ•
         </button>
 
         {/* Task Details */}

@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useEffect, useState } from 'react'
 import { Input } from '@/components/ui/input'
@@ -138,7 +138,7 @@ export default function PayMePage() {
         t.client,
         t.payer,
         t.date,
-        t.paid ? '✅' : '❌',
+        t.paid ? 'âœ…' : 'âŒ',
         `$${t.amount?.toFixed(2) || '0.00'}`,
       ]),
     })
@@ -174,7 +174,7 @@ export default function PayMePage() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-6 space-y-6">
-      <h1 className="text-3xl font-bold">🧾 PayMe �" Who's Paid You</h1>
+      <h1 className="text-3xl font-bold">ðŸ§¾ PayMe â€" Who's Paid You</h1>
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -230,13 +230,13 @@ export default function PayMePage() {
               Unpaid
             </div>
             <div>
-              �'� <strong>This Week:</strong> ${revenueThisWeek.toFixed(2)}
+              ðŸ'° <strong>This Week:</strong> ${revenueThisWeek.toFixed(2)}
             </div>
             <div>
-              �"� <strong>This Month:</strong> ${revenueThisMonth.toFixed(2)}
+              ðŸ"… <strong>This Month:</strong> ${revenueThisMonth.toFixed(2)}
             </div>
             <div>
-              �"� <strong>By Client:</strong>
+              ðŸ"Š <strong>By Client:</strong>
             </div>
             <ul className="ml-4 list-disc">
               {Object.entries(revenueByClient).map(([client, total]) => (
@@ -283,7 +283,7 @@ export default function PayMePage() {
             animate={{ opacity: 1, y: 0 }}
           >
             <p>
-              <strong>{task.title || task.description || '�"'}</strong>
+              <strong>{task.title || task.description || 'â€"'}</strong>
             </p>
             <p className="text-sm text-gray-500">Client: {task.client}</p>
             <p className="text-sm text-gray-500">Payer: {task.payer}</p>
@@ -291,7 +291,7 @@ export default function PayMePage() {
             <p
               className={`font-semibold ${task.paid ? 'text-green-600' : 'text-yellow-600'}`}
             >
-              {task.paid ? '✅ Paid' : '❌ Unpaid'}
+              {task.paid ? 'âœ… Paid' : 'âŒ Unpaid'}
             </p>
             <p className="text-sm">
               Amount: ${task.amount?.toFixed(2) || '0.00'}
@@ -320,7 +320,7 @@ export default function PayMePage() {
                 }`}
                 onClick={() => likeTask(task.id)}
               >
-                👍 {likes[task.id] ? 'Liked!' : 'Like'}
+                ðŸ‘ {likes[task.id] ? 'Liked!' : 'Like'}
               </button>
             )}
           </motion.div>

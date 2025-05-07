@@ -1,4 +1,4 @@
-// ✅ FILE: app/utils/voiceToText.ts
+﻿// âœ… FILE: app/utils/voiceToText.ts
 
 import fs from 'fs'
 import path from 'path'
@@ -25,7 +25,7 @@ export async function transcribeVoiceFile(filename: string): Promise<string> {
   return transcription as string
 }
 
-// ✅ NEW: Auto-detects client & saves task
+// âœ… NEW: Auto-detects client & saves task
 export async function logVoiceTask(filename: string) {
   const text = await transcribeVoiceFile(filename)
 

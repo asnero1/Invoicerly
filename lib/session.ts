@@ -1,4 +1,4 @@
-// ✅ FILE: /lib/session.ts
+﻿// âœ… FILE: /lib/session.ts
 
 export function getCurrentUserEmail(): string | null {
   if (typeof window === 'undefined') return null

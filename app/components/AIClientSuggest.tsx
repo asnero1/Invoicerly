@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import React, { useEffect, useState } from 'react'
 
@@ -44,7 +44,7 @@ const AIClientSuggest: React.FC<Props> = ({
 
   return (
     <p className="text-sm text-blue-600 mt-1">
-      �'� Suggested client: <strong>{suggestedClient}</strong>
+      ðŸ'¡ Suggested client: <strong>{suggestedClient}</strong>
     </p>
   )
 }

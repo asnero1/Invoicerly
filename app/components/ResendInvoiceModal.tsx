@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
@@ -69,7 +69,7 @@ const ResendInvoiceModal: React.FC<ResendInvoiceModalProps> = ({
             >
               <Dialog.Panel className="relative bg-white p-6 rounded-xl w-full max-w-3xl shadow-xl">
                 <Dialog.Title className="text-xl font-bold mb-4">
-                  �"� Preview & Resend Invoice
+                  ðŸ"„ Preview & Resend Invoice
                 </Dialog.Title>
                 <iframe
                   src={`/invoices/${fileName}`}

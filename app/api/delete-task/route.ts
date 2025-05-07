@@ -1,8 +1,8 @@
-import { NextRequest, NextResponse } from 'next/server'
+﻿import { NextRequest, NextResponse } from 'next/server'
 import fs from 'fs'
 import path from 'path'
 
-// ✅ Path to tasks.json
+// âœ… Path to tasks.json
 const taskFilePath = path.join(process.cwd(), 'data', 'tasks.json')
 
 export async function DELETE(req: NextRequest) {
@@ -17,7 +17,7 @@ export async function DELETE(req: NextRequest) {
       )
     }
 
-    // ✅ Read tasks.json
+    // âœ… Read tasks.json
     const tasks = fs.existsSync(taskFilePath)
       ? JSON.parse(fs.readFileSync(taskFilePath, 'utf8'))
       : []
@@ -27,7 +27,7 @@ export async function DELETE(req: NextRequest) {
       return NextResponse.json({ error: 'Task not found' }, { status: 404 })
     }
 
-    // ✅ Delete attachment if exists
+    // âœ… Delete attachment if exists
     const taskToDelete = tasks[taskIndex]
     if (taskToDelete.attachment) {
       const attachmentPath = path.join(
@@ -40,13 +40,13 @@ export async function DELETE(req: NextRequest) {
       }
     }
 
-    // ✅ Remove task and update file
+    // âœ… Remove task and update file
     tasks.splice(taskIndex, 1)
     fs.writeFileSync(taskFilePath, JSON.stringify(tasks, null, 2))
 
     return NextResponse.json({ success: true }, { status: 200 })
   } catch (error: any) {
-    console.error('❌ Error deleting task:', error)
+    console.error('âŒ Error deleting task:', error)
     return NextResponse.json(
       { error: 'Failed to delete task' },
       { status: 500 }

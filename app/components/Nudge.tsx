@@ -1,4 +1,4 @@
-// ✅ FILE: app/components/Nudge.tsx
+﻿// âœ… FILE: app/components/Nudge.tsx
 'use client'
 
 import { useEffect, useState } from 'react'
@@ -6,15 +6,15 @@ import { X } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 
 const onboardingNudge = {
-  text: '🆘 I’m your helper! Tap me anytime for support.',
+  text: 'ðŸ†˜ Iâ€™m your helper! Tap me anytime for support.',
   route: '/help',
 }
 
 const routineMessages = [
-  { text: '🧠 Don’t forget to invoice Marnie!', route: '/generate-invoice' },
-  { text: '⏳ You have unbilled tasks!', route: '/task' },
-  { text: '💸 You were just paid. Log more work?', route: '/task' },
-  { text: '📸 Snap your receipts while it’s fresh!', route: '/task' },
+  { text: 'ðŸ§  Donâ€™t forget to invoice Marnie!', route: '/generate-invoice' },
+  { text: 'â³ You have unbilled tasks!', route: '/task' },
+  { text: 'ðŸ’¸ You were just paid. Log more work?', route: '/task' },
+  { text: 'ðŸ“¸ Snap your receipts while itâ€™s fresh!', route: '/task' },
 ]
 
 export default function Nudge() {

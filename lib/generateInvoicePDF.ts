@@ -1,4 +1,4 @@
-import autoTable from 'jspdf-autotable'
+﻿import autoTable from 'jspdf-autotable'
 import path from 'path'
 import fs from 'fs'
 import { jsPDF } from 'jspdf'
@@ -29,7 +29,7 @@ export async function generateInvoicePDF(task: {
     (doc as any).lastAutoTable.finalY + 20
   )
 
-  // ✅ Ensure directory exists
+  // âœ… Ensure directory exists
   const invoiceDir = path.join(process.cwd(), 'public', 'invoices')
   if (!fs.existsSync(invoiceDir)) {
     fs.mkdirSync(invoiceDir, { recursive: true })

@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server'
+﻿import { NextRequest, NextResponse } from 'next/server'
 import fs from 'fs'
 import path from 'path'
 
@@ -31,7 +31,7 @@ export async function PATCH(req: NextRequest) {
 
     return NextResponse.json({ success: true })
   } catch (err) {
-    console.error('❌ Failed to update task:', err)
+    console.error('âŒ Failed to update task:', err)
     return NextResponse.json(
       { error: 'Internal Server Error' },
       { status: 500 }

@@ -1,4 +1,4 @@
-// ✅ API ROUTE: Get PayYou Info
+﻿// âœ… API ROUTE: Get PayYou Info
 // File: app/api/get-payyou/route.ts
 
 import { NextResponse } from 'next/server'

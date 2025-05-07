@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 import { FaWhatsapp } from 'react-icons/fa'
@@ -35,7 +35,7 @@ export default function InvoicePage() {
 
   return (
     <div className="p-8 max-w-3xl mx-auto">
-      <h1 className="text-3xl font-bold mb-6">🧾 Send Invoice</h1>
+      <h1 className="text-3xl font-bold mb-6">ðŸ§¾ Send Invoice</h1>
 
       <div className="mb-6">
         <label className="block mb-2 font-semibold text-sm">
@@ -48,7 +48,7 @@ export default function InvoicePage() {
         >
           {emailOptions.map((option) => (
             <option key={option.value} value={option.value}>
-              {option.label} �" {option.value}
+              {option.label} â€" {option.value}
             </option>
           ))}
         </select>
@@ -76,15 +76,15 @@ export default function InvoicePage() {
 
       <div className="bg-white p-6 border border-dashed border-gray-300 rounded text-center text-gray-500">
         <p className="text-sm">
-          �'� This is where the invoice builder or preview will go soon.
+          ðŸ'¡ This is where the invoice builder or preview will go soon.
         </p>
         <p className="text-xs mt-1">
-          WIP �" data integration & PDF generation coming �"�
+          WIP â€" data integration & PDF generation coming ðŸ"§
         </p>
       </div>
 
       <div className="mt-10">
-        <h2 className="text-lg font-bold mb-2">🧾 Invoices</h2>
+        <h2 className="text-lg font-bold mb-2">ðŸ§¾ Invoices</h2>
         {filteredInvoices.length === 0 ? (
           <p className="text-gray-500 italic">
             No invoices found for selected filter.
@@ -99,7 +99,7 @@ export default function InvoicePage() {
                 <div>
                   <p className="font-medium text-sm">Client: {inv.client}</p>
                   <p className="text-xs text-gray-500">
-                    {inv.date} �" ${inv.amount} ({inv.status})
+                    {inv.date} â€" ${inv.amount} ({inv.status})
                   </p>
                 </div>
                 <button

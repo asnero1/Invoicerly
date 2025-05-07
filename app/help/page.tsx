@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 import { Input } from '@/components/ui/input'
@@ -41,7 +41,7 @@ export default function HelpPage() {
     setSubmitting(true)
     // Simulated delay for now
     setTimeout(() => {
-      setResponse('✅ Your question has been submitted!')
+      setResponse('âœ… Your question has been submitted!')
       setSubmitting(false)
       setEmail('')
       setMessage('')
@@ -50,7 +50,7 @@ export default function HelpPage() {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-6 space-y-8">
-      <h1 className="text-3xl font-bold">🆘 Help & FAQ</h1>
+      <h1 className="text-3xl font-bold">ðŸ†˜ Help & FAQ</h1>
 
       <Input
         placeholder="Search help topics..."
@@ -69,16 +69,16 @@ export default function HelpPage() {
         )}
         {filteredFaqs.map((faq, idx) => (
           <div key={idx} className="bg-white shadow p-4 rounded-lg">
-            <h2 className="font-semibold">�" {faq.q}</h2>
+            <h2 className="font-semibold">ï¿½" {faq.q}</h2>
             <p className="text-sm text-gray-700 mt-1">{faq.a}</p>
           </div>
         ))}
       </motion.div>
 
       <div className="pt-8 space-y-2">
-        <h2 className="text-xl font-bold">�"� Still stuck?</h2>
+        <h2 className="text-xl font-bold">ï¿½"ï¿½ Still stuck?</h2>
         <p className="text-sm text-gray-600">
-          Send us your question and we’ll get back to you:
+          Send us your question and weâ€™ll get back to you:
         </p>
         <Input
           placeholder="Your email address"

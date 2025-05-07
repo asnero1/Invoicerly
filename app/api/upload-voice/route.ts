@@ -1,4 +1,4 @@
-// ✅ FILE: app/api/upload-voice/route.ts
+﻿// âœ… FILE: app/api/upload-voice/route.ts
 import { NextResponse } from 'next/server'
 import { writeFile } from 'fs/promises'
 import path from 'path'
@@ -22,7 +22,7 @@ export async function POST(req: Request) {
     const publicUrl = `/voice/${fileName}`
     return NextResponse.json({ url: publicUrl })
   } catch (err) {
-    console.error('❌ Upload error:', err)
+    console.error('âŒ Upload error:', err)
     return NextResponse.json({ error: 'Upload failed.' }, { status: 500 })
   }
 }

@@ -1,4 +1,4 @@
-// ✅ FILE: app/profile/page.tsx
+﻿// âœ… FILE: app/profile/page.tsx
 'use client'
 
 import { useEffect, useState } from 'react'
@@ -21,7 +21,7 @@ export default function ProfilePage() {
 
   return (
     <div className="max-w-2xl mx-auto p-6 space-y-6">
-      <h1 className="text-3xl font-bold">👤 My Profile</h1>
+      <h1 className="text-3xl font-bold">ðŸ‘¤ My Profile</h1>
 
       <div className="space-y-4">
         <div className="bg-white rounded shadow p-4">

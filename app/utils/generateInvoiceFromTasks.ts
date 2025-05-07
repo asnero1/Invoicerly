@@ -1,4 +1,4 @@
-// ✅ FILE: app/utils/generateInvoiceFromTasks.ts
+﻿// âœ… FILE: app/utils/generateInvoiceFromTasks.ts
 
 import fs from 'fs'
 import path from 'path'

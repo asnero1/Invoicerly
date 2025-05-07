@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
@@ -12,16 +12,16 @@ export default function TestSendPage() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        phoneNumber: '+61412345678', // �"� Replace with your test number
+        phoneNumber: '+61412345678', // ðŸ" Replace with your test number
         fileName: 'invoice-test-001.pdf',
-        message: 'Here is your invoice via WhatsApp �"�',
+        message: 'Here is your invoice via WhatsApp ðŸ"©',
       }),
     })
 
     if (res.ok) {
-      setStatus('✅ Invoice sent via WhatsApp!')
+      setStatus('âœ… Invoice sent via WhatsApp!')
     } else {
-      setStatus('❌ Failed to send invoice')
+      setStatus('âŒ Failed to send invoice')
     }
   }
 

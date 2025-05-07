@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
@@ -36,7 +36,7 @@ export default function FindPage() {
 
   return (
     <div className="p-6 space-y-6">
-      <h1 className="text-3xl font-bold">�"� Find Professionals</h1>
+      <h1 className="text-3xl font-bold">ï¿½"ï¿½ Find Professionals</h1>
 
       <div className="flex flex-col md:flex-row md:items-center gap-4">
         <input
@@ -82,8 +82,8 @@ export default function FindPage() {
 
                 <span className="inline-block mt-2 text-xs px-2 py-1 rounded-full bg-blue-100 text-blue-800">
                   {u.likes && u.likes > 0
-                    ? `👍 ${u.likes} Like${u.likes > 1 ? 's' : ''}`
-                    : '🆕 New'}
+                    ? `ðŸ‘ ${u.likes} Like${u.likes > 1 ? 's' : ''}`
+                    : 'ðŸ†• New'}
                 </span>
               </div>
             </div>
@@ -92,7 +92,7 @@ export default function FindPage() {
       </div>
 
       <div className="mt-10 border-t pt-6">
-        <h2 className="text-xl font-semibold mb-2">⭐ Rate Your Experience</h2>
+        <h2 className="text-xl font-semibold mb-2">â­ Rate Your Experience</h2>
         <div className="flex items-center gap-2 mb-4">
           {[1, 2, 3, 4, 5].map((star) => (
             <span
@@ -101,7 +101,7 @@ export default function FindPage() {
               role="button"
               aria-label={`Rate ${star} stars`}
             >
-              ★
+              â˜…
             </span>
           ))}
         </div>

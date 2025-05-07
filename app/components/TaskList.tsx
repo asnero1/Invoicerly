@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import React, { useState } from 'react'
 import { Task } from '@/types'
@@ -28,7 +28,7 @@ export default function TaskList({
       return
     }
 
-    const message = `🧾 *Task*: ${task.description}\n\n*Client*: ${task.client}\n*Amount*: $${task.amount?.toFixed(2) || '0.00'}\n*Due*: ${task.dueDate || 'N/A'}`
+    const message = `ðŸ§¾ *Task*: ${task.description}\n\n*Client*: ${task.client}\n*Amount*: $${task.amount?.toFixed(2) || '0.00'}\n*Due*: ${task.dueDate || 'N/A'}`
     const url = `https://api.whatsapp.com/send?phone=${encodeURIComponent(task.clientPhone)}&text=${encodeURIComponent(message)}`
     window.open(url, '_blank')
   }
@@ -39,7 +39,7 @@ export default function TaskList({
         <TaskCard
           key={task.id}
           task={task}
-          onMarkDone={(id) => onUpdate(id, 'billable', false)} // ✅ Use a valid field here
+          onMarkDone={(id) => onUpdate(id, 'billable', false)} // âœ… Use a valid field here
           onEdit={(id) => setEditing(id)}
           onSendWhatsApp={handleSendWhatsApp}
         />

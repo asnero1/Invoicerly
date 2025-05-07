@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import React, { useState } from 'react'
 
@@ -29,7 +29,7 @@ const TaskLogger: React.FC = () => {
 
   const [tagInput, setTagInput] = useState('')
 
-  // �"� Handle Input Changes
+  // ðŸ"š Handle Input Changes
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
@@ -52,7 +52,7 @@ const TaskLogger: React.FC = () => {
     }
   }
 
-  // 🎙️ Handle Voice Upload
+  // ðŸŽ™ï¸ Handle Voice Upload
   const handleVoiceUpload = async (file: File) => {
     const formData = new FormData()
     formData.append('file', file)
@@ -68,11 +68,11 @@ const TaskLogger: React.FC = () => {
         setTask((prev) => ({ ...prev, voiceNote: data.url }))
       }
     } catch (error) {
-      console.error('❌ Voice upload failed:', error)
+      console.error('âŒ Voice upload failed:', error)
     }
   }
 
-  // 🏷️ Handle Adding Tags
+  // ðŸ·ï¸ Handle Adding Tags
   const handleAddTag = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter' && tagInput.trim() !== '') {
       e.preventDefault()
@@ -84,7 +84,7 @@ const TaskLogger: React.FC = () => {
     }
   }
 
-  // ❌ Remove Tag
+  // âŒ Remove Tag
   const handleRemoveTag = (index: number) => {
     setTask((prev) => ({
       ...prev,
@@ -92,7 +92,7 @@ const TaskLogger: React.FC = () => {
     }))
   }
 
-  // ✅ Handle Task Submission
+  // âœ… Handle Task Submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
@@ -107,7 +107,7 @@ const TaskLogger: React.FC = () => {
       formData.append('priority', task.priority || 'Medium')
       formData.append('tags', JSON.stringify(task.tags || []))
 
-      // ✅ Upload the attachment if available
+      // âœ… Upload the attachment if available
       if (task.attachment) {
         formData.append('attachment', task.attachment)
       }
@@ -118,7 +118,7 @@ const TaskLogger: React.FC = () => {
       })
 
       if (response.status === 200) {
-        alert('✅ Task saved successfully!')
+        alert('âœ… Task saved successfully!')
         setTask({
           description: '',
           client: '',
@@ -132,11 +132,11 @@ const TaskLogger: React.FC = () => {
         })
         window.dispatchEvent(new Event('task-added'))
       } else {
-        alert('❌ Failed to save task.')
+        alert('âŒ Failed to save task.')
       }
     } catch (error) {
-      console.error('❌ Submission failed:', error)
-      alert('❌ Network error.')
+      console.error('âŒ Submission failed:', error)
+      alert('âŒ Network error.')
     }
   }
 
@@ -144,7 +144,7 @@ const TaskLogger: React.FC = () => {
     <div className="p-4 bg-white shadow rounded mt-4">
       <h2 className="text-xl font-bold mb-2">Log a New Task</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
-        {/* �"� Task Description */}
+        {/* ðŸ" Task Description */}
         <input
           type="text"
           name="description"
@@ -155,7 +155,7 @@ const TaskLogger: React.FC = () => {
           required
         />
 
-        {/* 👥 Client Name */}
+        {/* ðŸ‘¥ Client Name */}
         <input
           type="text"
           name="client"
@@ -166,7 +166,7 @@ const TaskLogger: React.FC = () => {
           required
         />
 
-        {/* �"� Task Date */}
+        {/* ðŸ"… Task Date */}
         <input
           type="date"
           name="date"
@@ -176,7 +176,7 @@ const TaskLogger: React.FC = () => {
           required
         />
 
-        {/* �"� Due Date */}
+        {/* ðŸ"† Due Date */}
         <input
           type="date"
           name="dueDate"
@@ -186,7 +186,7 @@ const TaskLogger: React.FC = () => {
           placeholder="Due Date"
         />
 
-        {/* 🏷️ Tags */}
+        {/* ðŸ·ï¸ Tags */}
         <div>
           <input
             type="text"
@@ -208,14 +208,14 @@ const TaskLogger: React.FC = () => {
                   onClick={() => handleRemoveTag(index)}
                   className="text-red-500 ml-2"
                 >
-                  ✕
+                  âœ•
                 </button>
               </span>
             ))}
           </div>
         </div>
 
-        {/* 🎚️ Priority */}
+        {/* ðŸŽšï¸ Priority */}
         <select
           name="priority"
           value={task.priority}
@@ -227,7 +227,7 @@ const TaskLogger: React.FC = () => {
           <option value="High">High Priority</option>
         </select>
 
-        {/* ✅ Billable Checkbox */}
+        {/* âœ… Billable Checkbox */}
         <label className="flex items-center space-x-2">
           <input
             type="checkbox"
@@ -238,7 +238,7 @@ const TaskLogger: React.FC = () => {
           <span>Billable</span>
         </label>
 
-        {/* �"� Attachment */}
+        {/* ðŸ"Ž Attachment */}
         <input
           type="file"
           name="attachment"
@@ -246,7 +246,7 @@ const TaskLogger: React.FC = () => {
           className="w-full"
         />
 
-        {/* 🎙️ Voice Note Upload */}
+        {/* ðŸŽ™ï¸ Voice Note Upload */}
         <label className="block mt-2">
           <span className="text-sm font-medium">Voice Note (MP3 or WAV)</span>
           <input
@@ -258,7 +258,7 @@ const TaskLogger: React.FC = () => {
           />
         </label>
 
-        {/* 🎧 Voice Note Preview */}
+        {/* ðŸŽ§ Voice Note Preview */}
         {task.voiceNote && (
           <div className="text-sm text-gray-700 border p-2 rounded bg-gray-50">
             <strong>Voice Note:</strong>{' '}
@@ -268,7 +268,7 @@ const TaskLogger: React.FC = () => {
           </div>
         )}
 
-        {/* 🚀 Submit Button */}
+        {/* ðŸš€ Submit Button */}
         <button
           type="submit"
           className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"

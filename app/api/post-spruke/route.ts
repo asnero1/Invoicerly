@@ -1,4 +1,4 @@
-import { writeFile, mkdir, readFile, writeFile as writeJSON } from 'fs/promises'
+﻿import { writeFile, mkdir, readFile, writeFile as writeJSON } from 'fs/promises'
 import path from 'path'
 import { NextResponse } from 'next/server'
 
@@ -25,7 +25,7 @@ export async function POST(req: Request) {
     }
 
     const mimeType = file.type
-    console.log('⏺ MIME TYPE:', mimeType)
+    console.log('âº MIME TYPE:', mimeType)
 
     const ext = path.extname(file.name) || '.mp4' // fallback to mp4
     const safeName = userName
@@ -40,7 +40,7 @@ export async function POST(req: Request) {
 
     const uploadPath = path.join(sprukeDir, fileName)
     await writeFile(uploadPath, buffer)
-    console.log('✅ File saved at:', uploadPath)
+    console.log('âœ… File saved at:', uploadPath)
 
     const sprukesPath = path.join(process.cwd(), 'data', 'sprukes.json')
     let sprukes = []
@@ -49,7 +49,7 @@ export async function POST(req: Request) {
       const existing = await readFile(sprukesPath, 'utf-8')
       sprukes = JSON.parse(existing)
     } catch {
-      console.warn('⚠️ No existing sprukes.json. Creating fresh.')
+      console.warn('âš ï¸ No existing sprukes.json. Creating fresh.')
     }
 
     const newSpruke = {
@@ -65,11 +65,11 @@ export async function POST(req: Request) {
     sprukes.push(newSpruke)
 
     await writeJSON(sprukesPath, JSON.stringify(sprukes, null, 2), 'utf-8')
-    console.log('✅ New spruke written to sprukes.json:', newSpruke)
+    console.log('âœ… New spruke written to sprukes.json:', newSpruke)
 
     return NextResponse.json({ success: true, fileName })
   } catch (error) {
-    console.error('�"� Fatal error in POST /post-spruke:', error)
+    console.error('ï¿½"ï¿½ Fatal error in POST /post-spruke:', error)
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

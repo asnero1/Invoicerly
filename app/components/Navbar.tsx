@@ -1,4 +1,4 @@
-// ✅ FILE: app/components/Navbar.tsx
+﻿// âœ… FILE: app/components/Navbar.tsx
 'use client'
 
 import Link from 'next/link'
@@ -24,7 +24,7 @@ export default function Navbar() {
     { href: '/task', label: 'Tasks' },
     { href: '/generate-invoice', label: 'Invoices' },
     { href: '/payme', label: 'Pay Me' },
-    { href: '/payout', label: '💸 PayOut' },
+    { href: '/payout', label: 'ðŸ’¸ PayOut' },
     { href: '/look', label: 'Look' },
     { href: '/find', label: 'Find' },
     { href: '/inbox', label: 'Inbox' },

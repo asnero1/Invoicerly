@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server'
+﻿import { NextRequest, NextResponse } from 'next/server'
 import fs from 'fs'
 import path from 'path'
 
@@ -21,9 +21,9 @@ export async function POST(req: NextRequest) {
     })
 
     fs.writeFileSync(filePath, JSON.stringify(existing, null, 2))
-    return NextResponse.json({ message: '✅ Like recorded' })
+    return NextResponse.json({ message: 'âœ… Like recorded' })
   } catch (err) {
-    console.error('❌ Failed to like user:', err)
+    console.error('âŒ Failed to like user:', err)
     return NextResponse.json({ error: 'Server error' }, { status: 500 })
   }
 }

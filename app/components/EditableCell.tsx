@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import React, { useState } from 'react'
 import { Task } from '@/types'
@@ -51,7 +51,7 @@ const EditableCell: React.FC<EditableCellProps> = ({
       onClick={() => setEditing(true)}
       className="cursor-pointer px-1 py-0.5 hover:bg-gray-100 rounded"
     >
-      {value?.toString() || '�"'}
+      {value?.toString() || 'â€"'}
     </div>
   )
 }

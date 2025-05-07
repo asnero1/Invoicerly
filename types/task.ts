@@ -1,4 +1,4 @@
-export type Task = {
+﻿export type Task = {
   id: string
   description: string
   client: string
@@ -8,9 +8,9 @@ export type Task = {
   priority?: string
   voiceNote?: string
   attachment?: string
-  status?: 'pending' | 'done' | 'invoiced' // ✅ explicitly typed (string is fine too)
+  status?: 'pending' | 'done' | 'invoiced' // âœ… explicitly typed (string is fine too)
   clientPhone?: string
   amount?: number
-  done?: boolean // ✅ required for onMarkDone
+  done?: boolean // âœ… required for onMarkDone
 }
 

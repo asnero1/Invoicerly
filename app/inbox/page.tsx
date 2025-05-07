@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useEffect, useState } from 'react'
 import { Input } from '@/components/ui/input'
@@ -99,7 +99,7 @@ export default function InboxPage() {
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-6 space-y-6">
-      <h1 className="text-3xl font-bold">�"� Inbox</h1>
+      <h1 className="text-3xl font-bold">ï¿½"ï¿½ Inbox</h1>
 
       <div className="flex flex-col md:flex-row gap-3 items-start md:items-center">
         <Input
@@ -182,7 +182,7 @@ export default function InboxPage() {
               {msg.body}
             </p>
             <p className="text-xs text-gray-400 mt-2">
-              �"� {msg.date || msg.timestamp}
+              ï¿½"ï¿½ {msg.date || msg.timestamp}
             </p>
 
             {Array.isArray(msg.replies) && msg.replies.length > 0 && (
@@ -195,12 +195,12 @@ export default function InboxPage() {
                   >
                     {r.message && (
                       <p className="mb-1">
-                        �'� <span className="text-gray-800">{r.message}</span>
+                        ï¿½'ï¿½ <span className="text-gray-800">{r.message}</span>
                       </p>
                     )}
                     {r.text && (
                       <p className="mb-1">
-                        �"� <span className="text-gray-800">{r.text}</span>
+                        ï¿½"ï¿½ <span className="text-gray-800">{r.text}</span>
                       </p>
                     )}
                     {r.fileUrl && (
@@ -210,11 +210,11 @@ export default function InboxPage() {
                         rel="noopener noreferrer"
                         className="text-blue-600 underline"
                       >
-                        🎧 Voice / File Reply
+                        ðŸŽ§ Voice / File Reply
                       </a>
                     )}
                     {r.date && (
-                      <p className="text-xs text-gray-400">�' {r.date}</p>
+                      <p className="text-xs text-gray-400">ï¿½' {r.date}</p>
                     )}
                   </div>
                 ))}

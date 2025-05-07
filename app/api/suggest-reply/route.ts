@@ -1,4 +1,4 @@
-// ✅ FILE: app/api/suggest-reply/route.ts
+﻿// âœ… FILE: app/api/suggest-reply/route.ts
 import { NextResponse } from 'next/server'
 import OpenAI from 'openai'
 
@@ -27,7 +27,7 @@ export async function POST(req: Request) {
 
     const rawText = completion.choices[0].message.content || ''
     const suggestions = rawText
-      .split(/\n|•|�"|-/)
+      .split(/\n|â€¢|ï¿½"|-/)
       .map((s) => s.trim())
       .filter(Boolean)
       .slice(0, 3)

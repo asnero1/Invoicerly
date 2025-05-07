@@ -1,4 +1,4 @@
-// File: app/components/InvoicePreviewModal.tsx
+﻿// File: app/components/InvoicePreviewModal.tsx
 'use client'
 
 import React from 'react'
@@ -25,7 +25,7 @@ export default function InvoicePreviewModal({ task, onClose }: Props) {
       return
     }
 
-    const message = `🧾 *Invoice Preview*\n\n*Client:* ${task.client}\n*Description:* ${task.description}\n*Amount:* $${task.amount?.toFixed(2) || '0.00'}\n*Due:* ${task.dueDate || 'N/A'}`
+    const message = `ðŸ§¾ *Invoice Preview*\n\n*Client:* ${task.client}\n*Description:* ${task.description}\n*Amount:* $${task.amount?.toFixed(2) || '0.00'}\n*Due:* ${task.dueDate || 'N/A'}`
     const url = `https://api.whatsapp.com/send?phone=${encodeURIComponent(task.clientPhone)}&text=${encodeURIComponent(message)}`
     window.open(url, '_blank')
   }

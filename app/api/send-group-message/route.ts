@@ -1,4 +1,4 @@
-// ✅ FILE: /app/api/send-group-message/route.ts
+﻿// âœ… FILE: /app/api/send-group-message/route.ts
 
 import { promises as fs } from 'fs'
 import path from 'path'
@@ -32,7 +32,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ status: 'ok', message: newMessage })
   } catch (e) {
-    console.error('❌ Failed to send group message:', e)
+    console.error('âŒ Failed to send group message:', e)
     return NextResponse.json({
       status: 'error',
       message: 'Failed to send message',

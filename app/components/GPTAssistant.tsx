@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import React, { useState } from 'react'
 
@@ -29,8 +29,8 @@ const GPTAssistant: React.FC = () => {
 
       setResponse(data.reply)
     } catch (err: any) {
-      console.error('❌ GPT Assistant Error:', err)
-      setError('❌ GPT API error occurred.')
+      console.error('âŒ GPT Assistant Error:', err)
+      setError('âŒ GPT API error occurred.')
     }
 
     setLoading(false)
@@ -38,7 +38,7 @@ const GPTAssistant: React.FC = () => {
 
   return (
     <div className="p-4 bg-white rounded shadow mt-8">
-      <h2 className="text-lg font-semibold mb-2">🧠 GPT Assistant</h2>
+      <h2 className="text-lg font-semibold mb-2">ðŸ§  GPT Assistant</h2>
       <div className="flex gap-2 mb-2">
         <input
           type="text"

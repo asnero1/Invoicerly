@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server'
+﻿import { NextRequest, NextResponse } from 'next/server'
 import fs from 'fs'
 import path from 'path'
 import { Parser } from 'json2csv'
@@ -27,13 +27,13 @@ export async function POST(req: NextRequest) {
     const invoices = JSON.parse(fileData)
     const invoice = invoices.find((inv: any) => inv.id === id)
 
-    // ✅ Mark all tasks in this invoice as invoiced
+    // âœ… Mark all tasks in this invoice as invoiced
     invoice.tasks = invoice.tasks.map((task: any) => ({
       ...task,
       isInvoiced: true,
     }))
 
-    // ✅ Save updated invoices back to file
+    // âœ… Save updated invoices back to file
     fs.writeFileSync(filePath, JSON.stringify(invoices, null, 2), 'utf-8')
 
     if (!invoice) {
@@ -55,7 +55,7 @@ export async function POST(req: NextRequest) {
 
     if (type === 'pdf') {
       if (!fs.existsSync(fontPath)) {
-        console.error('❌ Font file missing at:', fontPath)
+        console.error('âŒ Font file missing at:', fontPath)
         return NextResponse.json(
           { error: 'Font file missing' },
           { status: 500 }
@@ -65,14 +65,14 @@ export async function POST(req: NextRequest) {
       const doc = new PDFDocument({
         size: 'A4',
         margin: 50,
-        font: fontPath, // �'� Use custom font from the very start
+        font: fontPath, // ï¿½'ï¿½ Use custom font from the very start
       })
 
       const chunks: Uint8Array[] = []
 
       doc.on('data', (chunk) => chunks.push(chunk))
       doc.on('end', () => {
-        console.log('✅ PDF stream complete')
+        console.log('âœ… PDF stream complete')
       })
 
       doc.fontSize(20).text(`Invoice`, { align: 'center' }).moveDown()
@@ -105,7 +105,7 @@ export async function POST(req: NextRequest) {
       { status: 400 }
     )
   } catch (err: any) {
-    console.error('❌ Export failed:', err)
+    console.error('âŒ Export failed:', err)
     return NextResponse.json({ error: 'Server error' }, { status: 500 })
   }
 }

@@ -1,4 +1,4 @@
-import jsPDF from 'jspdf'
+﻿import jsPDF from 'jspdf'
 
 export function exportToCSV(data: any[], filename = 'export.csv') {
   const csv = [

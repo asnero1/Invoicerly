@@ -1,4 +1,4 @@
-// ✅ SprukeUploader with user ID, avatar linking, and filtering
+﻿// âœ… SprukeUploader with user ID, avatar linking, and filtering
 'use client'
 import { useState, useEffect } from 'react'
 import ContactProModal from './ContactProModal'
@@ -152,7 +152,7 @@ const SprukeUploader = () => {
               </a>
             </div>
 
-            {/* 🆕 Add this button */}
+            {/* ðŸ†• Add this button */}
             <button
               onClick={() => {
                 setSelectedUser(s.userId)

@@ -1,16 +1,16 @@
-'use client'
+﻿'use client'
 
 import React from 'react'
 import ShareProfileButton from '@/components/ShareProfileButton'
 import Link from 'next/link'
 
 export default function DashboardPage() {
-  console.log('✅ Dashboard Page Loaded')
+  console.log('âœ… Dashboard Page Loaded')
 
   return (
     <div className="min-h-screen p-10 bg-gray-100 flex flex-col items-center justify-start space-y-8">
       <h1 className="text-4xl font-bold text-blue-600">
-        🚀 Welcome to Your Dashboard
+        ðŸš€ Welcome to Your Dashboard
       </h1>
 
       <p className="text-gray-700 text-center max-w-xl">

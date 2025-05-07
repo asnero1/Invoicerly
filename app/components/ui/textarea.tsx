@@ -1,4 +1,4 @@
-// ✅ FILE: components/ui/textarea.tsx
+﻿// âœ… FILE: components/ui/textarea.tsx
 import * as React from 'react'
 
 export interface TextareaProps

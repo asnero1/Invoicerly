@@ -1,4 +1,4 @@
-// File: app/api/process-payment/route.ts
+﻿// File: app/api/process-payment/route.ts
 import { NextResponse } from 'next/server'
 
 export async function POST(req: Request) {

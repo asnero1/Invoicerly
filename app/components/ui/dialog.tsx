@@ -1,4 +1,4 @@
-// File: app/components/ui/dialog.tsx
+﻿// File: app/components/ui/dialog.tsx
 'use client'
 
 import * as React from 'react'

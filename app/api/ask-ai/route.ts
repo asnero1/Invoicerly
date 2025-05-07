@@ -1,4 +1,4 @@
-// ✅ FILE: app/api/ask-ai/route.ts - Handles AI assistant queries via GPT
+﻿// âœ… FILE: app/api/ask-ai/route.ts - Handles AI assistant queries via GPT
 
 import { NextRequest, NextResponse } from 'next/server'
 import fs from 'fs'
@@ -38,7 +38,7 @@ User prompt: ${prompt}`,
     const reply = completion.choices[0].message.content
     return NextResponse.json({ reply })
   } catch (err) {
-    console.error('❌ Error in AI assistant:', err)
+    console.error('âŒ Error in AI assistant:', err)
     return NextResponse.json(
       { error: 'Failed to get AI response' },
       { status: 500 }

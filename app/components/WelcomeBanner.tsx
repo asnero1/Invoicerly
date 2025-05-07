@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useEffect, useState } from 'react'
 
@@ -19,7 +19,7 @@ export default function WelcomeBanner() {
 
   return (
     <div className="bg-blue-50 border border-blue-200 text-blue-800 px-4 py-2 rounded-xl mb-6">
-      👋 Welcome back, <strong>{name}</strong>!
+      ðŸ‘‹ Welcome back, <strong>{name}</strong>!
     </div>
   )
 }

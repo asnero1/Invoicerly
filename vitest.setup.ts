@@ -1,4 +1,4 @@
-import '@testing-library/jest-dom';
+﻿import '@testing-library/jest-dom';
 import { vi as vitestVi } from 'vitest';
 
 // Extend globalThis to recognize `vi` mock utility

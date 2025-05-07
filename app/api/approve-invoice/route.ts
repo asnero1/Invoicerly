@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server'
+﻿import { NextRequest, NextResponse } from 'next/server'
 
 // Sample API to approve an invoice
 export async function POST(req: NextRequest) {

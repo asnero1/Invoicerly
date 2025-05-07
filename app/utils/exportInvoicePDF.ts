@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import jsPDF from 'jspdf'
 import autoTable from 'jspdf-autotable'
@@ -35,7 +35,7 @@ export async function exportInvoicePDF(
 
   const doc = new jsPDF()
 
-  // ✅ 1. Logo (if exists in /public)
+  // âœ… 1. Logo (if exists in /public)
   try {
     const logoRes = await fetch('/logo-placeholder.png')
     const logoBlob = await logoRes.blob()
@@ -52,17 +52,17 @@ export async function exportInvoicePDF(
     console.warn('Logo not found. Skipping.')
   }
 
-  // ✅ 2. Title
+  // âœ… 2. Title
   doc.setFontSize(18)
   doc.text(`Invoice for ${client}`, 14, 40)
 
-  // ✅ 3. Watermark
+  // âœ… 3. Watermark
   doc.setTextColor(240)
   doc.setFontSize(60)
   doc.text('INVOICERLY', 35, 120, { angle: 45 })
   doc.setTextColor(0)
 
-  // ✅ 4. Line-item table
+  // âœ… 4. Line-item table
   const tableData = tasks.map((task, i) => [
     i + 1,
     `${task.title || ''}\n${task.description || ''}`,
@@ -80,7 +80,7 @@ export async function exportInvoicePDF(
   const total = subtotal + taxAmount
   const finalY = (doc as any).lastAutoTable.finalY || 80
 
-  // ✅ 5. Totals and ABN
+  // âœ… 5. Totals and ABN
   doc.setFontSize(12)
   doc.text(`ABN: ${abn}`, 14, finalY + 10)
   doc.text(`Subtotal: ${currencySymbol}${subtotal.toFixed(2)}`, 14, finalY + 20)
@@ -92,24 +92,24 @@ export async function exportInvoicePDF(
   doc.setFontSize(14)
   doc.text(`Total: ${currencySymbol}${total.toFixed(2)}`, 14, finalY + 45)
 
-  // ✅ 6. Footer info
+  // âœ… 6. Footer info
   doc.setFontSize(10)
   doc.text(`Client Email: ${clientEmail}`, 14, finalY + 60)
   doc.text(`Payment Status: ${status}`, 14, finalY + 67)
   doc.text(`Payment Method: ${paymentMethod}`, 14, finalY + 74)
 
-  // ✅ 7. QR Code
+  // âœ… 7. QR Code
   if (paymentLink) {
     const qr = await QRCode.toDataURL(paymentLink)
     doc.addImage(qr, 'PNG', 150, finalY + 45, 40, 40)
   }
 
-  // ✅ 8. Filename
+  // âœ… 8. Filename
   const safeClient = client.toLowerCase().replace(/\s+/g, '-')
   const timestamp = Date.now()
   const fileName = `invoice-${safeClient}-${timestamp}.pdf`
 
-  // ✅ 9. Output
+  // âœ… 9. Output
   const blob = doc.output('blob')
   const invoiceUrl = URL.createObjectURL(blob)
 

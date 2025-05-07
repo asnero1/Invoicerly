@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server'
+﻿import { NextResponse } from 'next/server'
 import { readFile } from 'fs/promises'
 import path from 'path'
 
@@ -16,7 +16,7 @@ export async function GET() {
       )
     )
   } catch (err) {
-    console.error('❌ Error reading sprukes.json:', err)
+    console.error('âŒ Error reading sprukes.json:', err)
     return NextResponse.json([], { status: 200 })
   }
 }

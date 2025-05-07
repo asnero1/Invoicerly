@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
@@ -23,7 +23,7 @@ export default function LoginPage() {
     const hasInvite = authConfig.inviteCodes.includes(inviteCode.trim())
 
     if (authConfig.inviteOnly && !isAllowed && !hasInvite) {
-      setError('❌ You are not on the allowed test list.')
+      setError('âŒ You are not on the allowed test list.')
       return
     }
 
@@ -34,7 +34,7 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4">
-      <h1 className="text-3xl font-bold mb-4">�"� Login to Invoicerly MVP</h1>
+      <h1 className="text-3xl font-bold mb-4">ðŸ" Login to Invoicerly MVP</h1>
       <input
         value={email}
         onChange={(e) => setEmail(e.target.value)}

@@ -1,7 +1,7 @@
-'use client'
+﻿'use client'
 
 import React, { useEffect, useState } from 'react'
-import AIAssistant from '@/components/AIAssistant' // ✅ Make sure path is correct
+import AIAssistant from '@/components/AIAssistant' // âœ… Make sure path is correct
 
 type Invoice = {
   id: string
@@ -21,7 +21,7 @@ const InvoiceDashboard: React.FC = () => {
         const data = await res.json()
         setInvoices(data.invoices)
       } catch (err) {
-        console.error('❌ Failed to fetch invoices:', err)
+        console.error('âŒ Failed to fetch invoices:', err)
       }
     }
 
@@ -47,14 +47,14 @@ const InvoiceDashboard: React.FC = () => {
       link.click()
       window.URL.revokeObjectURL(url)
     } catch (err: any) {
-      console.error('❌ Export failed:', err)
-      alert('❌ Export failed. Check console.')
+      console.error('âŒ Export failed:', err)
+      alert('âŒ Export failed. Check console.')
     }
   }
 
   return (
     <div className="p-6 bg-white shadow rounded mt-6 relative">
-      <h2 className="text-2xl font-bold mb-4">�"� All Invoices</h2>
+      <h2 className="text-2xl font-bold mb-4">ðŸ"‹ All Invoices</h2>
       {invoices.length === 0 ? (
         <p className="text-gray-500">No invoices found.</p>
       ) : (
@@ -80,13 +80,13 @@ const InvoiceDashboard: React.FC = () => {
                     onClick={() => handleExport(inv.id, 'pdf')}
                     className="text-blue-600 hover:underline text-sm"
                   >
-                    �"� PDF
+                    ðŸ"„ PDF
                   </button>
                   <button
                     onClick={() => handleExport(inv.id, 'csv')}
                     className="text-green-600 hover:underline text-sm"
                   >
-                    �"� CSV
+                    ðŸ"Š CSV
                   </button>
                 </td>
               </tr>
@@ -95,7 +95,7 @@ const InvoiceDashboard: React.FC = () => {
         </table>
       )}
 
-      {/* ✅ Floating AI Assistant */}
+      {/* âœ… Floating AI Assistant */}
       <AIAssistant />
     </div>
   )

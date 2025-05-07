@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
@@ -80,7 +80,7 @@ export default function PublicProfilePage() {
           href={`/contact?to=${encodeURIComponent(profile.name)}&spruke=general`}
           className="text-blue-600 hover:underline block text-sm"
         >
-          �"� Contact This Pro
+          ðŸ"§ Contact This Pro
         </a>
       )}
     </div>

@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
@@ -14,7 +14,7 @@ export default function GenerateInvoicePage() {
     description: 'Wrap-up video editing & upload',
     date: '2025-04-21',
     amount: 250,
-    phoneNumber: '+61488040450', // ✅ Assumes client has valid WhatsApp number
+    phoneNumber: '+61488040450', // âœ… Assumes client has valid WhatsApp number
   }
 
   const handleGenerate = async () => {
@@ -30,7 +30,7 @@ export default function GenerateInvoicePage() {
 
       const data = await res.json()
 
-      // ✅ Force Preview URL manually
+      // âœ… Force Preview URL manually
       const previewUrl = `/invoices/invoice-${task.id}.pdf`
       setPreviewUrl(previewUrl)
 
@@ -48,7 +48,7 @@ export default function GenerateInvoicePage() {
       toast.error('Invoice not ready yet!')
       return
     }
-    const message = `🧾 *Your Invoice is Ready!*\n\nPlease view your invoice here:\n${window.location.origin}${previewUrl}`
+    const message = `ðŸ§¾ *Your Invoice is Ready!*\n\nPlease view your invoice here:\n${window.location.origin}${previewUrl}`
     const url = `https://api.whatsapp.com/send?phone=${encodeURIComponent(task.phoneNumber)}&text=${encodeURIComponent(message)}`
     window.open(url, '_blank')
   }
@@ -70,7 +70,7 @@ export default function GenerateInvoicePage() {
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
-              View Invoice PDF ↗
+              View Invoice PDF â†—
             </a>
             <Button
               variant="outline"

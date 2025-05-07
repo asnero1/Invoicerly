@@ -1,4 +1,4 @@
-// app/utils/dbConnect.ts
+﻿// app/utils/dbConnect.ts
 
 import mongoose from 'mongoose'
 
@@ -13,9 +13,9 @@ export const dbConnect = async () => {
     })
 
     isConnected = true
-    console.log('✅ MongoDB connected')
+    console.log('âœ… MongoDB connected')
   } catch (err) {
-    console.error('❌ MongoDB connection error:', err)
+    console.error('âŒ MongoDB connection error:', err)
     throw err
   }
 }

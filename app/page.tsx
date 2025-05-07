@@ -1,4 +1,4 @@
-// ✅ FILE: app/landing/page.tsx
+﻿// âœ… FILE: app/landing/page.tsx
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -12,7 +12,7 @@ export default function LandingPage() {
           Turn your voice into invoices.
         </p>
         <p className="mb-6 text-gray-700">
-          Powered by VTO �" the Voice Task Output Engine. Speak. Log. Invoice.
+          Powered by VTO ï¿½" the Voice Task Output Engine. Speak. Log. Invoice.
           Done.
         </p>
         <Link
@@ -46,7 +46,7 @@ export default function LandingPage() {
           Logo Design for Jetset Digital
         </p>
         <p className="mt-1 text-sm">
-          ❤️ 2{' '}
+          â¤ï¸ 2{' '}
           <Link
             href="#"
             className="text-blue-600 underline hover:text-blue-800"
@@ -68,7 +68,7 @@ export default function LandingPage() {
           href="/find"
           className="inline-block text-blue-600 underline hover:text-blue-800 text-sm mb-6"
         >
-          Explore the Directory �'
+          Explore the Directory ï¿½'
         </Link>
         <div className="flex justify-center gap-6 mt-6 flex-wrap">
           {[
@@ -96,7 +96,7 @@ export default function LandingPage() {
         <h3 className="text-xl font-semibold mb-4">What is VTO?</h3>
         <p className="text-gray-700 max-w-2xl mx-auto">
           VTO (Voice Task Output) is your invisible admin. Speak tasks out loud,
-          and let Poni turn them into billable logs, summaries, and invoices �"
+          and let Poni turn them into billable logs, summaries, and invoices ï¿½"
           instantly.
         </p>
         <div className="mt-6">
@@ -119,9 +119,9 @@ export default function LandingPage() {
           <div className="border p-6 rounded-xl bg-gray-100">
             <h4 className="font-bold mb-2">Free</h4>
             <ul className="text-sm text-gray-700 space-y-1 mb-4">
-              <li>• 10 tasks/month</li>
-              <li>• Basic invoicing</li>
-              <li>• No login needed</li>
+              <li>â€¢ 10 tasks/month</li>
+              <li>â€¢ Basic invoicing</li>
+              <li>â€¢ No login needed</li>
             </ul>
             <button className="bg-black text-white px-4 py-2 rounded-full text-sm hover:bg-gray-800 transition">
               Start Free
@@ -132,9 +132,9 @@ export default function LandingPage() {
           <div className="border p-6 rounded-xl bg-white shadow">
             <h4 className="font-bold mb-2">Pro</h4>
             <ul className="text-sm text-gray-700 space-y-1 mb-4">
-              <li>• Unlimited tasks</li>
-              <li>• AI Assistant</li>
-              <li>• Custom branding</li>
+              <li>â€¢ Unlimited tasks</li>
+              <li>â€¢ AI Assistant</li>
+              <li>â€¢ Custom branding</li>
             </ul>
             <button className="bg-black text-white px-4 py-2 rounded-full text-sm hover:bg-gray-800 transition">
               Upgrade
@@ -145,9 +145,9 @@ export default function LandingPage() {
           <div className="border p-6 rounded-xl bg-gray-100">
             <h4 className="font-bold mb-2">Team</h4>
             <ul className="text-sm text-gray-700 space-y-1 mb-4">
-              <li>• All Pro features</li>
-              <li>• Multiple users</li>
-              <li>• Analytics & insights</li>
+              <li>â€¢ All Pro features</li>
+              <li>â€¢ Multiple users</li>
+              <li>â€¢ Analytics & insights</li>
             </ul>
             <button className="bg-black text-white px-4 py-2 rounded-full text-sm hover:bg-gray-800 transition">
               Upgrade
@@ -158,7 +158,7 @@ export default function LandingPage() {
 
       {/* Footer */}
       <footer className="text-center text-sm py-8 text-gray-500">
-        © {new Date().getFullYear()} Poni �" Voice Task Output Engine
+        Â© {new Date().getFullYear()} Poni ï¿½" Voice Task Output Engine
       </footer>
     </main>
   )

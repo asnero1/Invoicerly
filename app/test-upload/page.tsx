@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 export default function TestUpload() {
   const handleSubmit = async (e: any) => {
@@ -17,7 +17,7 @@ export default function TestUpload() {
 
   return (
     <div style={{ padding: 20 }}>
-      <h2>🎬 Test Spruke Upload</h2>
+      <h2>ðŸŽ¬ Test Spruke Upload</h2>
       <form onSubmit={handleSubmit}>
         <input name="file" type="file" required /> <br />
         <input name="name" type="text" placeholder="Your name or handle" />{' '}

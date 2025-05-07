@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server'
+﻿import { NextResponse } from 'next/server'
 import { readFile, writeFile } from 'fs/promises'
 import path from 'path'
 

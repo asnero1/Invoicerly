@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useEffect, useState } from 'react'
 
@@ -53,10 +53,10 @@ export default function SmartSuggestionBox({
     <div className="fixed bottom-4 right-4 z-50">
       {visible ? (
         <div className="bg-white border border-gray-300 rounded-lg shadow-lg p-4 max-w-xs">
-          <h3 className="font-semibold text-sm mb-2">�'� Smart Suggestions</h3>
+          <h3 className="font-semibold text-sm mb-2">ï¿½'ï¿½ Smart Suggestions</h3>
           <ul className="text-sm space-y-1">
             {suggestions.map((s, idx) => (
-              <li key={idx}>👉 {s.message}</li>
+              <li key={idx}>ðŸ‘‰ {s.message}</li>
             ))}
           </ul>
           <div className="flex justify-end gap-2 mt-3">

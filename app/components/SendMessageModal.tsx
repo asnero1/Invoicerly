@@ -1,4 +1,4 @@
-// ✅ FILE: components/SendMessageModal.tsx
+﻿// âœ… FILE: components/SendMessageModal.tsx
 'use client'
 
 import { useState, useEffect } from 'react'
@@ -113,10 +113,10 @@ export default function SendMessageModal({
           onClick={onClose}
           className="absolute top-2 right-4 text-gray-400 hover:text-black"
         >
-          ✖
+          âœ–
         </button>
         <h2 className="text-xl font-bold">
-          �"� New Message to {recipient.name}
+          ï¿½"ï¿½ New Message to {recipient.name}
         </h2>
 
         <Input
@@ -133,7 +133,7 @@ export default function SendMessageModal({
 
         {suggestions.length > 0 && (
           <div className="text-sm text-gray-500 space-y-1">
-            <p className="font-semibold">�'� Suggestions:</p>
+            <p className="font-semibold">ï¿½'ï¿½ Suggestions:</p>
             {suggestions.map((s, i) => (
               <button
                 key={i}
@@ -148,10 +148,10 @@ export default function SendMessageModal({
 
         <div className="flex gap-2 items-center">
           <Button variant="secondary" onClick={startRecording}>
-            🎤 Start
+            ðŸŽ¤ Start
           </Button>
           <Button variant="secondary" onClick={stopRecording}>
-            ⏹ Stop
+            â¹ Stop
           </Button>
           {audioUrl && (
             <audio controls src={audioUrl} className="ml-2 w-full" />

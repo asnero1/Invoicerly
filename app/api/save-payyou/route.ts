@@ -1,4 +1,4 @@
-// ✅ File: app/api/save-payyou/route.ts
+﻿// âœ… File: app/api/save-payyou/route.ts
 
 import { NextRequest, NextResponse } from 'next/server'
 import { readFile, writeFile } from 'fs/promises'
@@ -6,7 +6,7 @@ import path from 'path'
 
 const FILE_PATH = path.join(process.cwd(), 'app', 'data', 'payyou.json')
 
-// ✅ Utility: Read JSON file
+// âœ… Utility: Read JSON file
 async function readPayyouFile() {
   try {
     const data = await readFile(FILE_PATH, 'utf-8')
@@ -16,18 +16,18 @@ async function readPayyouFile() {
   }
 }
 
-// ✅ Utility: Write to JSON file
+// âœ… Utility: Write to JSON file
 async function writePayyouFile(data: any) {
   await writeFile(FILE_PATH, JSON.stringify(data, null, 2), 'utf-8')
 }
 
-// ✅ GET: Fetch all payees
+// âœ… GET: Fetch all payees
 export async function GET() {
   const data = await readPayyouFile()
   return NextResponse.json(data)
 }
 
-// ✅ POST: Add or update a payee
+// âœ… POST: Add or update a payee
 export async function POST(req: NextRequest) {
   try {
     const newData = await req.json()
@@ -40,7 +40,7 @@ export async function POST(req: NextRequest) {
   }
 }
 
-// ✅ DELETE: Remove a payee by contact
+// âœ… DELETE: Remove a payee by contact
 export async function DELETE(req: NextRequest) {
   try {
     const { contact } = await req.json()
@@ -56,7 +56,7 @@ export async function DELETE(req: NextRequest) {
   }
 }
 
-// ✅ PUT: Update specific payee details
+// âœ… PUT: Update specific payee details
 export async function PUT(req: NextRequest) {
   try {
     const { contact, updates } = await req.json()

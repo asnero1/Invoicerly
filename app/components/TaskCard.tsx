@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import React from 'react'
 import { motion } from 'framer-motion'
@@ -62,28 +62,28 @@ export default function TaskCard({
               <h2 className="text-xl font-semibold text-gray-800 mb-1">
                 {task.description}
               </h2>
-              <p className="text-sm text-gray-500">�"� {task.client}</p>
+              <p className="text-sm text-gray-500">ï¿½"ï¿½ {task.client}</p>
             </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-600">
             <p>
-              �"� <strong>Logged:</strong> {task.date}
+              ï¿½"ï¿½ <strong>Logged:</strong> {task.date}
             </p>
             <p>
-              ⏰ <strong>Due:</strong> {task.dueDate || 'N/A'}
+              â° <strong>Due:</strong> {task.dueDate || 'N/A'}
             </p>
             <p>
-              �'� <strong>Amount:</strong> ${task.amount?.toFixed(2) || '0.00'}
+              ï¿½'ï¿½ <strong>Amount:</strong> ${task.amount?.toFixed(2) || '0.00'}
             </p>
             <p>
-              ✅ <strong>Billable:</strong> {task.billable ? 'Yes' : 'No'}
+              âœ… <strong>Billable:</strong> {task.billable ? 'Yes' : 'No'}
             </p>
           </div>
 
           {task.attachment && (
             <p className="text-sm text-blue-600 underline">
-              �"�{' '}
+              ï¿½"ï¿½{' '}
               <a href={task.attachment} target="_blank" rel="noreferrer">
                 Attachment
               </a>

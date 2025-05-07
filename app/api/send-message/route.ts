@@ -1,4 +1,4 @@
-// ✅ FILE: app/api/send-message/route.ts
+﻿// âœ… FILE: app/api/send-message/route.ts
 import { NextResponse } from 'next/server'
 import { writeFile, readFile } from 'fs/promises'
 import path from 'path'
@@ -21,7 +21,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ success: true })
   } catch (err) {
-    console.error('❌ Failed to save message:', err)
+    console.error('âŒ Failed to save message:', err)
     return NextResponse.json(
       { success: false, error: 'Could not save message' },
       { status: 500 }

@@ -1,4 +1,4 @@
-// File: app/components/FeedbackButton.tsx
+﻿// File: app/components/FeedbackButton.tsx
 'use client'
 
 import { useState } from 'react'
@@ -36,7 +36,7 @@ export default function FeedbackButton() {
     <div className="fixed bottom-4 left-4 z-40">
       {open ? (
         <div className="bg-white p-4 rounded shadow-lg w-[90vw] max-w-sm space-y-3">
-          <h3 className="text-sm font-semibold">🌟 Rate your experience</h3>
+          <h3 className="text-sm font-semibold">ðŸŒŸ Rate your experience</h3>
 
           <div className="flex gap-1">
             {[1, 2, 3, 4, 5].map((num) => (
@@ -45,7 +45,7 @@ export default function FeedbackButton() {
                 onClick={() => setRating(num)}
                 className={`text-xl ${rating && rating >= num ? 'text-yellow-400' : 'text-gray-300'}`}
               >
-                ★
+                â˜…
               </button>
             ))}
           </div>
@@ -81,7 +81,7 @@ export default function FeedbackButton() {
         </div>
       ) : (
         <Button onClick={() => setOpen(true)} className="text-xs px-3 py-1">
-          �'� Feedback
+          ðŸ'¬ Feedback
         </Button>
       )}
     </div>

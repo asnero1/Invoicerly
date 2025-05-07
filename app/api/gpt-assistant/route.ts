@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server'
+﻿import { NextRequest, NextResponse } from 'next/server'
 import OpenAI from 'openai'
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
@@ -26,7 +26,7 @@ export async function POST(req: NextRequest) {
     const reply = completion.choices[0]?.message?.content || 'No reply.'
     return NextResponse.json({ reply })
   } catch (err: any) {
-    console.error('❌ GPT Error:', err)
+    console.error('âŒ GPT Error:', err)
     return NextResponse.json(
       { error: 'GPT API error occurred.' },
       { status: 500 }

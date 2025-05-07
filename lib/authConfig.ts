@@ -1,4 +1,4 @@
-// ✅ FILE: /lib/authConfig.ts
+﻿// âœ… FILE: /lib/authConfig.ts
 
 // This file sets the secret invite-only flag for MVP
 
@@ -9,8 +9,8 @@ export const authConfig = {
     'vincent@example.com',
     'rocco@example.com',
     'marnie@example.com',
-    'asnero@hotmail.com', // ✅ <- Add your real email here
+    'asnero@hotmail.com', // âœ… <- Add your real email here
   ],
-  inviteCodes: ['INVOICERLY2024', 'TEST123'], // ✅ for Phase 2
+  inviteCodes: ['INVOICERLY2024', 'TEST123'], // âœ… for Phase 2
 }
 

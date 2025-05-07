@@ -1,4 +1,4 @@
-// File: app/lib/transcribeAudio.ts
+﻿// File: app/lib/transcribeAudio.ts
 
 // This is a mock helper to simulate transcription. Replace this with real API (OpenAI Whisper, Deepgram, etc)
 

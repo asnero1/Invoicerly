@@ -1,4 +1,4 @@
-// ✅ /api/fetch-tasks/route.ts
+﻿// âœ… /api/fetch-tasks/route.ts
 import { NextRequest, NextResponse } from 'next/server'
 import fs from 'fs'
 import path from 'path'
@@ -13,9 +13,9 @@ export async function GET(req: NextRequest) {
 
     return NextResponse.json({ tasks })
   } catch (err) {
-    console.error('❌ Error reading tasks.json:', err)
+    console.error('âŒ Error reading tasks.json:', err)
     return NextResponse.json(
-      { message: '❌ Failed to load tasks' },
+      { message: 'âŒ Failed to load tasks' },
       { status: 500 }
     )
   }

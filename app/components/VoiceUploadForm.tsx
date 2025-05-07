@@ -1,11 +1,11 @@
-// File: app/components/VoiceUploadForm.tsx
+﻿// File: app/components/VoiceUploadForm.tsx
 
 'use client'
 
 import React, { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { toast } from 'sonner'
-import { transcribeAudio } from '@/lib/transcribeAudio' // ✅ clean, alias-based
+import { transcribeAudio } from '@/lib/transcribeAudio' // âœ… clean, alias-based
 
 interface Props {
   onTranscription: (text: string) => void

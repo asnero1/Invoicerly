@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import React, { useState } from 'react'
 import TaskForm from '@/components/TaskForm'
@@ -57,27 +57,27 @@ export default function TaskPage() {
   return (
     <div className="max-w-5xl mx-auto px-4 py-8 space-y-10">
       <header className="text-center">
-        <h1 className="text-3xl font-bold">�"� Tasks</h1>
+        <h1 className="text-3xl font-bold">ï¿½"ï¿½ Tasks</h1>
         <p className="text-gray-500 mt-2">Log and manage your tasks here.</p>
       </header>
 
-      {/* ✅ Task Input Form */}
+      {/* âœ… Task Input Form */}
       <section>
         <TaskForm onSubmit={addTask} />
       </section>
 
-      {/* ✅ Task List Display */}
+      {/* âœ… Task List Display */}
       <section>
         <TaskList tasks={tasks} onUpdate={updateTask} />
       </section>
 
-      {/* ✅ Floating Smart Suggestions */}
+      {/* âœ… Floating Smart Suggestions */}
       <SmartSuggestionBox
   suggestions={[
-    { message: '🧠 Group tasks by client for cleaner exports.' },
-    { message: '📅 Add due dates to keep work on track.' },
-    { message: '🎤 Attach voice notes when on the go.' },
-    { message: '💼 Mark billable tasks for invoice generation.' }
+    { message: 'ðŸ§  Group tasks by client for cleaner exports.' },
+    { message: 'ðŸ“… Add due dates to keep work on track.' },
+    { message: 'ðŸŽ¤ Attach voice notes when on the go.' },
+    { message: 'ðŸ’¼ Mark billable tasks for invoice generation.' }
   ]}
   onApply={() => {
     console.log('Applied suggestion');

@@ -1,14 +1,14 @@
-// File: app/components/SmartSuggestions.tsx
+﻿// File: app/components/SmartSuggestions.tsx
 'use client'
 
 import { useEffect, useState } from 'react'
 
 const suggestions = [
-  '🧾 Tip: Log any task with “invoice”, and we’ll mark it billable.',
-  '�"� Tip: Say “due Friday” in your task to auto-add a due date.',
-  '�"� Tip: Use keywords like “health” or “creative” to auto-tag.',
-  '🎙️ Tip: Use the Speak button to quickly voice log jobs on the go.',
-  '�"" Tip: Enable Smart Nudges in Settings to catch invoice requests from clients.',
+  'ðŸ§¾ Tip: Log any task with â€œinvoiceâ€, and weâ€™ll mark it billable.',
+  'ðŸ"… Tip: Say â€œdue Fridayâ€ in your task to auto-add a due date.',
+  'ðŸ" Tip: Use keywords like â€œhealthâ€ or â€œcreativeâ€ to auto-tag.',
+  'ðŸŽ™ï¸ Tip: Use the Speak button to quickly voice log jobs on the go.',
+  'ðŸ"" Tip: Enable Smart Nudges in Settings to catch invoice requests from clients.',
 ]
 
 export default function SmartSuggestions() {

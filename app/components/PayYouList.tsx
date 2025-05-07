@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useEffect, useState } from 'react'
 
@@ -38,7 +38,7 @@ export default function PayYouList({
           <div>
             <h3 className="font-semibold">{item.title}</h3>
             <p>
-              ${item.amount} �" Due:{' '}
+              ${item.amount} â€" Due:{' '}
               {new Date(item.dueDate).toLocaleDateString()}
             </p>
             {item.description && (

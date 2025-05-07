@@ -1,4 +1,4 @@
-// ✅ FILE: app/api/whatsapp/route.ts
+﻿// âœ… FILE: app/api/whatsapp/route.ts
 import { NextResponse } from 'next/server'
 import { writeFileSync, readFileSync } from 'fs'
 import { join } from 'path'

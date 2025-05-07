@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server'
+﻿import { NextRequest, NextResponse } from 'next/server'
 import fs from 'fs'
 import path from 'path'
 
@@ -41,7 +41,7 @@ export async function POST(req: NextRequest) {
     const url = `/attachments/${fileName}`
     return NextResponse.json({ success: true, fileName, url }, { status: 200 })
   } catch (error: any) {
-    console.error('❌ Attachment upload failed:', error)
+    console.error('âŒ Attachment upload failed:', error)
     return NextResponse.json(
       { error: 'Server error during upload' },
       { status: 500 }

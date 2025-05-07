@@ -1,4 +1,4 @@
-// ✅ FILE 2: /app/api/mark-seen/route.ts
+﻿// âœ… FILE 2: /app/api/mark-seen/route.ts
 
 import { promises as fs } from 'fs'
 import path from 'path'
@@ -40,7 +40,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ status: 'ok', updated: updatedCount })
   } catch (error) {
-    console.error('❌ Failed to mark messages as seen:', error)
+    console.error('âŒ Failed to mark messages as seen:', error)
     return NextResponse.json({ status: 'error', message: 'Marking failed' })
   }
 }

@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState, useEffect } from 'react'
 
@@ -83,7 +83,7 @@ export default function ContactProModal({
           onChange={(e) => setSenderName(e.target.value)}
         />
 
-        {/* 🎙 Voice message input */}
+        {/* ðŸŽ™ Voice message input */}
         <input
           type="file"
           accept="audio/*"
@@ -100,7 +100,7 @@ export default function ContactProModal({
         {voiceNote && (
           <div className="mb-3">
             <p className="text-xs text-gray-500 mb-1">
-              🎧 Preview: {voiceNote.name}
+              ðŸŽ§ Preview: {voiceNote.name}
             </p>
             <audio
               controls
@@ -128,10 +128,10 @@ export default function ContactProModal({
         </div>
 
         {status === 'sent' && (
-          <p className="text-green-600 text-sm mt-3">✅ Message sent!</p>
+          <p className="text-green-600 text-sm mt-3">âœ… Message sent!</p>
         )}
         {status === 'error' && (
-          <p className="text-red-600 text-sm mt-3">❌ Error sending message.</p>
+          <p className="text-red-600 text-sm mt-3">âŒ Error sending message.</p>
         )}
       </div>
     </div>

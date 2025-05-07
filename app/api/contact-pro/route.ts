@@ -1,4 +1,4 @@
-import { promises as fs } from 'fs'
+﻿import { promises as fs } from 'fs'
 import path from 'path'
 
 export async function POST(req: Request) {
@@ -19,7 +19,7 @@ export async function POST(req: Request) {
 
     return Response.json({ success: true })
   } catch (err) {
-    console.error('❌ Failed to save message:', err)
+    console.error('âŒ Failed to save message:', err)
     return Response.json({ success: false }, { status: 500 })
   }
 }
