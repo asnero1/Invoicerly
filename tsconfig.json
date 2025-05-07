@@ -14,7 +14,7 @@
   "jsx": "preserve",
   "incremental": true,
   "allowSyntheticDefaultImports": true,
-  "types": ["node", "file-saver"], // ✅ merged into one line
+  "types": ["node"],
   "baseUrl": ".",
     "paths": {
       "@/components/*": ["./app/components/*"],
@@ -32,11 +32,11 @@
     ]
   },
   "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts",
-    "types/**/*.d.ts"
-  ],
-  "exclude": ["node_modules"]
+  "next-env.d.ts",
+  "**/*.ts",
+  "**/*.tsx",
+  "types"
+],
+"exclude": ["node_modules"]
+
 }

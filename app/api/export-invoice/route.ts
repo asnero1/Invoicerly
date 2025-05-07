@@ -1,4 +1,4 @@
-﻿import { NextRequest, NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import fs from 'fs'
 import path from 'path'
 import { Parser } from 'json2csv'
@@ -70,7 +70,7 @@ export async function POST(req: NextRequest) {
 
       const chunks: Uint8Array[] = []
 
-      doc.on('data', (chunk) => chunks.push(chunk))
+      doc.on('data', (chunk: Uint8Array) => chunks.push(chunk))
       doc.on('end', () => {
         console.log('âœ… PDF stream complete')
       })
