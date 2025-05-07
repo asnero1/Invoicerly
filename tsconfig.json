@@ -37,11 +37,13 @@
     "**/*.tsx",
     "types"
   ],
-  "exclude": [
-    "node_modules",
-    "vitest.config.ts",
-    "**/*.test.ts",
-    "**/*.spec.ts"
-  ]
+ "exclude": [
+  "node_modules",
+  "vitest.config.ts",
+  "vitest.setup.ts",
+  "**/*.test.ts",
+  "**/*.spec.ts"
+]
+
 }
 
